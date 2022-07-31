@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MouseClick : MonoBehaviour
 {
@@ -9,7 +10,9 @@ public class MouseClick : MonoBehaviour
 
 	private	Camera				mainCamera;
 	private	RTSUnitController	rtsUnitController;
+	[SerializeField] private GameObject pointClick;
 
+	WaitForSeconds delay = new WaitForSeconds(0.25f);
 	private void Awake()
 	{
 		mainCamera			= Camera.main;
@@ -59,8 +62,16 @@ public class MouseClick : MonoBehaviour
 			if ( Physics.Raycast(ray, out hit, Mathf.Infinity, layerGround) )
 			{
 				rtsUnitController.MoveSelectedUnits(hit.point);
+				StartCoroutine(ClickAnimation(hit.point));
 			}
 		}
+	}
+	IEnumerator ClickAnimation(Vector3 hit)
+    {
+		pointClick.SetActive(true);
+		pointClick.transform.position = new Vector3(hit.x,hit.y+0.1f,hit.z);
+		yield return delay;
+		pointClick.SetActive(false);
 	}
 }
 
