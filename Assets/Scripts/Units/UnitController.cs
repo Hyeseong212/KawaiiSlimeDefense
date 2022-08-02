@@ -28,7 +28,6 @@ public class UnitController : MonoBehaviour
     {
         slimeVector = GetComponent<Transform>();
         faceMaterial = mainSlime.GetComponent<Renderer>().materials[1];
-        Idle();
         //idleBut.onClick.AddListener(delegate { Idle(); });
         //walkBut.onClick.AddListener(delegate { ChangeStateTo(SlimeAnimationState.Walk); });
         //jumpBut.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Jump); });
@@ -37,6 +36,14 @@ public class UnitController : MonoBehaviour
         //damageBut1.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Damage); mainSlime.GetComponent<EnemyAi>().damType = 1; });
         //damageBut2.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Damage); mainSlime.GetComponent<EnemyAi>().damType = 2; });
     }
+    private void FixedUpdate()
+    {
+    }
+    void StopToWall()
+    {
+
+    }
+    
     public void SelectUnit()
 	{
 		unitMarker.SetActive(true);
@@ -68,13 +75,6 @@ public class UnitController : MonoBehaviour
     {
         faceMaterial.SetTexture("_MainTex", tex);
     }
-    void Idle()
-    {
-
-    }
-    public void ChangeStateTo(SlimeAnimationState state)
-    {
-
-    }
+   
 }
 
