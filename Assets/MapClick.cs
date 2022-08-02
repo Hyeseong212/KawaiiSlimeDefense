@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class MapClick : MonoBehaviour
 {
-    [SerializeField] GameObject[] mapSize;
+    Transform _thisTr;
+    Vector3 mapPosition = new Vector3(1000,0,1000);
     void Start()
     {
     }
