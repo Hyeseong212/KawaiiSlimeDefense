@@ -11,7 +11,7 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 	[SerializeField] private GameObject pointClick;
 
 	WaitForSeconds delay = new WaitForSeconds(0.25f);
-
+	Vector3 vector;
 	private void Awake()
 	{
 		selectedUnitList = new List<UnitController>();
@@ -66,11 +66,13 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 	/// </summary>
 	public void MoveSelectedUnits(Vector3 end)
 	{
+		vector = end;
 		for ( int i = 0; i < selectedUnitList.Count; ++ i )
 		{
 			selectedUnitList[i].MoveTo(end);
 		}
-		StartCoroutine(ClickAnimation(end));
+		StopCoroutine("ClickAnimation");
+		StartCoroutine("ClickAnimation");
 	}
 
 	/// <summary>
@@ -107,10 +109,11 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 		// 선택한 유닛 정보를 리스트에서 삭제
 		selectedUnitList.Remove(newUnit);
 	}
-	IEnumerator ClickAnimation(Vector3 hit)
+	IEnumerator ClickAnimation()
 	{
+		pointClick.SetActive(false);
 		pointClick.SetActive(true);
-		pointClick.transform.position = new Vector3(hit.x, hit.y + 0.1f, hit.z);
+		pointClick.transform.position = new Vector3(vector.x, vector.y + 0.1f, vector.z);
 		yield return delay;
 		pointClick.SetActive(false);
 	}

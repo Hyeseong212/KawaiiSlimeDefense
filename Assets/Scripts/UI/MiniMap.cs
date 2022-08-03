@@ -42,7 +42,7 @@ public class MiniMap : MonoBehaviour , IPointerClickHandler, IDragHandler
             if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
    eventData.position, eventData.pressEventCamera, out Vector2 localCursor))
                 return;
-            _unitController.MoveSelectedUnits(new Vector3(localCursor.x * 0.77f, 0, localCursor.y * 0.77f));
+            _unitController.MoveSelectedUnits(new Vector3(localCursor.x * 0.77f, 0, localCursor.y * 0.77f+10));
         }
     }
 

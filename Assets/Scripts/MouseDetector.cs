@@ -9,7 +9,6 @@ public class MouseDetector : MonoBehaviour
     {
         _tr = GetComponent<Transform>();
         Cursor.lockState = CursorLockMode.Confined;
-        Debug.Log(Camera.main.gameObject.transform.position);
     }
     void FixedUpdate()
     {
