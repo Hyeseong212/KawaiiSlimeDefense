@@ -11,7 +11,10 @@ public class RTSUnitController : MonoBehaviour
 	private void Awake()
 	{
 		selectedUnitList = new List<UnitController>();
-		UnitList		 = unitSpawner.SpawnUnits();
+		if (GameManager.i.playerNumber == PlayerNumber.Player1)
+		{
+			UnitList = unitSpawner.SpawnUnitsPlayer1();
+		}
 	}
 
 	/// <summary>
