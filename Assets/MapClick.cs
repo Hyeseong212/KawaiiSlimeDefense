@@ -9,6 +9,14 @@ public class MapClick : MonoBehaviour
     Vector3 mapPosition = new Vector3(1000,0,1000);
     void Start()
     {
+        _thisTr = GetComponent<Transform>();
+    }
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+
+        }
     }
     void MapClickMethod()
     {
