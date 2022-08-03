@@ -6,6 +6,7 @@ public class Options
     public float mapMoveSpeed;
     public float width;
     public float height;
+    public float cameraYvalue;
 }
 public class GlobalOptions : MonoSingleton<GlobalOptions>
 {

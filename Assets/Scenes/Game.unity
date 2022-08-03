@@ -503,6 +503,7 @@ MonoBehaviour:
     mapMoveSpeed: 50
     width: 0
     height: 0
+    cameraYvalue: 30
 --- !u!1 &158939223
 GameObject:
   m_ObjectHideFlags: 0
