@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
-public class RTSUnitController : MonoBehaviour
+public class RTSUnitController : MonoSingleton<RTSUnitController>
 {
 	[SerializeField]
 	private	UnitSpawner			 unitSpawner;
 	private	List<UnitController> selectedUnitList;				// 플레이어가 클릭 or 드래그로 선택한 유닛
-	public	List<UnitController> UnitList { private set; get; }	// 맵에 존재하는 모든 유닛
+	public	List<UnitController> UnitList { private set; get; } // 맵에 존재하는 모든 유닛
+	[SerializeField] private GameObject pointClick;
+
+	WaitForSeconds delay = new WaitForSeconds(0.25f);
 
 	private void Awake()
 	{
@@ -66,6 +70,7 @@ public class RTSUnitController : MonoBehaviour
 		{
 			selectedUnitList[i].MoveTo(end);
 		}
+		StartCoroutine(ClickAnimation(end));
 	}
 
 	/// <summary>
@@ -101,6 +106,13 @@ public class RTSUnitController : MonoBehaviour
 		newUnit.DeselectUnit();
 		// 선택한 유닛 정보를 리스트에서 삭제
 		selectedUnitList.Remove(newUnit);
+	}
+	IEnumerator ClickAnimation(Vector3 hit)
+	{
+		pointClick.SetActive(true);
+		pointClick.transform.position = new Vector3(hit.x, hit.y + 0.1f, hit.z);
+		yield return delay;
+		pointClick.SetActive(false);
 	}
 }
 

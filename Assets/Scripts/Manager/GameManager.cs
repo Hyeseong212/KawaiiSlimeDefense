@@ -13,7 +13,7 @@ public class GameManager : MonoSingleton<GameManager>
 
         if (playerNumber == PlayerNumber.Player1)
         {
-            Camera.main.transform.position = new Vector3(-40, 30, 70);
+            Camera.main.transform.position = new Vector3(-40, GlobalOptions.i.options.cameraYvalue, 70);
         }
         else if(playerNumber == PlayerNumber.Player2)
         {

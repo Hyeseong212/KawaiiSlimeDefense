@@ -1174,6 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitSpawner: {fileID: 395954235}
+  pointClick: {fileID: 876789292}
 --- !u!114 &561231715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,7 +1193,6 @@ MonoBehaviour:
   layerGround:
     serializedVersion: 2
     m_Bits: 128
-  pointClick: {fileID: 876789292}
 --- !u!114 &561231716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4090,6 +4090,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5617782341720001679, guid: 9a920bcf5c612de4081cc576654d29d6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5617782341720001679, guid: 9a920bcf5c612de4081cc576654d29d6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5971213543433888159, guid: 9a920bcf5c612de4081cc576654d29d6, type: 3}
+      propertyPath: _unitController
+      value: 
+      objectReference: {fileID: 561231714}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a920bcf5c612de4081cc576654d29d6, type: 3}
 --- !u!224 &1917439870 stripped

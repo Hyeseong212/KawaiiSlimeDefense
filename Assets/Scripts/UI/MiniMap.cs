@@ -10,7 +10,9 @@ public class MiniMap : MonoBehaviour , IPointerClickHandler, IDragHandler
     Transform _thisTr;
     Vector2 mapPosition = new Vector2(300,300);
     [SerializeField] GameObject MinimapCameraPosition;
+    [SerializeField] RTSUnitController _unitController;
     RectTransform cameraRect;
+    
     void Start()
     {
         _thisTr = GetComponent<Transform>();
@@ -27,23 +29,36 @@ public class MiniMap : MonoBehaviour , IPointerClickHandler, IDragHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
-            eventData.position, eventData.pressEventCamera, out Vector2 localCursor))
-            return;
-        cameraRect.anchoredPosition = localCursor;
-        Camera.main.GetComponent<Transform>().position = new Vector3(localCursor.x*0.77f, 30, localCursor.y*0.77f);
-
-        Debug.Log("LocalCursor:" + localCursor);
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
+          eventData.position, eventData.pressEventCamera, out Vector2 localCursor))
+                return;
+            cameraRect.anchoredPosition = localCursor;
+            Camera.main.GetComponent<Transform>().position = new Vector3(localCursor.x * 0.77f, GlobalOptions.i.options.cameraYvalue, localCursor.y * 0.77f + 4);
+        }
+        else
+        {
+            if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
+   eventData.position, eventData.pressEventCamera, out Vector2 localCursor))
+                return;
+            _unitController.MoveSelectedUnits(new Vector3(localCursor.x * 0.77f, 0, localCursor.y * 0.77f));
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
-            eventData.position, eventData.pressEventCamera, out Vector2 localCursor))
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
+           eventData.position, eventData.pressEventCamera, out Vector2 localCursor))
+                return;
+            cameraRect.anchoredPosition = localCursor;
+            Camera.main.GetComponent<Transform>().position = new Vector3(localCursor.x * 0.77f, GlobalOptions.i.options.cameraYvalue, localCursor.y * 0.77f + 4);
+        }
+        else
+        {
             return;
-        cameraRect.anchoredPosition = localCursor;
-        Camera.main.GetComponent<Transform>().position = new Vector3(localCursor.x * 0.77f, 30, localCursor.y * 0.77f);
-
-        Debug.Log("LocalCursor:" + localCursor);
+        }
     }
 }
