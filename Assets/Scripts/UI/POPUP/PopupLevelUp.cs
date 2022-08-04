@@ -6,35 +6,35 @@ using UI.Popup.InGame;
 public class PopupLevelUp : MonoBehaviour
 {
     [SerializeField] private ContextHolder _contextHolder;
-    private PopupLevelUpContext _levelUpContext;
+    private PopupMenuContext _menuContext;
 
     public Action<bool> actionResult = delegate { };
     private void Awake()
     {
         if (_contextHolder == null) _contextHolder = GetComponent<ContextHolder>();
 
-        _levelUpContext = new PopupLevelUpContext();
-        _contextHolder.Context = _levelUpContext;
+        _menuContext = new PopupMenuContext();
+        _contextHolder.Context = _menuContext;
 
     }
     private void Start()
     {
-         _levelUpContext.onClickCommonLevelUp = () =>
+        _menuContext.onClickCommonLevelUp = () =>
         {
 
         };
 
-        _levelUpContext.onClickRareLevelUp = () =>
+        _menuContext.onClickRareLevelUp = () =>
         {
 
         };
 
-        _levelUpContext.onClickUniqueLevelUp = () =>
+        _menuContext.onClickUniqueLevelUp = () =>
         {
 
         };
 
-        _levelUpContext.onClickLegendaryLevelUp = () =>
+        _menuContext.onClickLegendaryLevelUp = () =>
         {
 
         };

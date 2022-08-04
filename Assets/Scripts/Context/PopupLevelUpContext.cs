@@ -5,9 +5,9 @@ using UnityEngine;
 namespace UI.Popup.InGame
 {
     using Slash.Unity.DataBind.Core.Data;
-    public class PopupLevelUpContext : Context
+    public class PopupMenuContext : Context
     {
-        public PopupLevelUpContext()
+        public PopupMenuContext()
         {
 
         }
@@ -17,23 +17,19 @@ namespace UI.Popup.InGame
         public System.Action onClickLegendaryLevelUp = () => { };
         public void OnClickCommonLevelUp()
         {
-            Debug.Log("--------- onClickCommonLevelUp");
+            Debug.Log("--------- onClickOption");
             onClickCommonLevelUp();
         }
         public void OnClickRareLevelUp()
         {
-            Debug.Log("--------- onClickRareLevelUp");
+            Debug.Log("--------- onClickQuit");
             onClickRareLevelUp();
         }
         public void OnClickUniqueLevelUp()
         {
-            Debug.Log("--------- onClickUniqueLevelUp");
+            Debug.Log("--------- onClickExit");
             onClickUniqueLevelUp();
         }
-        public void OnClickLegendaryLevelUp()
-        {
-            Debug.Log("--------- onClickLegendaryLevelUp");
-            onClickLegendaryLevelUp();
-        }
+   
     }
 }

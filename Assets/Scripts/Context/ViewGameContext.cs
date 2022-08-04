@@ -12,17 +12,12 @@ namespace UI.View.InGame
 
         }
 
-        public System.Action OnClickLevelUp = () => { };
-        public System.Action OnClickGamble = () => { };
-        public void onClickLevelUp()
+        public System.Action OnClickMenu = () => { };
+ 
+        public void onClickMenu()
         {
-            Debug.Log("--------- OnClickLevelUp");
-            OnClickLevelUp();
-        }
-        public void onClickGamble()
-        {
-            Debug.Log("--------- OnClickGamble");
-            OnClickGamble();
+            Debug.Log("--------- onClickMenu");
+            OnClickMenu();
         }
     }
 }

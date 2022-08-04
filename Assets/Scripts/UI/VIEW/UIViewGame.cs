@@ -20,13 +20,11 @@ public class UIViewGame : MonoSingleton<UIViewGame>
     void Start()
     {
 
-        _context.OnClickLevelUp = () =>
+        _context.OnClickMenu = () =>
         {
-            PopupManager.i.ShowPopup(_type.E_POPUP.POPUP_LEVELUP);
-        };
-        _context.OnClickGamble = () =>
-        {
-            PopupManager.i.ShowPopup(_type.E_POPUP.POPUP_GAMBLE);
+            Debug.Log("--------OnClickMenu ");
+            PopupManager.i.ShowPopup(_type.E_POPUP.POPUP_MENU);
+
         };
     }
 }
