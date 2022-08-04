@@ -7,11 +7,9 @@ public class Options
     public float width;
     public float height;
     public float cameraYvalue;
+    public bool isPopup = false;
 }
 public class GlobalOptions : MonoSingleton<GlobalOptions>
 {
     public Options options;
-    private void Start()
-    {
-    }
 }

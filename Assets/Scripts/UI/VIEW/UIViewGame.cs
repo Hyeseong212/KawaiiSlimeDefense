@@ -19,7 +19,6 @@ public class UIViewGame : MonoSingleton<UIViewGame>
     }
     void Start()
     {
-
         _context.OnClickMenu = () =>
         {
             Debug.Log("--------OnClickMenu ");

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Slime
   - Wall
+  - POPUP
   layers:
   - Default
   - TransparentFX

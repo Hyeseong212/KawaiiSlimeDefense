@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MiniMap : MonoBehaviour , IPointerClickHandler, IDragHandler
+public class MiniMap : MonoSingleton<MiniMap> , IPointerClickHandler, IDragHandler
 {
 
     Transform _thisTr;
@@ -12,7 +12,7 @@ public class MiniMap : MonoBehaviour , IPointerClickHandler, IDragHandler
     [SerializeField] GameObject MinimapCameraPosition;
     [SerializeField] RTSUnitController _unitController;
     RectTransform cameraRect;
-    
+
     void Start()
     {
         _thisTr = GetComponent<Transform>();
@@ -23,9 +23,6 @@ public class MiniMap : MonoBehaviour , IPointerClickHandler, IDragHandler
         Vector3 cameraPosition= Camera.main.GetComponent<Transform>().position;
 
         cameraRect.anchoredPosition = new Vector2(cameraPosition.x*1.3f , cameraPosition.z*1.3f);
-    }
-    void MapClickMethod()
-    {
     }
     public void OnPointerClick(PointerEventData eventData)
     {

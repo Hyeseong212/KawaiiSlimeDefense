@@ -236,6 +236,7 @@ public class PopupManager : MonoSingleton<PopupManager>
     }
     public GameObject ShowPopup(E_POPUP type, bool bNew = false, bool bEscapeLock = false, object data = null)
     {
+        GlobalOptions.i.options.isPopup = true;
         GameObject obj = null;
 
 
@@ -301,6 +302,7 @@ public class PopupManager : MonoSingleton<PopupManager>
 
     public void BackPopup()
     {
+        GlobalOptions.i.options.isPopup = false;
         if (stackPopup.Count == 0) return;
 
         PopupItem item = stackPopup.Pop();
@@ -313,7 +315,7 @@ public class PopupManager : MonoSingleton<PopupManager>
     }
     public void BackPopup(E_POPUP type)
     {
-
+        GlobalOptions.i.options.isPopup = false;
         Debug.Log("е╦ют " + type);
         if (stackPopup.Count == 0) return;
 
@@ -328,6 +330,7 @@ public class PopupManager : MonoSingleton<PopupManager>
     }
     public void BackPopup(GameObject obj)
     {
+        GlobalOptions.i.options.isPopup = false;
         if (stackPopup.Count == 0) return;
 
         if (obj != null)

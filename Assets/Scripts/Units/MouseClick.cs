@@ -56,7 +56,6 @@ public class MouseClick : MonoSingleton<MouseClick>
 					}
 					else
 					{
-						Debug.Log(1);
 						rtsUnitController.ClickSelectUnit(hit.transform.GetComponent<UnitController>());
 					}
 				}
