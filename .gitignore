@@ -61,3 +61,4 @@ crashlytics-build.properties
 
 * text=auto
 *.svg text eol=lf
+Assets/Resources/Data/Excel/~$StringTable.xlsx
