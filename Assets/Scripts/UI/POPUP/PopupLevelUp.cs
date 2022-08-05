@@ -19,25 +19,19 @@ public class PopupLevelUp : MonoBehaviour
     }
     private void Start()
     {
-        _menuContext.onClickCommonLevelUp = () =>
+        _menuContext.onClickOptions = () =>
         {
 
         };
 
-        _menuContext.onClickRareLevelUp = () =>
+        _menuContext.onClickQuit = () =>
         {
 
         };
 
-        _menuContext.onClickUniqueLevelUp = () =>
+        _menuContext.onClickExit = () =>
         {
-
+            Application.Quit();
         };
-
-        _menuContext.onClickLegendaryLevelUp = () =>
-        {
-
-        };
-
     }
 }   

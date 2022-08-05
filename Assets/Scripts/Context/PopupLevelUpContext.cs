@@ -11,24 +11,23 @@ namespace UI.Popup.InGame
         {
 
         }
-        public System.Action onClickCommonLevelUp = () => { };
-        public System.Action onClickRareLevelUp = () => { };
-        public System.Action onClickUniqueLevelUp = () => { };
-        public System.Action onClickLegendaryLevelUp = () => { };
+        public System.Action onClickOptions = () => { };
+        public System.Action onClickQuit = () => { };
+        public System.Action onClickExit = () => { };
         public void OnClickCommonLevelUp()
         {
             Debug.Log("--------- onClickOption");
-            onClickCommonLevelUp();
+            onClickOptions();
         }
         public void OnClickRareLevelUp()
         {
             Debug.Log("--------- onClickQuit");
-            onClickRareLevelUp();
+            onClickQuit();
         }
         public void OnClickUniqueLevelUp()
         {
             Debug.Log("--------- onClickExit");
-            onClickUniqueLevelUp();
+            onClickExit();
         }
    
     }
