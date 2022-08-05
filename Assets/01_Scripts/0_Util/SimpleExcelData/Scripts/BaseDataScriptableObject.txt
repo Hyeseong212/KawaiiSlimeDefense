@@ -1,0 +1,49 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+[System.Serializable]
+public class BaseDataScriptableObject : ScriptableObject
+{
+#if UNITY_EDITOR
+    [MenuItem("Assets/Create Scriptable/BaseData Scriptable")]
+    public static void CreateSelectScriptable()
+    {
+        ScriptableObject scriptable = CreateInstance("BaseDataScriptableObject");
+        string path = AssetDatabase.GetAssetPath(Selection.activeObject);
+        AssetDatabase.CreateAsset(scriptable, path + "/BaseData.asset");
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+    }
+#endif
+    public static BaseDataScriptableObject GetSelectScriptable()
+    {
+        string path = AssetDatabase.GetAssetPath(Selection.activeObject);
+        return AssetDatabase.LoadAssetAtPath<BaseDataScriptableObject>
+                               (path + "/BaseData.asset");
+    }
+
+    public void SetData(string jsonArray  )
+    {
+        DATA data = JsonUtility.FromJson<DATA>(jsonArray);
+        datas = data.datas;
+    }
+    [System.Serializable]
+    public class DATA
+    {
+        public BaseData[] datas;
+    }
+    [System.Serializable]
+    public class BaseData
+    {
+		public string ID;
+    }
+	
+
+    public BaseData [] datas;
+}
