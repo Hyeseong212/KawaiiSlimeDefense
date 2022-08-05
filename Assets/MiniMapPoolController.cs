@@ -44,9 +44,6 @@ public class MiniMapPoolController : MonoSingleton<MiniMapPoolController>
             Vector3 slimePos = CraftManager.i.currentSceneSlimeData[i].Slime.transform.position * 1.3f;
 
             GameObject miniMapSlime = Instantiate(slimeMiniMapPrefab,new Vector2 (slimePos.x, slimePos.z), Quaternion.identity);
-            miniMapSlime.name = miniMapSlime.name +" + " + i +" + "+ CraftManager.i.currentSceneSlimeData[i].Slime.name;
-            Debug.Log(CraftManager.i.currentSceneSlimeData[i].Slime.name);
-            Debug.Log(miniMapSlime.name);
             CraftManager.i.currentSceneSlimeData[i] =
                 new SlimeData(
                 CraftManager.i.currentSceneSlimeData[i].Index,
