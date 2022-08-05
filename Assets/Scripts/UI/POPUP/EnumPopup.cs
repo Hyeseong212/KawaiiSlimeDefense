@@ -6,6 +6,6 @@ namespace _type
 	{
 		NONE = 0,
 		POPUP_MENU,
-		POPUP_MESSAGE_OKCANCEL
+		POPUP_BUTTON_OKCANCEL
 	}
 }
