@@ -5,6 +5,7 @@ namespace _type
 	public enum E_POPUP
 	{
 		NONE = 0,
-		POPUP_MENU
+		POPUP_MENU,
+		POPUP_MESSAGE_OKCANCEL
 	}
 }

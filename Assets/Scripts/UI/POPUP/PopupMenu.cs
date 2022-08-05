@@ -3,7 +3,7 @@ using UnityEngine;
 
 using Slash.Unity.DataBind.Core.Presentation;
 using UI.Popup.InGame;
-public class PopupLevelUp : MonoBehaviour
+public class PopupMenu : MonoBehaviour
 {
     [SerializeField] private ContextHolder _contextHolder;
     private PopupMenuContext _menuContext;

@@ -14,17 +14,17 @@ namespace UI.Popup.InGame
         public System.Action onClickOptions = () => { };
         public System.Action onClickQuit = () => { };
         public System.Action onClickExit = () => { };
-        public void OnClickCommonLevelUp()
+        public void OnClickOptions()
         {
             Debug.Log("--------- onClickOption");
             onClickOptions();
         }
-        public void OnClickRareLevelUp()
+        public void OnClickQuit()
         {
             Debug.Log("--------- onClickQuit");
             onClickQuit();
         }
-        public void OnClickUniqueLevelUp()
+        public void OnClickExit()
         {
             Debug.Log("--------- onClickExit");
             onClickExit();
