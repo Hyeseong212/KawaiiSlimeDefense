@@ -14,13 +14,13 @@ namespace UI.Popup.Message
         Cancel = 1,
         Close,
     }
-    public class PopupMessageOkCancel : Context
+    public class PopupMessageOkCancelConText : Context
     {
         private readonly Property<string> TextProperty = new Property<string>();
 
         // Start is called before the first frame update
 
-        public PopupMessageOkCancel()
+        public PopupMessageOkCancelConText()
         {
 
         }
