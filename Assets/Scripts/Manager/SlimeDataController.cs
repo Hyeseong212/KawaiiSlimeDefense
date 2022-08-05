@@ -5,7 +5,6 @@ public class SlimeDataController : MonoSingleton<SlimeDataController>
 {
 
 	public List<SlimeData> slimeDataBaseList;
-	public int i;
 	private void Awake()
 	{
 		List<Dictionary<string, object>> data = CSVReader.Read("SlimeDataBase");
