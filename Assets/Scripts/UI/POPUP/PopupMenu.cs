@@ -31,7 +31,7 @@ public class PopupMenu : MonoBehaviour
 
         _menuContext.onClickExit = () =>
         {
-            Application.Quit();
+            PopupMessageOkCancel.ShowButtonOKCancel_ID(1000);
         };
     }
 }   
