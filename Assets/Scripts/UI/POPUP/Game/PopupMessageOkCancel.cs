@@ -36,7 +36,7 @@ public class PopupMessageOkCancel : MonoBehaviour
     static public PopupMessageOkCancel ShowButtonOKCancel_ID(int ID, Action<ButtonType> action = null)
     {
         //return ShowButtonOKCancel(StrMgr.GetStr(ID), action);
-        return ShowButtonOKCancel(null, null);
+        return ShowButtonOKCancel(null, action);
     }
 
     static public PopupMessageOkCancel ShowButtonOKCancel(string msg, Action<ButtonType> action)
