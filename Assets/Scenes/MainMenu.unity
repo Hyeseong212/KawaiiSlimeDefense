@@ -221,7 +221,7 @@ MonoBehaviour:
     width: 0
     height: 0
     cameraYvalue: 0
-    isPopup: 1
+    isPopup: 0
 --- !u!4 &363389377
 Transform:
   m_ObjectHideFlags: 0
