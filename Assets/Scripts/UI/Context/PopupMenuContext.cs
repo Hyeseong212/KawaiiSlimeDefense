@@ -16,17 +16,14 @@ namespace UI.Popup.InGame
         public System.Action onClickExit = () => { };
         public void OnClickOptions()
         {
-            Debug.Log("--------- onClickOption");
             onClickOptions();
         }
         public void OnClickQuit()
         {
-            Debug.Log("--------- onClickQuit");
             onClickQuit();
         }
         public void OnClickExit()
         {
-            Debug.Log("--------- onClickExit");
             onClickExit();
         }
    

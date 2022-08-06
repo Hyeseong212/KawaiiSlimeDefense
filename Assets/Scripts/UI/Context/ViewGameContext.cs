@@ -16,7 +16,6 @@ namespace UI.View.InGame
  
         public void onClickMenu()
         {
-            Debug.Log("--------- onClickMenu");
             OnClickMenu();
         }
     }
