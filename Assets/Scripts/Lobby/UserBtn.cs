@@ -1,26 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UserBtn : MonoBehaviour
 {
-        [SerializeField]  GameObject UserBtnUI;
+    [SerializeField]  GameObject UserBtnUI;
     bool isActive = false;
+    [SerializeField] GameObject UserBtnUIBg;
 
     [SerializeField] Sprite[] sprites;
-    SpriteRenderer spriteRenderer;
+    Image spriteRenderer;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        spriteRenderer = GetComponent<Image>();
     }
 
     public void ActiveMenu()
