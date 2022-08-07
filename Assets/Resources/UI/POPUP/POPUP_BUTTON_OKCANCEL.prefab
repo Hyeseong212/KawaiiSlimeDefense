@@ -104,7 +104,7 @@ MonoBehaviour:
     Path: Text
     Provider: {fileID: 0}
     Reference: {fileID: 1505233950494935597}
-    Type: 0
+    Type: 3
   constantTarget: {fileID: 0}
 --- !u!1 &1505233950600147568
 GameObject:

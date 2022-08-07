@@ -6,7 +6,7 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 {
 	[SerializeField]
 	private	UnitSpawner			 unitSpawner;
-	private	List<UnitController> selectedUnitList;				// 플레이어가 클릭 or 드래그로 선택한 유닛
+	public List<UnitController> selectedUnitList;				// 플레이어가 클릭 or 드래그로 선택한 유닛
 	public	List<UnitController> UnitList { private set; get; } // 맵에 존재하는 모든 유닛
 	[SerializeField] private GameObject pointClick;
 

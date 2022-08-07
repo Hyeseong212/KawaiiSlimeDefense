@@ -73,6 +73,7 @@ public class MouseDrag: MonoBehaviour
 			// start, end 위치를 (0, 0)으로 설정하고 드래그 범위를 그린다
 			start = end = Vector2.zero;
 			DrawDragRectangle();
+			BottomPanelController.i.SetSelectedSlimeImage();
 		}
 	}
 

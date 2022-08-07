@@ -7,7 +7,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 public class AddresablesDataManager : MonoSingleton<AddresablesDataManager>
 {
     AsyncOperationHandle Handle;
-    [SerializeField] StringTableScriptableObject.StringTable[] stringTables; 
+    public Dictionary<int, string> _dicData = new Dictionary<int, string>();
     private void Awake()
     {
         AssetLoad();
@@ -15,15 +15,29 @@ public class AddresablesDataManager : MonoSingleton<AddresablesDataManager>
     public void AssetLoad()
     {
         Addressables.LoadAssetAsync<StringTableScriptableObject>("StringTable").Completed +=
-         (AsyncOperationHandle<StringTableScriptableObject> Obj) =>
+         (AsyncOperationHandle<StringTableScriptableObject> data) =>
          {
-             Handle = Obj;
-             stringTables = Obj.Result.datas;
-             Debug.Log(Obj.PercentComplete);
+             Handle = data;
+             foreach (StringTableScriptableObject.StringTable d in data.Result.datas)
+             {
+                 if (_dicData.ContainsKey(d.ID))
+                 {
+                     _dicData[d.ID] = d.TEXT;
+                     Debug.LogError("StringTable reduplication data");
+                 }
+                 else
+                 {
+                     _dicData.Add(d.ID, d.TEXT);
+                 }
+             }
          };
     }
     public void AssetUnLoad()
     {
         Addressables.Release(Handle);
+    }
+    public string GetString(int ID)
+    {
+        return _dicData.ContainsKey(ID) ? _dicData[ID] : null;
     }
 }

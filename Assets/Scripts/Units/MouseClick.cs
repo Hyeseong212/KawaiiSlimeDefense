@@ -53,10 +53,12 @@ public class MouseClick : MonoSingleton<MouseClick>
 					if (Input.GetKey(KeyCode.LeftShift))
 					{
 						rtsUnitController.ShiftClickSelectUnit(hit.transform.GetComponent<UnitController>());
+						BottomPanelController.i.SetSelectedSlimeImage();
 					}
 					else
 					{
 						rtsUnitController.ClickSelectUnit(hit.transform.GetComponent<UnitController>());
+						BottomPanelController.i.SetSelectedSlimeImage();
 					}
 				}
 				// 광선에 부딪히는 오브젝트가 없을 때
