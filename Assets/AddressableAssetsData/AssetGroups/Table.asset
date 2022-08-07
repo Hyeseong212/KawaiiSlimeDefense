@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 4093d94fdae6f6b48bc333cee41b710e
   m_SerializeEntries:
   - m_GUID: a50a680ddc24ad94a83790b1f54dc9a3
-    m_Address: Data/Table/StringTable
+    m_Address: StringTable
     m_ReadOnly: 0
     m_SerializedLabels:
     - Table

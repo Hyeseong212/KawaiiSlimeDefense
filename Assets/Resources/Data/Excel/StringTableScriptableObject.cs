@@ -35,7 +35,7 @@ public class StringTableScriptableObject : BaseScriptableObject
                                (path + "/ErrorTable.asset");
     }
 #endif*/
-    public override void SetData(string jsonArray  )
+    public override void SetData(string jsonArray)
     {
         DATA data = JsonUtility.FromJson<DATA>(jsonArray);
         datas = data.datas;
