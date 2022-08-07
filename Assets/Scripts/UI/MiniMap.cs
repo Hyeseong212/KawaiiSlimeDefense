@@ -39,7 +39,7 @@ public class MiniMap : MonoSingleton<MiniMap> , IPointerClickHandler, IDragHandl
             if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(),
    eventData.position, eventData.pressEventCamera, out Vector2 localCursor))
                 return;
-            _unitController.MoveSelectedUnits(new Vector3(localCursor.x * 0.77f, 0, localCursor.y * 0.77f+10));
+            _unitController.MoveSelectedUnits(new Vector3(localCursor.x * 0.77f, 0, localCursor.y * 0.77f+15));
         }
     }
 
