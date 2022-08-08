@@ -58,7 +58,6 @@ public class SlimeDataController : MonoSingleton<SlimeDataController>
 			{
 				if (slimeDataBaseList[i].Slime.name+"(Clone)" == _slimeObject[j].name)
 				{
-
 					slimeDatas.Add(new SlimeData(slimeDataBaseList[i].Index, slimeDataBaseList[i].Name, slimeDataBaseList[i].Type, _slimeObject[j]));
 				}
 			}

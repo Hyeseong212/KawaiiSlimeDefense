@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class CraftManager : MonoSingleton<CraftManager>
 {
-    public List<SlimeData> currentSceneSlimeData;
-    GameObject[] currentSceneSlimes;
+    //[SerializeField] List<SlimeData> currentSlime;
+    [SerializeField] List<SlimeData> currentSlime;
     private void Start()
     {
         SlimeCheck();
-        MiniMapPoolController.i.MiniMapSlimeImageSetter();
     }
     public void SlimeCheck()//현재 씬에 슬라임이 어떤게 있는지 알아야함
     {
-        currentSceneSlimes = GameObject.FindGameObjectsWithTag("Slime");
-        currentSceneSlimeData = SlimeDataController.i.SlimeDataObjectFinder(currentSceneSlimes);
+        GameObject[] currentSceneSlimes = GameObject.FindGameObjectsWithTag("Slime");
+        currentSlime = SlimeDataController.i.SlimeDataObjectFinder(currentSceneSlimes);
     }
     public void SlimeCraft()
     {

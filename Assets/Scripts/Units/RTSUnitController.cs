@@ -1,24 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
-public class RTSUnitController : MonoSingleton<RTSUnitController>
+public class RTSUnitController : MonoBehaviour
 {
 	[SerializeField]
 	private	UnitSpawner			 unitSpawner;
-	public List<UnitController> selectedUnitList;				// 플레이어가 클릭 or 드래그로 선택한 유닛
-	public	List<UnitController> UnitList { private set; get; } // 맵에 존재하는 모든 유닛
-	[SerializeField] private GameObject pointClick;
+	private	List<UnitController> selectedUnitList;				// 플레이어가 클릭 or 드래그로 선택한 유닛
+	public	List<UnitController> UnitList { private set; get; }	// 맵에 존재하는 모든 유닛
 
-	WaitForSeconds delay = new WaitForSeconds(0.25f);
-	Vector3 vector;
 	private void Awake()
 	{
 		selectedUnitList = new List<UnitController>();
-		if (GameManager.i.playerNumber == PlayerNumber.Player1)
-		{
-			UnitList = unitSpawner.SpawnUnitsPlayer1();
-		}
+		UnitList		 = unitSpawner.SpawnUnits();
 	}
 
 	/// <summary>
@@ -66,13 +59,10 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 	/// </summary>
 	public void MoveSelectedUnits(Vector3 end)
 	{
-		vector = end;
 		for ( int i = 0; i < selectedUnitList.Count; ++ i )
 		{
 			selectedUnitList[i].MoveTo(end);
 		}
-		StopCoroutine("ClickAnimation");
-		StartCoroutine("ClickAnimation");
 	}
 
 	/// <summary>
@@ -108,14 +98,6 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 		newUnit.DeselectUnit();
 		// 선택한 유닛 정보를 리스트에서 삭제
 		selectedUnitList.Remove(newUnit);
-	}
-	IEnumerator ClickAnimation()
-	{
-		pointClick.SetActive(false);
-		pointClick.SetActive(true);
-		pointClick.transform.position = new Vector3(vector.x, vector.y + 0.1f, vector.z);
-		yield return delay;
-		pointClick.SetActive(false);
 	}
 }
 

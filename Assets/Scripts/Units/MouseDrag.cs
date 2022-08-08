@@ -23,32 +23,6 @@ public class MouseDrag: MonoBehaviour
 
 	private void Update()
 	{
-		float wheelInput = Input.GetAxis("Mouse ScrollWheel");
-		if (mainCamera.fieldOfView > 30)
-		{
-			if (wheelInput > 0)
-			{
-
-				// 휠을 밀어 돌렸을 때의 처리 ↑
-				mainCamera.fieldOfView--;
-			}
-		}
-		if (mainCamera.fieldOfView < 90)
-		{
-			if (wheelInput < 0)
-			{
-				// 휠을 당겨 올렸을 때의 처리 ↓
-				mainCamera.fieldOfView++;
-			}
-		}
-		if(mainCamera.fieldOfView >= 90)
-        {
-			mainCamera.fieldOfView = 89;
-		}
-		if (mainCamera.fieldOfView <= 30)
-		{
-			mainCamera.fieldOfView = 31;
-		}
 		if ( Input.GetMouseButtonDown(0) )
 		{
 			start	 = Input.mousePosition;
@@ -73,7 +47,6 @@ public class MouseDrag: MonoBehaviour
 			// start, end 위치를 (0, 0)으로 설정하고 드래그 범위를 그린다
 			start = end = Vector2.zero;
 			DrawDragRectangle();
-			BottomPanelController.i.SetSelectedSlimeImage();
 		}
 	}
 

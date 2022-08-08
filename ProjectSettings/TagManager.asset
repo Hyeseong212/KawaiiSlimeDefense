@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Slime
-  - Wall
-  - POPUP
   layers:
   - Default
   - TransparentFX
@@ -21,7 +19,7 @@ TagManager:
   - UpperDetector
   - DownDetector
   - MousePointer
-  - MiniMap
+  - 
   - 
   - 
   - 

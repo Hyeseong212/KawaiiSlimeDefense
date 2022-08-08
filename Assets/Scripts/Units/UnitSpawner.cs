@@ -10,16 +10,16 @@ public class UnitSpawner : MonoBehaviour
 	[SerializeField]
 	private	int			maxUnitCount;
 
-	private	Vector2	player1minSize = new Vector2(-42, 78);
-	private	Vector2 player1maxSize = new Vector2(-38, 82);
+	private	Vector2		minSize = new Vector2(-3, -3);
+	private	Vector2		maxSize = new Vector2(3, 3);
 
-    public List<UnitController> SpawnUnitsPlayer1()
+    public List<UnitController> SpawnUnits()
 	{
 		List<UnitController> unitList = new List<UnitController>(maxUnitCount);
 
 		for ( int i = 0; i < maxUnitCount; ++ i )
 		{
-			Vector3 position = new Vector3(Random.Range(player1minSize.x, player1maxSize.x), 1, Random.Range(player1minSize.y, player1maxSize.y));
+			Vector3 position = new Vector3(Random.Range(minSize.x, maxSize.x), 1, Random.Range(minSize.y, maxSize.y));
 			int randomUnit = Random.Range(0, unitPrefab.Length);
 
 			GameObject slimes = Instantiate(unitPrefab[randomUnit], position, Quaternion.identity);

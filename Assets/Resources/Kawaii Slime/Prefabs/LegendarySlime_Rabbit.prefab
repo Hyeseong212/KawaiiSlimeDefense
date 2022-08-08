@@ -77,7 +77,6 @@ GameObject:
   - component: {fileID: 9184930894127286468}
   - component: {fileID: 5062861959249774598}
   - component: {fileID: -103418577689834943}
-  - component: {fileID: -5101908318720313983}
   m_Layer: 6
   m_Name: LegendarySlime_Rabbit
   m_TagString: Slime
@@ -174,22 +173,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &-5101908318720313983
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2795397902362475942}
-  serializedVersion: 2
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2988591986747077261
 GameObject:
   m_ObjectHideFlags: 0
