@@ -310,7 +310,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6216532115693788942}
   - component: {fileID: 4368433150801037199}
-  - component: {fileID: 910743894350432084}
   m_Layer: 6
   m_Name: CommonSlime_Blue
   m_TagString: Slime
@@ -356,18 +355,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &910743894350432084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6705402075998324148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a55045788f4fe4943bbf48bfc8b8653b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7534262480104691789
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +396,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7625824445407367461}
-  - component: {fileID: 12003798313980773}
   m_Layer: 6
   m_Name: Rig
   m_TagString: Untagged
@@ -433,23 +419,3 @@ Transform:
   m_Father: {fileID: 6216532115693788942}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -89.98021, y: 0, z: 0}
---- !u!95 &12003798313980773
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8414972406771447875}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4ce99ba30b9c37342a514fcbb6983289, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

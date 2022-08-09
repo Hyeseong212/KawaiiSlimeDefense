@@ -9,7 +9,7 @@ public class BottomPanelController : MonoSingleton<BottomPanelController>
     [SerializeField] GameObject[] disabledSlimeImagesBg;
     [SerializeField] GameObject statusPanel;
     [SerializeField] Sprite[] slimeImg;
-
+    [SerializeField] GameObject[] rendererSlime;
     public void SetSelectedSlimeImage()
     {
         for (int i = 0; i < disabledSlimeImages.Length; i++)
@@ -27,6 +27,32 @@ public class BottomPanelController : MonoSingleton<BottomPanelController>
                 }
             }
         }
+        if(RTSUnitController.i.selectedUnitList.Count > 0) 
+        { 
+            SetModelPos(RTSUnitController.i.selectedUnitList[0].name);//리스트중에 처음있는놈만 렌더러 텍스쳐에 비춰줌
+        }
+        else
+        {
+            for (int i = 0; i < rendererSlime.Length; i++)
+            {
+                rendererSlime[i].gameObject.SetActive(false);
+            }
+        }
     }
-    
+    void SetModelPos(string slimeName)
+    {
+        for (int i = 0; i < rendererSlime.Length; i++)
+        {
+            if (slimeName == rendererSlime[i].name + "(Clone)")
+            {
+                rendererSlime[i].gameObject.SetActive(true);
+                //rendererSlime[i].gameObject.GetComponent<RenderTextureSlime>().StopCoroutine("RandomCoroutine");
+                //rendererSlime[i].gameObject.GetComponent<RenderTextureSlime>().StartCoroutine("RandomCoroutine");
+            }
+            else
+            {
+                rendererSlime[i].gameObject.SetActive(false);
+            }
+        }
+    }
 }
