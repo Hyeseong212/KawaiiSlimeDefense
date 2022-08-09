@@ -10,7 +10,7 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 	public	List<UnitController> UnitList { private set; get; } // ¸Ê¿¡ Á¸ÀçÇÏ´Â ¸ðµç À¯´Ö
 	[SerializeField] private GameObject pointClick;
 
-	WaitForSeconds delay = new WaitForSeconds(0.25f);
+	WaitForSeconds delay = new WaitForSeconds(0.5f);
 	Vector3 vector;
 	private void Awake()
 	{

@@ -75,6 +75,5 @@ public class UnitController : MonoBehaviour
     {
         faceMaterial.SetTexture("_MainTex", tex);
     }
-   
 }
 
