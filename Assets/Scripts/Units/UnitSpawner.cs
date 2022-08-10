@@ -22,7 +22,7 @@ public class UnitSpawner : MonoBehaviour
 			Vector3 position = new Vector3(Random.Range(player1minSize.x, player1maxSize.x), 1, Random.Range(player1minSize.y, player1maxSize.y));
 			int randomUnit = Random.Range(0, unitPrefab.Length);
 
-			GameObject slimes = Instantiate(unitPrefab[randomUnit], position, Quaternion.identity);
+			GameObject slimes = Instantiate(unitPrefab[i], position, Quaternion.identity);
 			slimes.transform.parent = slimesParent.transform;
 			UnitController unit	= slimes.GetComponent<UnitController>();
 
