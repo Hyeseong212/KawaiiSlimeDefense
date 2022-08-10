@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class SlimeDataController : MonoSingleton<SlimeDataController>
 {
@@ -14,6 +15,9 @@ public class SlimeDataController : MonoSingleton<SlimeDataController>
 			slimeData.Index = (int)data[i]["Index"];
 			slimeData.Type = (string)data[i]["Type"];
 			slimeData.Name = (string)data[i]["Name"];
+			slimeData.attackType = (string)data[i]["AttackType"];
+			slimeData.attackpts = Convert.ToSingle(data[i]["Attackpts"]);
+			slimeData.attackspeed = Convert.ToSingle(data[i]["Attackspeed"]);
 			GameObject slime = Resources.Load<GameObject>("Kawaii Slime/Prefabs/"+slimeData.Name);
 			slimeData.Slime = slime;
 			slimeDataBaseList.Add(slimeData);
@@ -59,7 +63,9 @@ public class SlimeDataController : MonoSingleton<SlimeDataController>
 				if (slimeDataBaseList[i].Slime.name+"(Clone)" == _slimeObject[j].name)
 				{
 
-					slimeDatas.Add(new SlimeData(slimeDataBaseList[i].Index, slimeDataBaseList[i].Name, slimeDataBaseList[i].Type, _slimeObject[j]));
+					slimeDatas.Add(new SlimeData(slimeDataBaseList[i].Index, slimeDataBaseList[i].Name, slimeDataBaseList[i].Type,
+						slimeDataBaseList[i].attackType,
+						slimeDataBaseList[i].attackpts, slimeDataBaseList[i].attackspeed, _slimeObject[j]));
 				}
 			}
 		}

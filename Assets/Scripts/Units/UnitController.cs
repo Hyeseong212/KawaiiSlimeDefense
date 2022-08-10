@@ -58,7 +58,7 @@ public class UnitController : MonoBehaviour
 	{
         StopCoroutine("StopCheck");
         navMeshAgent.isStopped = false;
-        animator.SetBool("IsMove", true);
+        animator.SetInteger("MoveInt",1);
         SetFace(faces.WalkFace);
         navMeshAgent.SetDestination(end);
         distance  = Vector3.Distance(slimeVector.position ,end);
@@ -68,7 +68,7 @@ public class UnitController : MonoBehaviour
     IEnumerator StopCheck()
     {
         yield return new WaitForSeconds(remainTime);
-        animator.SetBool("IsMove", false);
+        animator.SetInteger("MoveInt", 0);
         navMeshAgent.isStopped = true;
     }
     void SetFace(Texture tex)

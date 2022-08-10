@@ -32,6 +32,9 @@ public class MiniMapPoolController : MonoSingleton<MiniMapPoolController>
                    CraftManager.i.currentSceneSlimeData[i].Name,
                    CraftManager.i.currentSceneSlimeData[i].Type,
                    CraftManager.i.currentSceneSlimeData[i].Slime,
+                   CraftManager.i.currentSceneSlimeData[i].attackType,
+                   CraftManager.i.currentSceneSlimeData[i].attackpts,
+                   CraftManager.i.currentSceneSlimeData[i].attackspeed,
                    CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
                    );
             } 
@@ -50,6 +53,9 @@ public class MiniMapPoolController : MonoSingleton<MiniMapPoolController>
                 CraftManager.i.currentSceneSlimeData[i].Name,
                 CraftManager.i.currentSceneSlimeData[i].Type,
                 CraftManager.i.currentSceneSlimeData[i].Slime,
+                CraftManager.i.currentSceneSlimeData[i].attackType,
+                CraftManager.i.currentSceneSlimeData[i].attackpts,
+                CraftManager.i.currentSceneSlimeData[i].attackspeed,
                 miniMapSlime
                 );
             slimeRectTransform = miniMapSlime.GetComponent<RectTransform>();

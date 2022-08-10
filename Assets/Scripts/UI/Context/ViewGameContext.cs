@@ -13,10 +13,30 @@ namespace UI.View.InGame
         }
 
         public System.Action OnClickMenu = () => { };
- 
+        public System.Action OnClickTestCommon = () => { };
+        public System.Action OnClickTestRare = () => { };
+        public System.Action OnClickTestUnique = () => { };
+        public System.Action OnClickTestLegendary = () => { };
+
         public void onClickMenu()
         {
             OnClickMenu();
+        }
+        public void onClickTestCommon()
+        {
+            OnClickTestCommon();
+        }
+        public void onClickTestRare()
+        {
+            OnClickTestRare();
+        }
+        public void onClickTestUnique()
+        {
+            OnClickTestUnique();
+        }
+        public void onClickTestLegendary()
+        {
+            OnClickTestLegendary();
         }
     }
 }

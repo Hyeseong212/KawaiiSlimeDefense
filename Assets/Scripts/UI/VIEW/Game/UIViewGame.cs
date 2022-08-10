@@ -23,6 +23,23 @@ public class UIViewGame : MonoSingleton<UIViewGame>
         {
             PopupManager.i.ShowPopup(_type.E_POPUP.POPUP_MENU);
 
+        }; 
+        _context.OnClickTestCommon = () =>
+        {
+            UpgradeManager.i.CommonLevelUp();
+        }; 
+        _context.OnClickTestRare = () =>
+        {
+            UpgradeManager.i.RareLevelUp();
+        };
+        _context.OnClickTestUnique = () =>
+        {
+            UpgradeManager.i.UniqueLevelUp();
+
+        }; 
+        _context.OnClickTestLegendary = () =>
+        {
+            UpgradeManager.i.LegendaryLevelUp();
         };
     }
 }
