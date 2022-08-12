@@ -10,7 +10,6 @@ public class UnitController : MonoBehaviour
 	private	NavMeshAgent	navMeshAgent;
     public Face faces;
     Transform slimeVector;
-    public bool isMove;
     [SerializeField] Animator animator;
     public GameObject mainSlime;
     private Material faceMaterial;
@@ -18,6 +17,10 @@ public class UnitController : MonoBehaviour
     float distance;
     float remainTime;
 
+    public SlimeData slimedata;
+
+    Shooter shooter;
+    GameObject enemy;
     //public Button idleBut, walkBut, jumpBut, attackBut, damageBut0, damageBut1, damageBut2;
     private void Awake()
 	{
@@ -28,6 +31,15 @@ public class UnitController : MonoBehaviour
     {
         slimeVector = GetComponent<Transform>();
         faceMaterial = mainSlime.GetComponent<Renderer>().materials[1];
+        shooter = GetComponentInChildren<Shooter>();
+        for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+        {
+            if (CraftManager.i.currentSceneSlimeData[i].Slime == this.gameObject)
+            {
+                slimedata = CraftManager.i.currentSceneSlimeData[i];
+            }
+        }
+        SetupData(slimedata);
         //idleBut.onClick.AddListener(delegate { Idle(); });
         //walkBut.onClick.AddListener(delegate { ChangeStateTo(SlimeAnimationState.Walk); });
         //jumpBut.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Jump); });
@@ -36,8 +48,18 @@ public class UnitController : MonoBehaviour
         //damageBut1.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Damage); mainSlime.GetComponent<EnemyAi>().damType = 1; });
         //damageBut2.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Damage); mainSlime.GetComponent<EnemyAi>().damType = 2; });
     }
-    private void FixedUpdate()
+    private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            shooter.status = SlimeStatus.Hold;
+            Stop();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            shooter.status = SlimeStatus.Stop;
+            Stop();
+        }
     }
     void StopToWall()
     {
@@ -56,7 +78,6 @@ public class UnitController : MonoBehaviour
 
 	public void MoveTo(Vector3 end)
 	{
-        isMove = true;
         StopCoroutine("StopCheck");
         navMeshAgent.isStopped = false;
         animator.SetInteger("MoveInt",1);
@@ -71,7 +92,6 @@ public class UnitController : MonoBehaviour
         yield return new WaitForSeconds(remainTime);
         animator.SetInteger("MoveInt", 0);
         navMeshAgent.isStopped = true;
-        isMove = false;
     }
     void SetFace(Texture tex)
     {
@@ -81,6 +101,11 @@ public class UnitController : MonoBehaviour
     {
         animator.SetInteger("MoveInt", 0);
         navMeshAgent.isStopped = true;
+    }
+    public void SetupData(SlimeData slimedata)
+    {
+        shooter.animator.SetFloat("attackspeed",slimedata.attackspeed);
+        this.slimedata = slimedata;
     }
 }
 

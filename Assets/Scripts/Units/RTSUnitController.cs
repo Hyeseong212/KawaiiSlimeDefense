@@ -70,6 +70,7 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 		for ( int i = 0; i < selectedUnitList.Count; ++ i )
 		{
 			selectedUnitList[i].MoveTo(end);
+			selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedMove;
 		}
 		StopCoroutine("ClickAnimation");
 		StartCoroutine("ClickAnimation");

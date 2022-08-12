@@ -44,7 +44,6 @@ public class MouseClick : MonoSingleton<MouseClick>
 			{
 				if (results[0].gameObject.name == "map")
 				{
-					Debug.Log("¿©±â³Ä?");
 					return;
 				}
 			}
@@ -70,6 +69,8 @@ public class MouseClick : MonoSingleton<MouseClick>
 				{
 					for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++) 
 					{
+						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().enemies.Clear();
+						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedAttack;
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().enemies.Insert(0,hit.collider.gameObject);
 					}
 				}

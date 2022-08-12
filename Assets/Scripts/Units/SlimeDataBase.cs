@@ -3,6 +3,7 @@ using UnityEngine;
 [Serializable]
 public struct SlimeData 
 {
+ 
     public SlimeData(int _index, string _name, string _type, string _attackType, float _attackpts, float _attackspeed, GameObject _slime)
     {
         this.Index = _index;

@@ -14,22 +14,22 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
 {
     [SerializeField] UpgradeData upgradeData;
     public const float commonUpgradeAttackpts = 2;
-    public const float commonUpgradeAttackspeed = 0.005f;
+    public const float commonUpgradeAttackspeed = 0.05f;
     /// <summary>
     /// 일반타입 업그레이드 상수
     /// </summary>
     public const float rareUpgradeAttackpts = 10;
-    public const float rareUpgradeAttackspeed = 0.01f;
+    public const float rareUpgradeAttackspeed = 0.1f;
     /// <summary>
     /// 레어타입 업그레이드 상수
     /// </summary>
     public const float uniqueUpgradeAttackpts = 50;
-    public const float uniqueUpgradeAttackspeed = 0.03f;
+    public const float uniqueUpgradeAttackspeed = 0.3f;
     /// <summary>
     /// 유니크타입 업그레이드 상수
     /// </summary>
     public const float legnedaryUpgradeAttackpts = 200;
-    public const float legnedaryUpgradeAttackspeed = 0.05f;
+    public const float legnedaryUpgradeAttackspeed = 0.5f;
     /// <summary>
     /// 전설타입 업그레이드 상수
     /// </summary>
@@ -47,7 +47,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                      SlimeDataController.i.slimeDataBaseList[i].Type,
                      SlimeDataController.i.slimeDataBaseList[i].attackType,
                      SlimeDataController.i.slimeDataBaseList[i].attackpts + commonUpgradeAttackpts,
-                     SlimeDataController.i.slimeDataBaseList[i].attackspeed - commonUpgradeAttackspeed,
+                     SlimeDataController.i.slimeDataBaseList[i].attackspeed + commonUpgradeAttackspeed,
                      SlimeDataController.i.slimeDataBaseList[i].Slime
                      );
             }
@@ -63,10 +63,14 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                CraftManager.i.currentSceneSlimeData[i].Slime,
                CraftManager.i.currentSceneSlimeData[i].attackType,
                CraftManager.i.currentSceneSlimeData[i].attackpts + commonUpgradeAttackpts,
-               CraftManager.i.currentSceneSlimeData[i].attackspeed - commonUpgradeAttackspeed,
+               CraftManager.i.currentSceneSlimeData[i].attackspeed + commonUpgradeAttackspeed,
                CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
                );
         }///현재씬 슬라임 업그레이드
+        for(int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+        {
+            CraftManager.i.currentSceneSlimeData[i].Slime.GetComponent<UnitController>().SetupData(CraftManager.i.currentSceneSlimeData[i]);
+        }
         upgradeData.commonUpgradeCount ++;
     }
     public void RareLevelUp()
@@ -82,7 +86,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                      SlimeDataController.i.slimeDataBaseList[i].Type,
                      SlimeDataController.i.slimeDataBaseList[i].attackType,
                      SlimeDataController.i.slimeDataBaseList[i].attackpts + rareUpgradeAttackpts,
-                     SlimeDataController.i.slimeDataBaseList[i].attackspeed - rareUpgradeAttackspeed,
+                     SlimeDataController.i.slimeDataBaseList[i].attackspeed + rareUpgradeAttackspeed,
                      SlimeDataController.i.slimeDataBaseList[i].Slime
                      );
             }
@@ -98,7 +102,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                    CraftManager.i.currentSceneSlimeData[i].Slime,
                    CraftManager.i.currentSceneSlimeData[i].attackType,
                    CraftManager.i.currentSceneSlimeData[i].attackpts + rareUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed - rareUpgradeAttackspeed,
+                   CraftManager.i.currentSceneSlimeData[i].attackspeed + rareUpgradeAttackspeed,
                    CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
                    );
         }///현재씬 슬라임 업그레이드
@@ -117,7 +121,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                      SlimeDataController.i.slimeDataBaseList[i].Type,
                      SlimeDataController.i.slimeDataBaseList[i].attackType,
                      SlimeDataController.i.slimeDataBaseList[i].attackpts + uniqueUpgradeAttackpts,
-                     SlimeDataController.i.slimeDataBaseList[i].attackspeed - uniqueUpgradeAttackspeed,
+                     SlimeDataController.i.slimeDataBaseList[i].attackspeed + uniqueUpgradeAttackspeed,
                      SlimeDataController.i.slimeDataBaseList[i].Slime
                      );
             }
@@ -133,7 +137,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                    CraftManager.i.currentSceneSlimeData[i].Slime,
                    CraftManager.i.currentSceneSlimeData[i].attackType,
                    CraftManager.i.currentSceneSlimeData[i].attackpts + uniqueUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed - uniqueUpgradeAttackspeed,
+                   CraftManager.i.currentSceneSlimeData[i].attackspeed + uniqueUpgradeAttackspeed,
                    CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
                    );
         }///현재씬 슬라임 업그레이드
@@ -152,7 +156,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                      SlimeDataController.i.slimeDataBaseList[i].Type,
                      SlimeDataController.i.slimeDataBaseList[i].attackType,
                      SlimeDataController.i.slimeDataBaseList[i].attackpts + legnedaryUpgradeAttackpts,
-                     SlimeDataController.i.slimeDataBaseList[i].attackspeed - legnedaryUpgradeAttackspeed,
+                     SlimeDataController.i.slimeDataBaseList[i].attackspeed + legnedaryUpgradeAttackspeed,
                      SlimeDataController.i.slimeDataBaseList[i].Slime
                      );
             }
@@ -168,7 +172,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                    CraftManager.i.currentSceneSlimeData[i].Slime,
                    CraftManager.i.currentSceneSlimeData[i].attackType,
                    CraftManager.i.currentSceneSlimeData[i].attackpts + legnedaryUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed - legnedaryUpgradeAttackspeed,
+                   CraftManager.i.currentSceneSlimeData[i].attackspeed + legnedaryUpgradeAttackspeed,
                    CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
                    );
         }///현재씬 슬라임 업그레이드

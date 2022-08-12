@@ -21,6 +21,7 @@ public class SlimeDataController : MonoSingleton<SlimeDataController>
 			GameObject slime = Resources.Load<GameObject>("Kawaii Slime/Prefabs/"+slimeData.Name);
 			slimeData.Slime = slime;
 			slimeDataBaseList.Add(slimeData);
+
 		}
 	}
 	//public List<SlimeData> SlimeDataSetIndexFinder(int[] _index)//인덱스로 찾는 슬라임데이터
@@ -62,7 +63,6 @@ public class SlimeDataController : MonoSingleton<SlimeDataController>
 			{
 				if (slimeDataBaseList[i].Slime.name+"(Clone)" == _slimeObject[j].name)
 				{
-
 					slimeDatas.Add(new SlimeData(slimeDataBaseList[i].Index, slimeDataBaseList[i].Name, slimeDataBaseList[i].Type,
 						slimeDataBaseList[i].attackType,
 						slimeDataBaseList[i].attackpts, slimeDataBaseList[i].attackspeed, _slimeObject[j]));

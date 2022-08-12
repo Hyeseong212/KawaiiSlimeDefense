@@ -490,7 +490,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1300573103503756, guid: ef1f38c79e01ed64b88473e08ba68750, type: 3}
   animator: {fileID: 12003798313980773}
   tr: {fileID: 0}
+  enemies: []
   enemy: {fileID: 0}
+  radius: 0
+  distanceBetweenEnemy: 0
+  sphereCollider: {fileID: 0}
+  status: 0
   layerEnemy:
     serializedVersion: 2
     m_Bits: 0
@@ -505,5 +510,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
