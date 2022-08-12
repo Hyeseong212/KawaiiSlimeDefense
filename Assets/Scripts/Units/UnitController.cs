@@ -10,7 +10,7 @@ public class UnitController : MonoBehaviour
 	private	NavMeshAgent	navMeshAgent;
     public Face faces;
     Transform slimeVector;
-
+    public bool isMove;
     [SerializeField] Animator animator;
     public GameObject mainSlime;
     private Material faceMaterial;
@@ -56,6 +56,7 @@ public class UnitController : MonoBehaviour
 
 	public void MoveTo(Vector3 end)
 	{
+        isMove = true;
         StopCoroutine("StopCheck");
         navMeshAgent.isStopped = false;
         animator.SetInteger("MoveInt",1);
@@ -70,10 +71,16 @@ public class UnitController : MonoBehaviour
         yield return new WaitForSeconds(remainTime);
         animator.SetInteger("MoveInt", 0);
         navMeshAgent.isStopped = true;
+        isMove = false;
     }
     void SetFace(Texture tex)
     {
         faceMaterial.SetTexture("_MainTex", tex);
+    }
+    public void Stop()
+    {
+        animator.SetInteger("MoveInt", 0);
+        navMeshAgent.isStopped = true;
     }
 }
 

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8981274295039130539}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bone.003_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1399252813969194979}
   - component: {fileID: 4643577701059586711}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CommonSlime_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6099005710090621285}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bone.003_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 139744713507187788}
   - component: {fileID: 5169702716334686985}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8993603566554055645}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4295551423826383861}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bone.003_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8331470522872954402}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bone.003_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 12003798313980773}
   - component: {fileID: 7765686904327567334}
   - component: {fileID: 7532391868793288014}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,6 +489,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1300573103503756, guid: ef1f38c79e01ed64b88473e08ba68750, type: 3}
   animator: {fileID: 12003798313980773}
+  tr: {fileID: 0}
+  enemy: {fileID: 0}
+  layerEnemy:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!135 &7532391868793288014
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -500,5 +505,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}

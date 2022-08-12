@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219136}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ear_l2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219138}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ear_r1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219140}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219142}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ear_l1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219148}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ear_r2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219150}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6554224179804219152}
   - component: {fileID: 6554224179801404964}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Rabby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219154}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 8223170591619831058}
   - component: {fileID: 2453896240827199439}
   - component: {fileID: 4538781460616069602}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Rabby_Brown
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219160}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: tail03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -483,7 +483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219164}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: tail01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6554224179804219166}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: tail02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,8 +550,16 @@ PrefabInstance:
       value: Marker 7
       objectReference: {fileID: 0}
     - target: {fileID: 1173698457435006, guid: 2625517ae3e82444688a97670d790c6d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173698457435006, guid: 2625517ae3e82444688a97670d790c6d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895453434315868, guid: 2625517ae3e82444688a97670d790c6d, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4367129774968826, guid: 2625517ae3e82444688a97670d790c6d, type: 3}
       propertyPath: m_RootOrder
