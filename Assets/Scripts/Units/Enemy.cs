@@ -78,6 +78,11 @@ public class Enemy : MonoBehaviour
 
         StartCoroutine("Moveto");
     }
+    private void Update()
+    {
+        thisEnemydata = new EnemyData(thisEnemydata.wave, thisEnemydata.index,thisEnemydata.type,thisEnemydata.name,thisEnemydata.speed,
+            thisEnemydata.hp,this.gameObject,this.gameObject.transform.position);
+    }
     IEnumerator Moveto()
     {
         currentIndex++;

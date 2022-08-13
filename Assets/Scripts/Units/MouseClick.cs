@@ -71,7 +71,7 @@ public class MouseClick : MonoSingleton<MouseClick>
 					{
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().enemies.Clear();
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedAttack;
-						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().enemies.Insert(0,hit.collider.gameObject);
+						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().enemies.Insert(0,hit.collider.gameObject.GetComponent<Enemy>().thisEnemydata);
 					}
 				}
                 else
