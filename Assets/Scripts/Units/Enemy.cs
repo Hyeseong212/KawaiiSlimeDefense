@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     WaitForSeconds delay =new WaitForSeconds(0.9f);
 
-    public EnemyData thisEnemydata1;
+    public EnemyData thisEnemydata;
     private void OnMouseEnter()
     {
 
