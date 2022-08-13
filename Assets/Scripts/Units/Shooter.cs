@@ -100,19 +100,33 @@ public class Shooter : MonoBehaviour
                 }
             }
         }
+        else if(other.tag != "Enemy")
+        {
+            Debug.Log(other.tag);
+        }
     }
     public void OnTriggerExit(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            if (status != SlimeStatus.ForcedAttack)
+            if (status != SlimeStatus.ForcedAttack && status != SlimeStatus.Hold)
             {
                 if (enemies.Count != 0)
                 {
                     enemies.RemoveAt(0);
                 }
             }
+            else if(status != SlimeStatus.ForcedAttack && status == SlimeStatus.Hold)
+            {
+                if (enemies.Count != 0)
+                {
+                    enemies.RemoveAt(0);
+                    if(enemies.Count < 2) enemies.Insert(0, enemies[enemies.Count]);
+                    enemies.RemoveAt(enemies.Count);
+                }
+            }
         }
+
     }
     private IEnumerator Shoot()//공격코루틴
     {

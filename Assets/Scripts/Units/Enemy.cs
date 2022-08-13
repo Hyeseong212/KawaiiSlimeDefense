@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
 
     WaitForSeconds delay =new WaitForSeconds(0.9f);
+
+    public EnemyData thisEnemydata;
     private void OnMouseEnter()
     {
 
@@ -108,5 +110,9 @@ public class Enemy : MonoBehaviour
     {
         yield return delay;
         vfx.SetActive(false);
+    }
+    public void Setup(EnemyData enemydata)
+    {
+        thisEnemydata = enemydata;
     }
 }
