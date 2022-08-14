@@ -20,6 +20,8 @@ public class Shooter : MonoBehaviour
 
     [SerializeField]
     private LayerMask layerEnemy;
+
+    public EnemyData targetedEnemy;
     private void Start()
     {
         sphereCollider = GetComponent<SphereCollider>();
@@ -35,6 +37,7 @@ public class Shooter : MonoBehaviour
             || status == SlimeStatus.Attack || status == SlimeStatus.ForcedAttack) //스탑버튼 눌렀을때
         {
             distanceBetweenEnemy = Vector3.Distance(transform.position, enemies[0].enemyObject.transform.position);
+            //distanceBetweenEnemy = Vector3.Distance(transform.position, targetedEnemy.enemyObject.transform.position);
             if (distanceBetweenEnemy > radius && status != SlimeStatus.ForcedMove)// 사정거리 밖에 있을때 status가 강제이동이 아닐때
             {
                 unitController.MoveTo(enemies[0].enemyObject.transform.position);
@@ -45,9 +48,10 @@ public class Shooter : MonoBehaviour
                 animator.SetInteger("MoveInt", 2);
             }
         } 
-        else if(enemies.Count != 0 && status == SlimeStatus.Hold) //홀드버튼 눌렀을때
+        else if(targetedEnemy.enemyObject != null && status == SlimeStatus.Hold) //홀드버튼 눌렀을때
         {
-            distanceBetweenEnemy = Vector3.Distance(transform.position, enemies[enemies.Count-1].enemyObject.transform.position);
+            //distanceBetweenEnemy = Vector3.Distance(transform.position, enemies[enemies.Count-1].enemyObject.transform.position);
+            distanceBetweenEnemy = Vector3.Distance(transform.position, targetedEnemy.enemyObject.transform.position);
             if (distanceBetweenEnemy <= radius && status != SlimeStatus.ForcedMove)// 사정거리 안에 있을때 status가 강제이동이 아닐때
             {
                 unitController.Stop();
@@ -68,12 +72,30 @@ public class Shooter : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            if (status != SlimeStatus.ForcedAttack)
+            if (status != SlimeStatus.ForcedAttack && status != SlimeStatus.Hold)
             {
                 enemy = other.gameObject.GetComponent<Enemy>().thisEnemydata;
                 enemies.Add(enemy);
             }
-          
+            else if (status != SlimeStatus.ForcedAttack && status == SlimeStatus.Hold) //홀드시
+            {
+                enemy = other.gameObject.GetComponent<Enemy>().thisEnemydata;
+                enemies.Add(enemy);
+                if(targetedEnemy.index != other.gameObject.GetComponent<Enemy>().thisEnemydata.index)
+                //들어온적과 타겟된적의 인덱스가 같지않을시
+                {
+                    targetedEnemy = enemy;
+                }
+                else if (targetedEnemy.index == other.gameObject.GetComponent<Enemy>().thisEnemydata.index)
+                //들어온적과 타겟된적의 인덱스가 같을시
+                {
+                    targetedEnemy = targetedEnemy;
+                }
+                else
+                {
+                    targetedEnemy = enemy;
+                }
+            }
             //if (status != SlimeStatus.ForcedAttack && status != SlimeStatus.Hold)
             //{
             //    //움직임을 멈출때만 공격하게끔
@@ -111,9 +133,23 @@ public class Shooter : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            if (status != SlimeStatus.ForcedAttack)
+            if (status != SlimeStatus.ForcedAttack && status != SlimeStatus.Hold)
             {
                 if (enemies.Count != 0)
+                {
+                    enemies.RemoveAt(0);
+                }
+            }
+            else if (status != SlimeStatus.ForcedAttack && status == SlimeStatus.Hold) //홀드시
+            {
+                if (targetedEnemy.enemyObject != null && targetedEnemy.index == other.gameObject.GetComponent<Enemy>().thisEnemydata.index)
+                    //나간적이 공격하고있는적 일시
+                {
+                    enemies.RemoveAt(0);
+                    targetedEnemy = enemies[enemies.Count - 1];
+                }
+                else if(targetedEnemy.enemyObject != null && targetedEnemy.index != other.gameObject.GetComponent<Enemy>().thisEnemydata.index)
+                    //나간적이 공격하고 있는적이 아닐시
                 {
                     enemies.RemoveAt(0);
                 }
@@ -157,7 +193,7 @@ public class Shooter : MonoBehaviour
                     else if(status == SlimeStatus.Hold)
                     {
                         GameObject bullet = Instantiate(bulletPrefab, this.transform.position, Quaternion.identity);
-                        bullet.GetComponent<Bullet>().Setup(enemies[enemies.Count-1].enemyObject);
+                        bullet.GetComponent<Bullet>().Setup(targetedEnemy.enemyObject);
                         yield return new WaitForSeconds(unitController.slimedata.attackspeed);
                     }
                     else
