@@ -25,14 +25,14 @@ public class UserBtn : MonoBehaviour
         //  UserBtnUI.SetActive(true);
         if (!isActive)
         {
-            Debug.Log("버튼활성");
+           // Debug.Log("버튼활성");
             isActive = true;
             UserBtnUI.SetActive(true);
             spriteRenderer.sprite = sprites[1];
         }
         else
         {
-            Debug.Log("버튼비활성");
+           // Debug.Log("버튼비활성");
             isActive = false;
             UserBtnUI.SetActive(false);
             spriteRenderer.sprite = sprites[0];
