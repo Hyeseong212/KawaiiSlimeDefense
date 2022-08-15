@@ -69,7 +69,6 @@ public class Shooter : MonoBehaviour
         {
             animator.SetInteger("MoveInt", 0);
         }
-        Debug.Log(status);
     }
     public void Shootfunc()//코루틴 트리거
     {
@@ -95,14 +94,14 @@ public class Shooter : MonoBehaviour
                 {
                     if (status != SlimeStatus.Hold)
                     {
-                        GameObject bullet = Instantiate(bulletPrefab, this.transform.position, Quaternion.LookRotation(targetedEnemy.pos));
-                        Instantiate(shootPrefab, this.transform.position, Quaternion.LookRotation(targetedEnemy.pos));
+                        GameObject bullet = Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+                        Instantiate(shootPrefab, this.transform.position, this.transform.rotation);
                         bullet.GetComponent<Bullet>().Setup(targetedEnemy.enemyObject, unitController.slimedata);
                     }
                     else if (status == SlimeStatus.Hold)
                     {
-                        GameObject bullet = Instantiate(bulletPrefab, this.transform.position, Quaternion.LookRotation(targetedEnemy.pos));
-                        Instantiate(shootPrefab, this.transform.position, Quaternion.LookRotation(targetedEnemy.pos));
+                        GameObject bullet = Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+                        GameObject flash = Instantiate(shootPrefab, this.transform.position, this.transform.rotation);
                         bullet.GetComponent<Bullet>().Setup(targetedEnemy.enemyObject, unitController.slimedata);
                     }
                 }

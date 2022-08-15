@@ -8,6 +8,10 @@ public class Flash : MonoBehaviour
     {
         Invoke("DestroyThis", 0.5f);
     }
+    void SetUp(GameObject enemy)
+    {
+        Quaternion.LookRotation(enemy.transform.position);
+    }
     private void DestroyThis()
     {
         Destroy(gameObject);

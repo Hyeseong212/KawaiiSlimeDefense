@@ -458,6 +458,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7625824445407367461}
   - component: {fileID: 4958032104002662633}
+  - component: {fileID: 7151879174967243628}
   m_Layer: 6
   m_Name: Rig
   m_TagString: Untagged
@@ -501,6 +502,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7151879174967243628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8414972406771447875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33477569d5c4ed244aa807ac819875fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooter: {fileID: 5076284651092097766}
 --- !u!1 &9097951322791667975
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +559,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 20
   m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!114 &5076284651092097766
 MonoBehaviour:
@@ -559,15 +573,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c96ff54dcb33544b356015d527e037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1300573103503756, guid: ef1f38c79e01ed64b88473e08ba68750, type: 3}
-  shootPrefab: {fileID: 1367524815892938, guid: af450b28bdacf9d44bfe8e4a7ee8a760, type: 3}
-  animator: {fileID: 0}
+  bulletPrefab: {fileID: 1261555563981962, guid: 8d1959c5eba0cdd45aad512a55cebdfe, type: 3}
+  shootPrefab: {fileID: 1437680763721510, guid: 19a7605cbcd455340b6dfb8687d1e50b, type: 3}
+  animator: {fileID: 4958032104002662633}
   tr: {fileID: 0}
   enemies: []
   status: 0
-  layerEnemy:
-    serializedVersion: 2
-    m_Bits: 0
   targetedEnemy:
     wave: 0
     index: 0
