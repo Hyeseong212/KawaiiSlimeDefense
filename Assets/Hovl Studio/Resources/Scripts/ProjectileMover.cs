@@ -34,6 +34,7 @@ public class ProjectileMover : MonoBehaviour
                 Destroy(flashInstance, flashPsParts.main.duration);
             }
         }
+        Destroy(gameObject,5);
 	}
 
     void FixedUpdate ()
@@ -86,6 +87,6 @@ public class ProjectileMover : MonoBehaviour
             }
         }
         //Destroy projectile on collision
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

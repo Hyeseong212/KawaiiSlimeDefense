@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     List<Material> materialList = new List<Material>();
     [SerializeField] SkinnedMeshRenderer skinnedMeshRenderer;
 
-    WaitForSeconds delay =new WaitForSeconds(0.9f);
+    WaitForSeconds delay = new WaitForSeconds(0.9f);
 
     public EnemyData thisEnemydata;
     private void OnMouseEnter()
@@ -80,8 +80,8 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        thisEnemydata = new EnemyData(thisEnemydata.wave, thisEnemydata.index,thisEnemydata.type,thisEnemydata.name,thisEnemydata.speed,
-            thisEnemydata.hp,this.gameObject,this.gameObject.transform.position);
+        thisEnemydata = new EnemyData(thisEnemydata.wave, thisEnemydata.index, thisEnemydata.type, thisEnemydata.name, thisEnemydata.speed,
+            thisEnemydata.hp, this.gameObject, this.gameObject.transform.position);
     }
     IEnumerator Moveto()
     {
@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
     }
-    
+
     private void NextMoveTo()
     {
         if (currentIndex < wayPointCount - 1)
@@ -119,5 +119,30 @@ public class Enemy : MonoBehaviour
     public void Setup(EnemyData enemydata)
     {
         thisEnemydata = enemydata;
+    }
+    EnemyData ToEnemyController()
+    {
+        for (int i = 0; i < EnemySpawner.i.enemyInThisWaveList.Count; i++)
+        {
+            if (thisEnemydata.index == EnemySpawner.i.enemyInThisWaveList[i].index)
+            {
+                EnemySpawner.i.enemyInThisWaveList[i] = thisEnemydata;
+                return EnemySpawner.i.enemyInThisWaveList[i];
+            }
+        }
+        return new EnemyData();
+    }
+    public void Hit()
+    {
+        //맞는 오브젝트 풀링 시켜서 처리할까..?
+        ToEnemyController();
+        if (thisEnemydata.hp <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

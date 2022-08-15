@@ -92,6 +92,14 @@ public class UnitController : MonoBehaviour
         yield return new WaitForSeconds(remainTime);
         animator.SetInteger("MoveInt", 0);
         navMeshAgent.isStopped = true;
+        if (shooter.status == SlimeStatus.Hold) 
+        {
+            shooter.status = SlimeStatus.Hold;
+        }
+        else
+        {
+            shooter.status= SlimeStatus.Stop;
+        }
     }
     void SetFace(Texture tex)
     {

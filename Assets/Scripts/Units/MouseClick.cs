@@ -38,7 +38,6 @@ public class MouseClick : MonoSingleton<MouseClick>
 			m_ped.position = Input.mousePosition;
 			List<RaycastResult> results = new List<RaycastResult>();//리팩토링때 건드려야할 코드
 			m_gr.Raycast(m_ped, results);
-			Physics.Raycast(ray,out hit);
 			// 광선에 부딪히는 오브젝트가 있을 때 (=유닛을 클릭했을 때)
 			if (results.Count == 1)
 			{
@@ -71,6 +70,7 @@ public class MouseClick : MonoSingleton<MouseClick>
 					{
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().enemies.Clear();
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedAttack;
+						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().targetedEnemy = hit.collider.gameObject.GetComponent<Enemy>().thisEnemydata;
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().enemies.Insert(0,hit.collider.gameObject.GetComponent<Enemy>().thisEnemydata);
 					}
 				}
