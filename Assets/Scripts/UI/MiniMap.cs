@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class MiniMap : MonoSingleton<MiniMap> , IPointerClickHandler, IDragHandler
+public class MiniMap : MonoSingleton<MiniMap> , IPointerDownHandler, IDragHandler
 {
 
     Transform _thisTr;
@@ -24,7 +24,7 @@ public class MiniMap : MonoSingleton<MiniMap> , IPointerClickHandler, IDragHandl
 
         cameraRect.anchoredPosition = new Vector2(cameraPosition.x*1.3f , cameraPosition.z*1.3f);
     }
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {

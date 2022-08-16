@@ -18,7 +18,6 @@ public class Shooter : MonoBehaviour
 
     public SlimeStatus status;
 
-
     public EnemyData targetedEnemy;
     private void Start()
     {
@@ -41,7 +40,7 @@ public class Shooter : MonoBehaviour
                     //unitController.MoveTo(enemies[0].enemyObject.transform.position);
                     unitController.MoveTo(targetedEnemy.enemyObject.transform.position);
                 }
-                if (distanceBetweenEnemy <= radius && status != SlimeStatus.ForcedMove)// 사정거리 안에 있을때 status가 강제이동이 아닐때
+                else if (distanceBetweenEnemy <= radius && status != SlimeStatus.ForcedMove)// 사정거리 안에 있을때 status가 강제이동이 아닐때
                 {
                     unitController.Stop();
                     animator.SetInteger("MoveInt", 2);
@@ -49,7 +48,7 @@ public class Shooter : MonoBehaviour
                     unitController.transform.LookAt(targetedEnemy.enemyObject.transform);
                 }
             }
-            else if (targetedEnemy.enemyObject != null && status == SlimeStatus.Hold) //홀드버튼 눌렀을때
+            if (status == SlimeStatus.Hold) //홀드버튼 눌렀을때
             {
                 //distanceBetweenEnemy = Vector3.Distance(transform.position, enemies[enemies.Count-1].enemyObject.transform.position);
                 distanceBetweenEnemy = Vector3.Distance(transform.position, targetedEnemy.enemyObject.transform.position);

@@ -96,9 +96,13 @@ public class UnitController : MonoBehaviour
         {
             shooter.status = SlimeStatus.Hold;
         }
+        else if(shooter.status == SlimeStatus.ForcedAttack)
+        {
+            shooter.status = SlimeStatus.ForcedAttack;
+        }
         else
         {
-            shooter.status= SlimeStatus.Stop;
+            shooter.status = SlimeStatus.Stop;
         }
     }
     void SetFace(Texture tex)

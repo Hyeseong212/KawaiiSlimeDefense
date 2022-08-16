@@ -63,8 +63,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                CraftManager.i.currentSceneSlimeData[i].Slime,
                CraftManager.i.currentSceneSlimeData[i].attackType,
                CraftManager.i.currentSceneSlimeData[i].attackpts + commonUpgradeAttackpts,
-               CraftManager.i.currentSceneSlimeData[i].attackspeed + commonUpgradeAttackspeed,
-               CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
+               CraftManager.i.currentSceneSlimeData[i].attackspeed + commonUpgradeAttackspeed
                );
         }///현재씬 슬라임 업그레이드
         for(int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
@@ -102,8 +101,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                    CraftManager.i.currentSceneSlimeData[i].Slime,
                    CraftManager.i.currentSceneSlimeData[i].attackType,
                    CraftManager.i.currentSceneSlimeData[i].attackpts + rareUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed + rareUpgradeAttackspeed,
-                   CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
+                   CraftManager.i.currentSceneSlimeData[i].attackspeed + rareUpgradeAttackspeed
                    );
         }///현재씬 슬라임 업그레이드
         upgradeData.rareUpgradeCount++;
@@ -137,8 +135,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                    CraftManager.i.currentSceneSlimeData[i].Slime,
                    CraftManager.i.currentSceneSlimeData[i].attackType,
                    CraftManager.i.currentSceneSlimeData[i].attackpts + uniqueUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed + uniqueUpgradeAttackspeed,
-                   CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
+                   CraftManager.i.currentSceneSlimeData[i].attackspeed + uniqueUpgradeAttackspeed
                    );
         }///현재씬 슬라임 업그레이드
         upgradeData.uniqueUpgradeCount++;
@@ -172,8 +169,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                    CraftManager.i.currentSceneSlimeData[i].Slime,
                    CraftManager.i.currentSceneSlimeData[i].attackType,
                    CraftManager.i.currentSceneSlimeData[i].attackpts + legnedaryUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed + legnedaryUpgradeAttackspeed,
-                   CraftManager.i.currentSceneSlimeData[i].SlimeMiniMapPos
+                   CraftManager.i.currentSceneSlimeData[i].attackspeed + legnedaryUpgradeAttackspeed
                    );
         }///현재씬 슬라임 업그레이드
         upgradeData.legendaryUpgradeCount++;

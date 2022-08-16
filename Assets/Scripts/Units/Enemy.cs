@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         thisEnemydata = new EnemyData(thisEnemydata.wave, thisEnemydata.index, thisEnemydata.type, thisEnemydata.name, thisEnemydata.speed,
-            thisEnemydata.hp, this.gameObject, this.gameObject.transform.position);
+            thisEnemydata.hp, this.gameObject);
     }
     IEnumerator Moveto()
     {

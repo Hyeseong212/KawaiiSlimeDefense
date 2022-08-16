@@ -17,7 +17,7 @@ public struct EnemyData
         this.enemyObject = null;
         this.pos = Vector3.zero;
     }
-    public EnemyData(int _wave, int _index, string _type,string _name, float _speed, float _hp, GameObject _enemyObject, Vector3 _pos)
+    public EnemyData(int _wave, int _index, string _type,string _name, float _speed, float _hp, GameObject _enemyObject)
     {
         this.wave = _wave;
         this.index = _index;
@@ -26,13 +26,14 @@ public struct EnemyData
         this.speed = _speed;
         this.hp = _hp;
         this.enemyObject = _enemyObject;
-        this.pos = _pos;
+        this.pos = _enemyObject.GetComponent<Transform>().position;
     }
     public int wave,index;
     public string type,name;
     public float speed,hp;
     public GameObject enemyObject;
     public Vector3 pos;
+
 }
 public class EnemySpawner : MonoSingleton<EnemySpawner>
 {
@@ -92,6 +93,7 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
                 {
                     enemydata = enemyList[i];
                     enemydata.index = monsterCount;
+                    enemydata.enemyObject = enemyObject;
                     enemy.Setup(enemydata);
                     enemyInThisWaveList.Add(enemydata);
                 }
@@ -100,4 +102,5 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             yield return new WaitForSeconds(spawnTime);
         }
     }
+
 }

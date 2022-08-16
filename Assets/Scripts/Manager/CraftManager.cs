@@ -9,7 +9,6 @@ public class CraftManager : MonoSingleton<CraftManager>
     private void Start()
     {
         SlimeCheck();
-        MiniMapPoolController.i.MiniMapSlimeImageSetter();
     }
     public void SlimeCheck()//현재 씬에 슬라임이 어떤게 있는지 알아야함
     {
