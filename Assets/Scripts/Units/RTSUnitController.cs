@@ -110,6 +110,24 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 		// 선택한 유닛 정보를 리스트에서 삭제
 		selectedUnitList.Remove(newUnit);
 	}
+	/// <summary>
+	/// 매개변수로 받아온 newUnit의 같은 유닛들 모두선택
+	/// </summary>
+	public void SeletUnitDoubleClick(UnitController newUnit)
+	{
+		DeselectAll();
+		// 해당유닛 더블클릭시 
+		CraftManager.i.SlimeCheck();//현재씬에있는 슬라임체크
+		for(int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; ++ i)
+        {
+			if(newUnit.slimedata.Index == CraftManager.i.currentSceneSlimeData[i].Index)
+            {
+				CraftManager.i.currentSceneSlimeData[i].Slime.GetComponent<UnitController>().SelectUnit();//현재클릭한슬라임과 같은슬라임 모두선택
+				selectedUnitList.Add(CraftManager.i.currentSceneSlimeData[i].Slime.GetComponent<UnitController>());
+			}
+		}
+		// 선택한 유닛 정보를 리스트에 저장
+	}
 	IEnumerator ClickAnimation()
 	{
 		pointClick.SetActive(false);
@@ -118,5 +136,6 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 		yield return delay;
 		pointClick.SetActive(false);
 	}
+
 }
 

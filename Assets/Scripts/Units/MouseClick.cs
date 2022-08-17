@@ -19,6 +19,12 @@ public class MouseClick : MonoSingleton<MouseClick>
 	Canvas m_canvas;
 	GraphicRaycaster m_gr;
 	PointerEventData m_ped;
+	/// <summary>
+	/// 더블클릭관련
+	/// </summary>
+	public float m_DoubleClickSecond = 0.25f;
+	private bool m_IsOneClick = false;
+	private double m_Timer = 0;
 	private void Awake()
 	{
 		mainCamera			= Camera.main;
@@ -59,8 +65,30 @@ public class MouseClick : MonoSingleton<MouseClick>
 					}
 					else
 					{
-						rtsUnitController.ClickSelectUnit(hit.transform.GetComponent<UnitController>());
-						BottomPanelController.i.SetSelectedSlimeImage();
+						if (m_IsOneClick && ((Time.time - m_Timer) > m_DoubleClickSecond))
+						{
+							//한번클릭
+							rtsUnitController.ClickSelectUnit(hit.transform.GetComponent<UnitController>());
+							BottomPanelController.i.SetSelectedSlimeImage();
+							m_IsOneClick = false;
+						}
+
+						if (Input.GetMouseButtonDown(0))
+						{
+							if (!m_IsOneClick)
+							{
+								m_Timer = Time.time;
+								m_IsOneClick = true;
+							}
+
+							else if (m_IsOneClick && ((Time.time - m_Timer) < m_DoubleClickSecond))
+							{
+								//두번클릭
+								rtsUnitController.SeletUnitDoubleClick(hit.transform.GetComponent<UnitController>());
+								m_IsOneClick = false;
+							}
+						}
+
 					}
 				}
 				// 광선에 부딪히는 오브젝트가 없을 때

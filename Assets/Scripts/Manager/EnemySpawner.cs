@@ -39,7 +39,6 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
 {
     [SerializeField]
     private GameObject enemiesParent;
-    [SerializeField]
     private GameObject enemyPrefab; // 적 프리팹
     [SerializeField]
     private float spawnTime; //적 생성 주기
@@ -54,14 +53,17 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
 
     int monsterCount=0;
     public int MaxCount;
-    public List<EnemyData> enemyList; //모든적의 정보
+    public List<EnemyData> enemyDataBaseList; //모든적의 정보
     public List<EnemyData> enemyInThisWaveList; //모든적의 정보
+    //웨이브 정보
+    public int currentWave = 0;
+
     // 적의 생성과 삭제는 EnemySpawner에서 하기 때문에 Set은 필요없다
     private void Awake()
     {
         //적리스트 메모리 할당
         EnemyData enemyData = new EnemyData();
-        enemyList = new List<EnemyData>();
+        enemyDataBaseList = new List<EnemyData>();
         //적생성 코루틴 함수 호출
         List<Dictionary<string, object>> data = CSVReader.Read("EnemyDataBase");
         for (var i = 0; i < data.Count; i++)
@@ -75,23 +77,26 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             GameObject enemy = Resources.Load<GameObject>("NewPrefabs/Enemies/" + enemyData.name);
             enemyData.enemyObject = enemy;
             enemyData.pos = Vector3.zero;
-            enemyList.Add(enemyData);
+            enemyDataBaseList.Add(enemyData);
         }
+    }
+    public void CoroutineTrggier()
+    {
         StartCoroutine("SpawnEnemy");
     }
-    private IEnumerator SpawnEnemy()
+    private IEnumerator SpawnEnemy() 
     {
-        while (monsterCount != MaxCount)
+        while (monsterCount != MaxCount )
         {
             GameObject enemyObject = Instantiate(enemyPrefab, P1wayPoints[0].transform.position, Quaternion.identity); // 적 오브젝트 생성
             Enemy enemy = enemyObject.GetComponent<Enemy>(); // 방금 생성된 적의 Enmey 컴포넌트
             enemyObject.transform.parent = enemiesParent.transform;
             EnemyData enemydata = new EnemyData();
-            for (int i = 0; i < enemyList.Count; i++) //에너미 리스트에서 이름같은 에너미정보 가져와서 해당 에너미 정보에 에너미 정보 셋업
+            for (int i = 0; i < enemyDataBaseList.Count; i++) //에너미 리스트에서 이름같은 에너미정보 가져와서 해당 에너미 정보에 에너미 정보 셋업
             {
-                if (enemyObject.name == enemyList[i].name + "(Clone)") 
+                if (enemyObject.name == enemyDataBaseList[i].name + "(Clone)") 
                 {
-                    enemydata = enemyList[i];
+                    enemydata = enemyDataBaseList[i];
                     enemydata.index = monsterCount;
                     enemydata.enemyObject = enemyObject;
                     enemy.Setup(enemydata);
@@ -102,5 +107,18 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             yield return new WaitForSeconds(spawnTime);
         }
     }
-
+    public void NextWave()//현재 웨이브 정보로 에너미 프리팹 바꿔치기
+    {
+        //enemyPrefab 적오브젝트를 현재 웨이브정보 받아서  바꿔치기
+        for(int i = 0; i < enemyDataBaseList.Count; i++)
+        {
+            if(enemyDataBaseList[i].wave == currentWave)
+            {
+                enemyPrefab = enemyDataBaseList[i].enemyObject;
+            }
+        }
+        monsterCount = 0;
+        CoroutineTrggier();
+        currentWave++;
+    }
 }
