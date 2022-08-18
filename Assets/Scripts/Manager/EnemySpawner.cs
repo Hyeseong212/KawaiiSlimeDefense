@@ -52,7 +52,8 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     public Transform[] P4wayPoints; //Player 4의 이동경로
 
     int monsterCount=0;
-    public int MaxCount;
+    int MaxCount;
+    public int TestMaxCount;
     public List<EnemyData> enemyDataBaseList; //모든적의 정보
     public List<EnemyData> enemyInThisWaveList; //모든적의 정보
     //웨이브 정보
@@ -86,7 +87,7 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     }
     private IEnumerator SpawnEnemy() 
     {
-        while (monsterCount != MaxCount )
+        while (monsterCount != MaxCount)
         {
             GameObject enemyObject = Instantiate(enemyPrefab, P1wayPoints[0].transform.position, Quaternion.identity); // 적 오브젝트 생성
             Enemy enemy = enemyObject.GetComponent<Enemy>(); // 방금 생성된 적의 Enmey 컴포넌트
@@ -115,6 +116,14 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             if(enemyDataBaseList[i].wave == currentWave)
             {
                 enemyPrefab = enemyDataBaseList[i].enemyObject;
+                if(enemyDataBaseList[i].type == "boss")
+                {
+                    MaxCount = 1;
+                }
+                else
+                {
+                    MaxCount = TestMaxCount;
+                }
             }
         }
         monsterCount = 0;

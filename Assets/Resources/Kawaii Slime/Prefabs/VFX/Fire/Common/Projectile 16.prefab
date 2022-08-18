@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198106405273273764}
   - component: {fileID: 114095321479798416}
   - component: {fileID: 199709842906661732}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SubSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4849,7 +4849,7 @@ GameObject:
   - component: {fileID: 198620100365262566}
   - component: {fileID: 199413474041559024}
   - component: {fileID: 5636899813066444607}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Projectile 16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9748,7 +9748,7 @@ GameObject:
   - component: {fileID: 198347469227822328}
   - component: {fileID: 114080971622653102}
   - component: {fileID: 199228899523012876}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SubSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

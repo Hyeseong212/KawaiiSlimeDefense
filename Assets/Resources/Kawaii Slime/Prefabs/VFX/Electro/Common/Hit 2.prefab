@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4919598890589302}
   - component: {fileID: 198293839846394804}
   - component: {fileID: 199795753338193532}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SparksUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 198409772387570034}
   - component: {fileID: 199899125271924962}
   - component: {fileID: 1843876832703056849}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hit 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9857,7 +9857,7 @@ GameObject:
   - component: {fileID: 4533065856280022}
   - component: {fileID: 198701907861384150}
   - component: {fileID: 199028323517545168}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14739,7 +14739,7 @@ GameObject:
   - component: {fileID: 4404122685787616}
   - component: {fileID: 198200734946451196}
   - component: {fileID: 199223762441960262}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19621,7 +19621,7 @@ GameObject:
   - component: {fileID: 4569877639506860}
   - component: {fileID: 198222071384640788}
   - component: {fileID: 199915142866295846}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SparksDonw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24503,7 +24503,7 @@ GameObject:
   - component: {fileID: 4766010856091184}
   - component: {fileID: 198038298199607414}
   - component: {fileID: 199590159937172578}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}

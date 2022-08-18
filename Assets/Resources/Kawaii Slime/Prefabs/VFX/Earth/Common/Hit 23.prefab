@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198570749686786558}
   - component: {fileID: 199568073875885968}
   - component: {fileID: 1739803589160801835}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hit 23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4908,7 +4908,7 @@ GameObject:
   - component: {fileID: 4581341805195152}
   - component: {fileID: 198042972768375758}
   - component: {fileID: 199849541385277584}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9790,7 +9790,7 @@ GameObject:
   - component: {fileID: 4305060994391630}
   - component: {fileID: 198072469092548342}
   - component: {fileID: 199427918584986520}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Quads
   m_TagString: Untagged
   m_Icon: {fileID: 0}

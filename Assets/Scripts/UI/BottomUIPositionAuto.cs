@@ -10,7 +10,7 @@ public class BottomUIPositionAuto : MonoBehaviour
     GameObject MiniMap;
     void Start()
     {
-        StatusPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(170, 150, 0);
+        StatusPanel.GetComponent<RectTransform>().anchoredPosition = new Vector3(170, 145, 0);
         MiniMap.GetComponent<RectTransform>().anchoredPosition = new Vector3(210, 210, 0);
     }
 }

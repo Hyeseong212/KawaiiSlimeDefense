@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198892729897997728}
   - component: {fileID: 114857665921894134}
   - component: {fileID: 199138449149840834}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SubSparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4849,7 +4849,7 @@ GameObject:
   - component: {fileID: 198161343025679248}
   - component: {fileID: 199255407689944526}
   - component: {fileID: 2185910653381048410}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Projectile 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9748,7 +9748,7 @@ GameObject:
   - component: {fileID: 4181983501846708}
   - component: {fileID: 198054767724686588}
   - component: {fileID: 199443242785925410}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14631,7 +14631,7 @@ GameObject:
   - component: {fileID: 198545261294117716}
   - component: {fileID: 114425360155686886}
   - component: {fileID: 199030743555694118}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198433115122331948}
   - component: {fileID: 114808009328295262}
   - component: {fileID: 199659563733507752}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SubTriangles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4850,7 +4850,7 @@ GameObject:
   - component: {fileID: 199276083344950028}
   - component: {fileID: 108390838054146474}
   - component: {fileID: 4966421029356526680}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Projectile 23
   m_TagString: Untagged
   m_Icon: {fileID: 0}

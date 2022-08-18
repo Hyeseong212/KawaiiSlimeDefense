@@ -7,11 +7,13 @@ using UnityEngine.EventSystems;
 public class MouseClick : MonoSingleton<MouseClick>
 {
 	[SerializeField]
-	private	LayerMask			layerUnit;
+	private	LayerMask	layerUnit;
 	[SerializeField]
-	private LayerMask layerGround; 
+	private LayerMask	layerGround;
 	[SerializeField]
-	private LayerMask layerEnemy;
+	private LayerMask	layerEnemy; 
+	[SerializeField]
+	private LayerMask	layerBuilding;
 
 	private	Camera				mainCamera;
 	private	RTSUnitController	rtsUnitController;
@@ -44,7 +46,6 @@ public class MouseClick : MonoSingleton<MouseClick>
 			m_ped.position = Input.mousePosition;
 			List<RaycastResult> results = new List<RaycastResult>();//리팩토링때 건드려야할 코드
 			m_gr.Raycast(m_ped, results);
-			// 광선에 부딪히는 오브젝트가 있을 때 (=유닛을 클릭했을 때)
 			if (results.Count == 1)
 			{
 				if (results[0].gameObject.name == "map")
@@ -90,8 +91,7 @@ public class MouseClick : MonoSingleton<MouseClick>
 						}
 
 					}
-				}
-				// 광선에 부딪히는 오브젝트가 없을 때
+				}//유닛클릭
 				else if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerEnemy))
 				{
 					for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++) 
@@ -99,6 +99,41 @@ public class MouseClick : MonoSingleton<MouseClick>
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedAttack;
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().targetedEnemy = hit.collider.gameObject.GetComponent<Enemy>().thisEnemydata;
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().enemies.Insert(0,hit.collider.gameObject.GetComponent<Enemy>().thisEnemydata);
+					}
+				}//적클릭
+				else if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerBuilding))
+                {
+					if(GameManager.i.playerNumber+ "UpgradeBuilding" == PlayerNumber.Player1 + hit.collider.name)//플레이어1 업글빌딩일때
+                    {
+						Debug.Log(GameManager.i.playerNumber+ "UpgradeBuilding");
+                    }
+					else if (GameManager.i.playerNumber + "GambleBuilding" == PlayerNumber.Player1 + hit.collider.name)//플레이어1 업글빌딩일때
+					{
+						Debug.Log(GameManager.i.playerNumber + "GambleBuilding");
+					}
+					else if (GameManager.i.playerNumber + "UpgradeBuilding" == PlayerNumber.Player2 + hit.collider.name)//플레이어1 업글빌딩일때
+					{
+
+					}
+					else if (GameManager.i.playerNumber + "GambleBuilding" == PlayerNumber.Player2 + hit.collider.name)//플레이어1 업글빌딩일때
+					{
+
+					}
+					else if (GameManager.i.playerNumber + "UpgradeBuilding" == PlayerNumber.Player3 + hit.collider.name)//플레이어1 업글빌딩일때
+					{
+
+					}
+					else if (GameManager.i.playerNumber + "GambleBuilding" == PlayerNumber.Player3 + hit.collider.name)//플레이어1 업글빌딩일때
+					{
+
+					}
+					else if (GameManager.i.playerNumber + "UpgradeBuilding" == PlayerNumber.Player4 + hit.collider.name)//플레이어1 업글빌딩일때
+					{
+
+					}
+					else if (GameManager.i.playerNumber + "GambleBuilding" == PlayerNumber.Player4 + hit.collider.name)//플레이어1 업글빌딩일때
+					{
+
 					}
 				}
                 else

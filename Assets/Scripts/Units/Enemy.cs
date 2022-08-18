@@ -120,17 +120,15 @@ public class Enemy : MonoBehaviour
     {
         thisEnemydata = enemydata;
     }
-    EnemyData ToEnemyController()
+    void ToEnemyController()
     {
         for (int i = 0; i < EnemySpawner.i.enemyInThisWaveList.Count; i++)
         {
             if (thisEnemydata.index == EnemySpawner.i.enemyInThisWaveList[i].index)
             {
                 EnemySpawner.i.enemyInThisWaveList[i] = thisEnemydata;
-                return EnemySpawner.i.enemyInThisWaveList[i];
             }
         }
-        return new EnemyData();
     }
     public void Hit()
     {
@@ -143,6 +141,13 @@ public class Enemy : MonoBehaviour
     }
     private void Die()
     {
+        for (int i = 0; i < EnemySpawner.i.enemyInThisWaveList.Count; i++)
+        {
+            if (thisEnemydata.index == EnemySpawner.i.enemyInThisWaveList[i].index && thisEnemydata.wave == EnemySpawner.i.enemyInThisWaveList[i].wave)
+            {
+                EnemySpawner.i.enemyInThisWaveList.Remove(EnemySpawner.i.enemyInThisWaveList[i]);
+            }
+        }
         Destroy(gameObject);
     }
 }

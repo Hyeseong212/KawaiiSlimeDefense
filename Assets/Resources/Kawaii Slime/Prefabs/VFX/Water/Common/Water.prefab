@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198343067639323108}
   - component: {fileID: 114801155035620022}
   - component: {fileID: 199632313697423724}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4859,7 +4859,7 @@ GameObject:
   - component: {fileID: 199496378200092506}
   - component: {fileID: 108086391996899420}
   - component: {fileID: 7101814513959226945}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9820,7 +9820,7 @@ GameObject:
   - component: {fileID: 4158040155400464}
   - component: {fileID: 198789236737275484}
   - component: {fileID: 199918811470479684}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198093588718004796}
   - component: {fileID: 199818009132126046}
   - component: {fileID: 7787966586027284390}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Flash 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4907,7 +4907,7 @@ GameObject:
   - component: {fileID: 4478137767192464}
   - component: {fileID: 198327499033953582}
   - component: {fileID: 199935033273858226}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

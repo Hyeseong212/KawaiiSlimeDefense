@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2316465161303968409}
   - component: {fileID: 2492074680371716777}
   - component: {fileID: 2515547609704383893}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ShockWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 2515404535478995733}
   - component: {fileID: 2517156076320407903}
   - component: {fileID: -5202044002659463893}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Punch Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

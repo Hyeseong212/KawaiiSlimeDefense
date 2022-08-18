@@ -13,22 +13,22 @@ public class UpgradeData
 public class UpgradeManager : MonoSingleton<UpgradeManager> 
 {
     [SerializeField] UpgradeData upgradeData;
-    public const float commonUpgradeAttackpts = 2;
+    public const float commonUpgradeAttackpts = 3;
     public const float commonUpgradeAttackspeed = 0.05f;
     /// <summary>
     /// 일반타입 업그레이드 상수
     /// </summary>
-    public const float rareUpgradeAttackpts = 10;
+    public const float rareUpgradeAttackpts = 20;
     public const float rareUpgradeAttackspeed = 0.1f;
     /// <summary>
     /// 레어타입 업그레이드 상수
     /// </summary>
-    public const float uniqueUpgradeAttackpts = 50;
+    public const float uniqueUpgradeAttackpts = 100;
     public const float uniqueUpgradeAttackspeed = 0.3f;
     /// <summary>
     /// 유니크타입 업그레이드 상수
     /// </summary>
-    public const float legnedaryUpgradeAttackpts = 200;
+    public const float legnedaryUpgradeAttackpts = 250;
     public const float legnedaryUpgradeAttackspeed = 0.5f;
     /// <summary>
     /// 전설타입 업그레이드 상수
@@ -36,142 +36,159 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     
     public void CommonLevelUp()
     {
-        for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++) 
+        if (upgradeData.commonUpgradeCount < 10)
         {
-            if(SlimeDataController.i.slimeDataBaseList[i].Type == "Common")
+            for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++)
             {
-                SlimeDataController.i.slimeDataBaseList[i] =
-                     new SlimeData(
-                     SlimeDataController.i.slimeDataBaseList[i].Index,
-                     SlimeDataController.i.slimeDataBaseList[i].Name,
-                     SlimeDataController.i.slimeDataBaseList[i].Type,
-                     SlimeDataController.i.slimeDataBaseList[i].attackType,
-                     SlimeDataController.i.slimeDataBaseList[i].attackpts + commonUpgradeAttackpts,
-                     SlimeDataController.i.slimeDataBaseList[i].attackspeed + commonUpgradeAttackspeed,
-                     SlimeDataController.i.slimeDataBaseList[i].Slime
-                     );
+                if (SlimeDataController.i.slimeDataBaseList[i].Type == "Common")
+                {
+                    SlimeDataController.i.slimeDataBaseList[i] =
+                         new SlimeData(
+                         SlimeDataController.i.slimeDataBaseList[i].Index,
+                         SlimeDataController.i.slimeDataBaseList[i].Name,
+                         SlimeDataController.i.slimeDataBaseList[i].Type,
+                         SlimeDataController.i.slimeDataBaseList[i].attackType,
+                         SlimeDataController.i.slimeDataBaseList[i].attackpts + commonUpgradeAttackpts,
+                         SlimeDataController.i.slimeDataBaseList[i].attackspeed + commonUpgradeAttackspeed,
+                         SlimeDataController.i.slimeDataBaseList[i].Slime
+                         );
+                }
+            }///전체 슬라임 데이터 베이스 업그레이드
+            for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+            {
+                if (CraftManager.i.currentSceneSlimeData[i].Type == "Common")
+                    CraftManager.i.currentSceneSlimeData[i] =
+                       new SlimeData(
+                       CraftManager.i.currentSceneSlimeData[i].Index,
+                       CraftManager.i.currentSceneSlimeData[i].Name,
+                       CraftManager.i.currentSceneSlimeData[i].Type,
+                       CraftManager.i.currentSceneSlimeData[i].Slime,
+                       CraftManager.i.currentSceneSlimeData[i].attackType,
+                       CraftManager.i.currentSceneSlimeData[i].attackpts + commonUpgradeAttackpts,
+                       CraftManager.i.currentSceneSlimeData[i].attackspeed + commonUpgradeAttackspeed
+                       );
+            }///현재씬 슬라임 업그레이드
+            for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+            {
+                CraftManager.i.currentSceneSlimeData[i].Slime.GetComponent<UnitController>().SetupData(CraftManager.i.currentSceneSlimeData[i]);
             }
-        }///전체 슬라임 데이터 베이스 업그레이드
-        for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
-        {
-            if(CraftManager.i.currentSceneSlimeData[i].Type == "Common")
-            CraftManager.i.currentSceneSlimeData[i] =
-               new SlimeData(
-               CraftManager.i.currentSceneSlimeData[i].Index,
-               CraftManager.i.currentSceneSlimeData[i].Name,
-               CraftManager.i.currentSceneSlimeData[i].Type,
-               CraftManager.i.currentSceneSlimeData[i].Slime,
-               CraftManager.i.currentSceneSlimeData[i].attackType,
-               CraftManager.i.currentSceneSlimeData[i].attackpts + commonUpgradeAttackpts,
-               CraftManager.i.currentSceneSlimeData[i].attackspeed + commonUpgradeAttackspeed
-               );
-        }///현재씬 슬라임 업그레이드
-        for(int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
-        {
-            CraftManager.i.currentSceneSlimeData[i].Slime.GetComponent<UnitController>().SetupData(CraftManager.i.currentSceneSlimeData[i]);
+            upgradeData.commonUpgradeCount++;
         }
-        upgradeData.commonUpgradeCount ++;
+        else return;
     }
     public void RareLevelUp()
     {
-        for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++)
+        if (upgradeData.rareUpgradeCount < 15)
         {
-            if (SlimeDataController.i.slimeDataBaseList[i].Type == "Rare")
+            for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++)
             {
-                SlimeDataController.i.slimeDataBaseList[i] =
-                     new SlimeData(
-                     SlimeDataController.i.slimeDataBaseList[i].Index,
-                     SlimeDataController.i.slimeDataBaseList[i].Name,
-                     SlimeDataController.i.slimeDataBaseList[i].Type,
-                     SlimeDataController.i.slimeDataBaseList[i].attackType,
-                     SlimeDataController.i.slimeDataBaseList[i].attackpts + rareUpgradeAttackpts,
-                     SlimeDataController.i.slimeDataBaseList[i].attackspeed + rareUpgradeAttackspeed,
-                     SlimeDataController.i.slimeDataBaseList[i].Slime
-                     );
-            }
-        }///전체 슬라임 데이터 베이스 업그레이드
-        for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
-        {
-            if (CraftManager.i.currentSceneSlimeData[i].Type == "Rare")
-                CraftManager.i.currentSceneSlimeData[i] =
-                   new SlimeData(
-                   CraftManager.i.currentSceneSlimeData[i].Index,
-                   CraftManager.i.currentSceneSlimeData[i].Name,
-                   CraftManager.i.currentSceneSlimeData[i].Type,
-                   CraftManager.i.currentSceneSlimeData[i].Slime,
-                   CraftManager.i.currentSceneSlimeData[i].attackType,
-                   CraftManager.i.currentSceneSlimeData[i].attackpts + rareUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed + rareUpgradeAttackspeed
-                   );
-        }///현재씬 슬라임 업그레이드
-        upgradeData.rareUpgradeCount++;
+                if (SlimeDataController.i.slimeDataBaseList[i].Type == "Rare")
+                {
+                    SlimeDataController.i.slimeDataBaseList[i] =
+                         new SlimeData(
+                         SlimeDataController.i.slimeDataBaseList[i].Index,
+                         SlimeDataController.i.slimeDataBaseList[i].Name,
+                         SlimeDataController.i.slimeDataBaseList[i].Type,
+                         SlimeDataController.i.slimeDataBaseList[i].attackType,
+                         SlimeDataController.i.slimeDataBaseList[i].attackpts + rareUpgradeAttackpts,
+                         SlimeDataController.i.slimeDataBaseList[i].attackspeed + rareUpgradeAttackspeed,
+                         SlimeDataController.i.slimeDataBaseList[i].Slime
+                         );
+                }
+            }///전체 슬라임 데이터 베이스 업그레이드
+            for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+            {
+                if (CraftManager.i.currentSceneSlimeData[i].Type == "Rare")
+                    CraftManager.i.currentSceneSlimeData[i] =
+                       new SlimeData(
+                       CraftManager.i.currentSceneSlimeData[i].Index,
+                       CraftManager.i.currentSceneSlimeData[i].Name,
+                       CraftManager.i.currentSceneSlimeData[i].Type,
+                       CraftManager.i.currentSceneSlimeData[i].Slime,
+                       CraftManager.i.currentSceneSlimeData[i].attackType,
+                       CraftManager.i.currentSceneSlimeData[i].attackpts + rareUpgradeAttackpts,
+                       CraftManager.i.currentSceneSlimeData[i].attackspeed + rareUpgradeAttackspeed
+                       );
+            }///현재씬 슬라임 업그레이드
+            upgradeData.rareUpgradeCount++;
+        }
+        else return;
     }
     public void UniqueLevelUp()
     {
-        for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++)
+        if (upgradeData.uniqueUpgradeCount < 20)
         {
-            if (SlimeDataController.i.slimeDataBaseList[i].Type == "Unique")
+            for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++)
             {
-                SlimeDataController.i.slimeDataBaseList[i] =
-                     new SlimeData(
-                     SlimeDataController.i.slimeDataBaseList[i].Index,
-                     SlimeDataController.i.slimeDataBaseList[i].Name,
-                     SlimeDataController.i.slimeDataBaseList[i].Type,
-                     SlimeDataController.i.slimeDataBaseList[i].attackType,
-                     SlimeDataController.i.slimeDataBaseList[i].attackpts + uniqueUpgradeAttackpts,
-                     SlimeDataController.i.slimeDataBaseList[i].attackspeed + uniqueUpgradeAttackspeed,
-                     SlimeDataController.i.slimeDataBaseList[i].Slime
-                     );
-            }
-        }///전체 슬라임 데이터 베이스 업그레이드
-        for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
-        {
-            if (CraftManager.i.currentSceneSlimeData[i].Type == "Unique")
-                CraftManager.i.currentSceneSlimeData[i] =
-                   new SlimeData(
-                   CraftManager.i.currentSceneSlimeData[i].Index,
-                   CraftManager.i.currentSceneSlimeData[i].Name,
-                   CraftManager.i.currentSceneSlimeData[i].Type,
-                   CraftManager.i.currentSceneSlimeData[i].Slime,
-                   CraftManager.i.currentSceneSlimeData[i].attackType,
-                   CraftManager.i.currentSceneSlimeData[i].attackpts + uniqueUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed + uniqueUpgradeAttackspeed
-                   );
-        }///현재씬 슬라임 업그레이드
-        upgradeData.uniqueUpgradeCount++;
+                if (SlimeDataController.i.slimeDataBaseList[i].Type == "Unique")
+                {
+                    SlimeDataController.i.slimeDataBaseList[i] =
+                         new SlimeData(
+                         SlimeDataController.i.slimeDataBaseList[i].Index,
+                         SlimeDataController.i.slimeDataBaseList[i].Name,
+                         SlimeDataController.i.slimeDataBaseList[i].Type,
+                         SlimeDataController.i.slimeDataBaseList[i].attackType,
+                         SlimeDataController.i.slimeDataBaseList[i].attackpts + uniqueUpgradeAttackpts,
+                         SlimeDataController.i.slimeDataBaseList[i].attackspeed + uniqueUpgradeAttackspeed,
+                         SlimeDataController.i.slimeDataBaseList[i].Slime
+                         );
+                }
+            }///전체 슬라임 데이터 베이스 업그레이드
+            for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+            {
+                if (CraftManager.i.currentSceneSlimeData[i].Type == "Unique")
+                    CraftManager.i.currentSceneSlimeData[i] =
+                       new SlimeData(
+                       CraftManager.i.currentSceneSlimeData[i].Index,
+                       CraftManager.i.currentSceneSlimeData[i].Name,
+                       CraftManager.i.currentSceneSlimeData[i].Type,
+                       CraftManager.i.currentSceneSlimeData[i].Slime,
+                       CraftManager.i.currentSceneSlimeData[i].attackType,
+                       CraftManager.i.currentSceneSlimeData[i].attackpts + uniqueUpgradeAttackpts,
+                       CraftManager.i.currentSceneSlimeData[i].attackspeed + uniqueUpgradeAttackspeed
+                       );
+            }///현재씬 슬라임 업그레이드
+
+            upgradeData.uniqueUpgradeCount++;
+        }
+        else return;
     }
     public void LegendaryLevelUp()
     {
-        for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++)
+        if (upgradeData.legendaryUpgradeCount < 30)
         {
-            if (SlimeDataController.i.slimeDataBaseList[i].Type == "Legendary")
+            for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++)
             {
-                SlimeDataController.i.slimeDataBaseList[i] =
-                     new SlimeData(
-                     SlimeDataController.i.slimeDataBaseList[i].Index,
-                     SlimeDataController.i.slimeDataBaseList[i].Name,
-                     SlimeDataController.i.slimeDataBaseList[i].Type,
-                     SlimeDataController.i.slimeDataBaseList[i].attackType,
-                     SlimeDataController.i.slimeDataBaseList[i].attackpts + legnedaryUpgradeAttackpts,
-                     SlimeDataController.i.slimeDataBaseList[i].attackspeed + legnedaryUpgradeAttackspeed,
-                     SlimeDataController.i.slimeDataBaseList[i].Slime
-                     );
-            }
-        }///전체 슬라임 데이터 베이스 업그레이드
-        for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
-        {
-            if (CraftManager.i.currentSceneSlimeData[i].Type == "Legendary")
-                CraftManager.i.currentSceneSlimeData[i] =
-                   new SlimeData(
-                   CraftManager.i.currentSceneSlimeData[i].Index,
-                   CraftManager.i.currentSceneSlimeData[i].Name,
-                   CraftManager.i.currentSceneSlimeData[i].Type,
-                   CraftManager.i.currentSceneSlimeData[i].Slime,
-                   CraftManager.i.currentSceneSlimeData[i].attackType,
-                   CraftManager.i.currentSceneSlimeData[i].attackpts + legnedaryUpgradeAttackpts,
-                   CraftManager.i.currentSceneSlimeData[i].attackspeed + legnedaryUpgradeAttackspeed
-                   );
-        }///현재씬 슬라임 업그레이드
-        upgradeData.legendaryUpgradeCount++;
+                if (SlimeDataController.i.slimeDataBaseList[i].Type == "Legendary")
+                {
+                    SlimeDataController.i.slimeDataBaseList[i] =
+                         new SlimeData(
+                         SlimeDataController.i.slimeDataBaseList[i].Index,
+                         SlimeDataController.i.slimeDataBaseList[i].Name,
+                         SlimeDataController.i.slimeDataBaseList[i].Type,
+                         SlimeDataController.i.slimeDataBaseList[i].attackType,
+                         SlimeDataController.i.slimeDataBaseList[i].attackpts + legnedaryUpgradeAttackpts,
+                         SlimeDataController.i.slimeDataBaseList[i].attackspeed + legnedaryUpgradeAttackspeed,
+                         SlimeDataController.i.slimeDataBaseList[i].Slime
+                         );
+                }
+            }///전체 슬라임 데이터 베이스 업그레이드
+            for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+            {
+                if (CraftManager.i.currentSceneSlimeData[i].Type == "Legendary")
+                    CraftManager.i.currentSceneSlimeData[i] =
+                       new SlimeData(
+                       CraftManager.i.currentSceneSlimeData[i].Index,
+                       CraftManager.i.currentSceneSlimeData[i].Name,
+                       CraftManager.i.currentSceneSlimeData[i].Type,
+                       CraftManager.i.currentSceneSlimeData[i].Slime,
+                       CraftManager.i.currentSceneSlimeData[i].attackType,
+                       CraftManager.i.currentSceneSlimeData[i].attackpts + legnedaryUpgradeAttackpts,
+                       CraftManager.i.currentSceneSlimeData[i].attackspeed + legnedaryUpgradeAttackspeed
+                       );
+            }///현재씬 슬라임 업그레이드
+            upgradeData.legendaryUpgradeCount++;
+        }
+        else return;
     }
 }

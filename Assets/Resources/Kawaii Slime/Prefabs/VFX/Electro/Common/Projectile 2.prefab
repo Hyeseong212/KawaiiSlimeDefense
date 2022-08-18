@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 199610180894210660}
   - component: {fileID: 108266483201387004}
   - component: {fileID: 8156589946574046805}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Projectile 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4975,7 +4975,7 @@ GameObject:
   - component: {fileID: 4366912051360190}
   - component: {fileID: 198692940710500382}
   - component: {fileID: 199205060469912400}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Electricy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9800,7 +9800,7 @@ GameObject:
   - component: {fileID: 198559730701285930}
   - component: {fileID: 114963004765172870}
   - component: {fileID: 199307829787777340}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14636,7 +14636,7 @@ GameObject:
   - component: {fileID: 4106549369329498}
   - component: {fileID: 198194833413760700}
   - component: {fileID: 199193693930752760}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ElectroCore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
