@@ -10,6 +10,7 @@ public class BottomPanelController : MonoSingleton<BottomPanelController>
     [SerializeField] GameObject statusPanel;
     [SerializeField] Sprite[] slimeImg;
     [SerializeField] GameObject[] rendererSlime;
+    [SerializeField] GameObject rendererBuilding;
     public void SetSelectedSlimeImage()
     {
         for (int i = 0; i < disabledSlimeImages.Length; i++)
@@ -54,5 +55,16 @@ public class BottomPanelController : MonoSingleton<BottomPanelController>
                 rendererSlime[i].gameObject.SetActive(false);
             }
         }
+    }
+    public void SetRenderBuildingActive(string building)
+    {
+        if (building == "Building") 
+        {
+            rendererBuilding.SetActive(true); 
+        }
+    }
+    public void SetDeActivative()
+    {
+        rendererBuilding.SetActive(false);
     }
 }

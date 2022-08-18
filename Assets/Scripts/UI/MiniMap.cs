@@ -20,7 +20,7 @@ public class MiniMap : MonoSingleton<MiniMap> , IPointerDownHandler, IDragHandle
     }
     private void Update()
     {
-        Vector3 cameraPosition= Camera.main.GetComponent<Transform>().position;
+        Vector3 cameraPosition = Camera.main.GetComponent<Transform>().position;
 
         cameraRect.anchoredPosition = new Vector2(cameraPosition.x*1.3f , cameraPosition.z*1.3f);
     }

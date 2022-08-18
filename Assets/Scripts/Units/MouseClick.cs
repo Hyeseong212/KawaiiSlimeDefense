@@ -57,6 +57,8 @@ public class MouseClick : MonoSingleton<MouseClick>
 			{
 				if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerUnit))
 				{
+					BottomPanelController.i.SetDeActivative();
+					UnitControllerPanel.i.Deselected();
 					if (hit.transform.GetComponent<UnitController>() == null) return;
 
 					if (Input.GetKey(KeyCode.LeftShift))
@@ -94,6 +96,8 @@ public class MouseClick : MonoSingleton<MouseClick>
 				}//유닛클릭
 				else if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerEnemy))
 				{
+					UnitControllerPanel.i.Deselected();
+					BottomPanelController.i.SetDeActivative();
 					for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++) 
 					{
 						RTSUnitController.i.selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedAttack;
@@ -103,10 +107,12 @@ public class MouseClick : MonoSingleton<MouseClick>
 				}//적클릭
 				else if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerBuilding))
                 {
-					if(GameManager.i.playerNumber+ "UpgradeBuilding" == PlayerNumber.Player1 + hit.collider.name)//플레이어1 업글빌딩일때
+					rtsUnitController.DeselectAll();
+					if (GameManager.i.playerNumber+ "UpgradeBuilding" == PlayerNumber.Player1 + hit.collider.name)//플레이어1 업글빌딩일때
                     {
-						Debug.Log(GameManager.i.playerNumber+ "UpgradeBuilding");
-                    }
+						BottomPanelController.i.SetRenderBuildingActive(hit.collider.tag);
+						UnitControllerPanel.i.UpgradeBuildingClicked();
+					}
 					else if (GameManager.i.playerNumber + "GambleBuilding" == PlayerNumber.Player1 + hit.collider.name)//플레이어1 업글빌딩일때
 					{
 						Debug.Log(GameManager.i.playerNumber + "GambleBuilding");
@@ -141,6 +147,8 @@ public class MouseClick : MonoSingleton<MouseClick>
 					if (!Input.GetKey(KeyCode.LeftShift))
 					{
 						rtsUnitController.DeselectAll();
+						BottomPanelController.i.SetDeActivative();
+						UnitControllerPanel.i.Deselected();
 					}
 				}
 			}

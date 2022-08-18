@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - POPUP
   - Enemy
+  - Building
   layers:
   - Default
   - TransparentFX

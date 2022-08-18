@@ -13,30 +13,53 @@ namespace UI.View.InGame
         }
 
         public System.Action OnClickMenu = () => { };
-        public System.Action OnClickTestCommon = () => { };
-        public System.Action OnClickTestRare = () => { };
-        public System.Action OnClickTestUnique = () => { };
-        public System.Action OnClickTestLegendary = () => { };
+        public System.Action OnClickCommon = () => { };
+        public System.Action OnClickRare = () => { };
+        public System.Action OnClickUnique = () => { };
+        public System.Action OnClickLegendary = () => { };
+
+        public System.Action OnClickMove = () => { };
+        public System.Action OnClickHold = () => { };
+        public System.Action OnClickAttack = () => { };
+        public System.Action OnClickStop = () => { };
 
         public void onClickMenu()
         {
             OnClickMenu();
         }
-        public void onClickTestCommon()
+        public void onClickCommon()
         {
-            OnClickTestCommon();
+            OnClickCommon();
         }
-        public void onClickTestRare()
+        public void onClickRare()
         {
-            OnClickTestRare();
+            OnClickRare();
         }
-        public void onClickTestUnique()
+        public void onClickUnique()
         {
-            OnClickTestUnique();
+            OnClickUnique();
         }
-        public void onClickTestLegendary()
+        public void onClickLegendary()
         {
-            OnClickTestLegendary();
+            OnClickLegendary();
         }
+        public void onClickMove()
+        {
+            OnClickMove();
+        }
+        public void onClickHold()
+        {
+            OnClickHold();
+        }
+        public void onClickAttack()
+        {
+            OnClickAttack();
+        }
+
+        public void onClickStop()
+        {
+            OnClickStop();
+        }
+
     }
 }
