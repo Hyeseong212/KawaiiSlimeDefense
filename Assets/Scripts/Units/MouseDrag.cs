@@ -74,6 +74,7 @@ public class MouseDrag: MonoBehaviour
 			start = end = Vector2.zero;
 			DrawDragRectangle();
 			BottomPanelController.i.SetSelectedSlimeImage();
+			UnitControllerPanel.i.UnitSelected();
 		}
 	}
 

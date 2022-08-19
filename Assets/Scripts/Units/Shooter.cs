@@ -64,7 +64,7 @@ public class Shooter : MonoBehaviour
                 }
             }
         }
-        else if(status != SlimeStatus.ForcedMove)
+        else if(status != SlimeStatus.ForcedMove && status != SlimeStatus.ForcedAttack)
         {
             animator.SetInteger("MoveInt", 0);
         }

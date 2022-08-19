@@ -43,16 +43,54 @@ public class UIViewGame : MonoSingleton<UIViewGame>
         };
         _context.OnClickMove = () =>
         {
+            MoveBtn();
         };
         _context.OnClickHold = () =>
         {
+            HoldBtn();
         };
         _context.OnClickAttack = () =>
         {
+            AttackBtn();
         };
-        _context.OnClickHold = () =>
+        _context.OnClickStop = () =>
         {
+            StopBtn();
         };
 
+    }
+    void MoveBtn()
+    {
+        for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++) 
+        {
+            UnitControllerPanel.i.UnitDeselected();
+            RTSUnitController.i.selectedUnitList[i].isWaitForCommand = true;
+            RTSUnitController.i.selectedUnitList[i].shooter.status = SlimeStatus.ForcedMove;
+        }
+    }
+    void HoldBtn()
+    {
+        for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++)
+        {
+            RTSUnitController.i.selectedUnitList[i].shooter.status = SlimeStatus.Hold;
+            RTSUnitController.i.selectedUnitList[i].Stop();
+        }
+    }
+    void AttackBtn()
+    {
+        for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++)
+        {
+            UnitControllerPanel.i.UnitDeselected();
+            RTSUnitController.i.selectedUnitList[i].isWaitForCommand = true;
+            RTSUnitController.i.selectedUnitList[i].shooter.status = SlimeStatus.ForcedAttack;
+        }
+    }
+    void StopBtn()
+    {
+        for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++)
+        {
+            RTSUnitController.i.selectedUnitList[i].shooter.status = SlimeStatus.Stop;
+            RTSUnitController.i.selectedUnitList[i].Stop();
+        }
     }
 }

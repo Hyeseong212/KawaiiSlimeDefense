@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.AI;
 
 public class UnitController : MonoBehaviour
@@ -19,8 +21,14 @@ public class UnitController : MonoBehaviour
 
     public SlimeData slimedata;
 
-    Shooter shooter;
+    public Shooter shooter;
     GameObject enemy;
+
+    public bool isWaitForCommand;
+
+    GraphicRaycaster m_gr;
+    PointerEventData m_ped;
+    Canvas m_canvas;
     //public Button idleBut, walkBut, jumpBut, attackBut, damageBut0, damageBut1, damageBut2;
     private void Awake()
 	{
@@ -40,6 +48,9 @@ public class UnitController : MonoBehaviour
             }
         }
         SetupData(slimedata);
+        m_canvas = GameObject.Find("PCUI(Canvas)").GetComponent<Canvas>();
+        m_gr = m_canvas.GetComponent<GraphicRaycaster>();
+        m_ped = new PointerEventData(null);
         //idleBut.onClick.AddListener(delegate { Idle(); });
         //walkBut.onClick.AddListener(delegate { ChangeStateTo(SlimeAnimationState.Walk); });
         //jumpBut.onClick.AddListener(delegate { LookAtCamera(); ChangeStateTo(SlimeAnimationState.Jump); });
@@ -53,12 +64,43 @@ public class UnitController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             shooter.status = SlimeStatus.Hold;
+            UnitControllerPanel.i.UnitStatusInPanel();
             Stop();
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
             shooter.status = SlimeStatus.Stop;
+            UnitControllerPanel.i.UnitStatusInPanel();
             Stop();
+        }
+        if (isWaitForCommand)
+        {
+            if (shooter.status == SlimeStatus.ForcedMove || shooter.status == SlimeStatus.ForcedAttack)
+            {
+                if (Input.GetMouseButtonDown(1))
+                {
+                    RaycastHit hit;
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    m_ped.position = Input.mousePosition;
+                    List<RaycastResult> results = new List<RaycastResult>();//리팩토링때 건드려야할 코드
+                    m_gr.Raycast(m_ped, results);
+                    // 유닛 오브젝트(layerUnit)를 클릭했을 때
+                    if (results.Count == 1)
+                    {
+                        if (results[0].gameObject.name == "map")
+                        {
+                            return;
+                        }
+                    }
+                    else if (results.Count == 0)
+                    {
+                        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.NameToLayer("Ground")))
+                        {
+                            RTSUnitController.i.MoveSelectedUnits(hit.point);
+                        }
+                    }
+                }
+            }
         }
     }
     void StopToWall()
@@ -78,6 +120,7 @@ public class UnitController : MonoBehaviour
 
 	public void MoveTo(Vector3 end)
 	{
+        UnitControllerPanel.i.UnitStatusInPanel();
         StopCoroutine("StopCheck");
         navMeshAgent.isStopped = false;
         animator.SetInteger("MoveInt",1);
@@ -90,19 +133,23 @@ public class UnitController : MonoBehaviour
     IEnumerator StopCheck()
     {
         yield return new WaitForSeconds(remainTime);
+        isWaitForCommand = false;
         animator.SetInteger("MoveInt", 0);
         navMeshAgent.isStopped = true;
         if (shooter.status == SlimeStatus.Hold) 
         {
             shooter.status = SlimeStatus.Hold;
+            UnitControllerPanel.i.UnitStatusInPanel();
         }
         else if(shooter.status == SlimeStatus.ForcedAttack)
         {
             shooter.status = SlimeStatus.ForcedAttack;
+            UnitControllerPanel.i.UnitStatusInPanel();
         }
         else
         {
             shooter.status = SlimeStatus.Stop;
+            UnitControllerPanel.i.UnitStatusInPanel();
         }
     }
     void SetFace(Texture tex)

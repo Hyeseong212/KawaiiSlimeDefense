@@ -58,13 +58,14 @@ public class MouseClick : MonoSingleton<MouseClick>
 				if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerUnit))
 				{
 					BottomPanelController.i.SetDeActivative();
-					UnitControllerPanel.i.Deselected();
+					UnitControllerPanel.i.BuildingDeselected();
 					if (hit.transform.GetComponent<UnitController>() == null) return;
 
 					if (Input.GetKey(KeyCode.LeftShift))
 					{
 						rtsUnitController.ShiftClickSelectUnit(hit.transform.GetComponent<UnitController>());
 						BottomPanelController.i.SetSelectedSlimeImage();
+						UnitControllerPanel.i.UnitSelected();
 					}
 					else
 					{
@@ -73,6 +74,7 @@ public class MouseClick : MonoSingleton<MouseClick>
 							//한번클릭
 							rtsUnitController.ClickSelectUnit(hit.transform.GetComponent<UnitController>());
 							BottomPanelController.i.SetSelectedSlimeImage();
+							UnitControllerPanel.i.UnitSelected();
 							m_IsOneClick = false;
 						}
 
@@ -88,6 +90,7 @@ public class MouseClick : MonoSingleton<MouseClick>
 							{
 								//두번클릭
 								rtsUnitController.SeletUnitDoubleClick(hit.transform.GetComponent<UnitController>());
+								UnitControllerPanel.i.UnitSelected();
 								m_IsOneClick = false;
 							}
 						}
@@ -96,7 +99,8 @@ public class MouseClick : MonoSingleton<MouseClick>
 				}//유닛클릭
 				else if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerEnemy))
 				{
-					UnitControllerPanel.i.Deselected();
+					UnitControllerPanel.i.BuildingDeselected();
+					UnitControllerPanel.i.UnitDeselected();
 					BottomPanelController.i.SetDeActivative();
 					for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++) 
 					{
@@ -108,6 +112,7 @@ public class MouseClick : MonoSingleton<MouseClick>
 				else if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerBuilding))
                 {
 					rtsUnitController.DeselectAll();
+					UnitControllerPanel.i.UnitDeselected();
 					if (GameManager.i.playerNumber+ "UpgradeBuilding" == PlayerNumber.Player1 + hit.collider.name)//플레이어1 업글빌딩일때
                     {
 						BottomPanelController.i.SetRenderBuildingActive(hit.collider.tag);
@@ -148,7 +153,8 @@ public class MouseClick : MonoSingleton<MouseClick>
 					{
 						rtsUnitController.DeselectAll();
 						BottomPanelController.i.SetDeActivative();
-						UnitControllerPanel.i.Deselected();
+						UnitControllerPanel.i.BuildingDeselected(); //건물 선택해제
+						UnitControllerPanel.i.UnitDeselected(); // 유닛 선택해제
 					}
 				}
 			}

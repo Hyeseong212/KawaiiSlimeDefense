@@ -9,6 +9,7 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 	public List<UnitController> selectedUnitList;				// 플레이어가 클릭 or 드래그로 선택한 유닛
 	public	List<UnitController> UnitList { private set; get; } // 맵에 존재하는 모든 유닛
 	[SerializeField] private GameObject pointClick;
+	[SerializeField] private GameObject attackPointClick;
 
 	WaitForSeconds delay = new WaitForSeconds(0.5f);
 	Vector3 vector;
@@ -70,7 +71,14 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 		for ( int i = 0; i < selectedUnitList.Count; ++ i )
 		{
 			selectedUnitList[i].MoveTo(end);
-			selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedMove;
+			if (selectedUnitList[i].GetComponentInChildren<Shooter>().status == SlimeStatus.ForcedAttack)
+			{
+				selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedAttack;
+			}
+            else
+            {
+				selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedMove;
+			}
 		}
 		StopCoroutine("ClickAnimation");
 		StartCoroutine("ClickAnimation");
@@ -130,11 +138,25 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 	}
 	IEnumerator ClickAnimation()
 	{
-		pointClick.SetActive(false);
-		pointClick.SetActive(true);
-		pointClick.transform.position = new Vector3(vector.x, vector.y + 0.1f, vector.z);
-		yield return delay;
-		pointClick.SetActive(false);
+		if (selectedUnitList.Count > 0)
+		{
+			if (selectedUnitList[0].shooter.status == SlimeStatus.ForcedMove)
+			{
+				pointClick.SetActive(false);
+				pointClick.SetActive(true);
+				pointClick.transform.position = new Vector3(vector.x, vector.y + 0.1f, vector.z);
+				yield return delay;
+				pointClick.SetActive(false);
+			}
+			else if(selectedUnitList[0].shooter.status == SlimeStatus.ForcedAttack)
+            {
+				attackPointClick.SetActive(false);
+				attackPointClick.SetActive(true);
+				attackPointClick.transform.position = new Vector3(vector.x, vector.y + 0.1f, vector.z);
+				yield return delay;
+				attackPointClick.SetActive(false);
+			}
+		}
 	}
 
 }
