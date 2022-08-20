@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class GambleManager : MonoSingleton<GambleManager>
 {
-
+    int i = 1;
     public void GoldGamble()//°ñµå °·ºí
     {
         int spendGold;
-        spendGold = EnemySpawner.i.currentWave * 10;
+        if (EnemySpawner.i.currentWave == 0)
+        {
+            i = 1;
+        }
+        else 
+        {
+            i = EnemySpawner.i.currentWave;
+        }
+        spendGold = i * 10;
         if (GameManager.i.currentGold >= spendGold)
         {
-            int random = (Random.Range(-(EnemySpawner.i.currentWave* 10) - 20, (EnemySpawner.i.currentWave* 10) + 36));
-            int rewardGold = EnemySpawner.i.currentWave * random; //º¸»ó°ñµå
+            int random = (Random.Range(-(i * 15) - 10, (i * 35) + 10));
+            int rewardGold = random; //º¸»ó°ñµå
             GameManager.i.currentGold -= spendGold; //¼Ò¸ð °ñµå¸¸Å­ »©°í
             GameManager.i.currentGold += rewardGold; //º¸»ó°ñµå¸¸Å­ ³Ö´Â´Ù
+            AlertScroll.i.GetGoldAlert((rewardGold-spendGold).ToString());
             if (GameManager.i.currentGold < 0)
             {
                 GameManager.i.currentGold = 0;

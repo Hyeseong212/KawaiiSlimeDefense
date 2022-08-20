@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
 
     WaitForSeconds delay = new WaitForSeconds(0.9f);
 
+    bool isDead;
+
     public EnemyData thisEnemydata;
     private void OnMouseEnter()
     {
@@ -68,6 +70,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        isDead = false;
         outlineSeleted = new Material(Shader.Find("Draw/OutlineShaderSelected"));
         outlineClicked = new Material(Shader.Find("Draw/OutlineShaderClicked"));
         renderers = skinnedMeshRenderer.GetComponent<Renderer>();
@@ -134,13 +137,14 @@ public class Enemy : MonoBehaviour
     {
         //맞는 오브젝트 풀링 시켜서 처리할까..?
         ToEnemyController();
-        if (thisEnemydata.hp <= 0)
+        if (thisEnemydata.hp <= 0 && !isDead)
         {
             Die();
         }
     }
     private void Die()
     {
+        isDead = true;
         GameManager.i.currentGold += EnemySpawner.i.currentWave;//돈주고 해당돈만큼 UI에 표시
         GameManager.i.Gold.text = GameManager.i.currentGold.ToString();
         for (int i = 0; i < EnemySpawner.i.P1enemyInThisWaveList.Count; i++)

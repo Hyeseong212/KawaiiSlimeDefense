@@ -23,7 +23,7 @@ public class GameManager : MonoSingleton<GameManager>
     public Text P4currentMonster;
 
     [Header("골드,토큰,도박소 관련")]
-    public int currentGold = 200;
+    public float currentGold = 50;
     public int currentToken = 0;
 
     public Text Gold;

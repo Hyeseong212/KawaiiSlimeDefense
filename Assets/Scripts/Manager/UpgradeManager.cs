@@ -40,7 +40,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     
     public void CommonLevelUp()
     {
-        if (upgradeData.commonUpgradeCount < 10)
+        if (upgradeData.commonUpgradeCount < 5)
         {
             if (GameManager.i.currentGold >= commonUpgradeSpendGold)
             {
@@ -91,7 +91,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     }
     public void RareLevelUp()
     {
-        if (upgradeData.rareUpgradeCount < 15 )
+        if (upgradeData.rareUpgradeCount < 10 )
         {
             if(GameManager.i.currentGold >= rareUpgradeSpendGold)
             { 
@@ -138,7 +138,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     }
     public void UniqueLevelUp()
     {
-        if (upgradeData.uniqueUpgradeCount < 20 )
+        if (upgradeData.uniqueUpgradeCount < 15 )
         {
             if (GameManager.i.currentGold >= uniqueUpgradeSpendGold)
             {
@@ -186,7 +186,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     }
     public void LegendaryLevelUp()
     {
-        if (upgradeData.legendaryUpgradeCount < 30)
+        if (upgradeData.legendaryUpgradeCount < 20)
         {
             if (GameManager.i.currentGold >= legendaryUpgradeSpendGold) 
             {

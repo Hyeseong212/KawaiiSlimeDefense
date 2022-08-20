@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitSpawner : MonoBehaviour
+public class UnitSpawner : MonoSingleton<UnitSpawner>
 {
 	[SerializeField]
 	private	GameObject[]	unitPrefab;
@@ -14,7 +14,6 @@ public class UnitSpawner : MonoBehaviour
 
 	private	Vector2	player1minSize = new Vector2(-42, 78);
 	private	Vector2 player1maxSize = new Vector2(-38, 82);
-
     public List<UnitController> SpawnUnitsPlayer1()
 	{
 		List<UnitController> unitList = new List<UnitController>(maxUnitCount);
@@ -26,6 +25,7 @@ public class UnitSpawner : MonoBehaviour
 
 			GameObject slimes = Instantiate(unitPrefab[randomUnit], position, Quaternion.identity);
 			slimes.transform.parent = slimesParent.transform;
+			AlertScroll.i.SlimeGeneSetter(slimes);
 			UnitController unit	= slimes.GetComponent<UnitController>();
 
 			unitList.Add(unit);

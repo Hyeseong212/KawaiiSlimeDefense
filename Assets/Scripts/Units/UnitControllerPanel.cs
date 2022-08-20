@@ -96,4 +96,44 @@ public class UnitControllerPanel : MonoSingleton<UnitControllerPanel>
             unitSelectedDeactivate[i].SetActive(false);
         }
     }
+
+    public void ToolTipCommonUpgrade()
+    {
+        UIViewGame.i.ToolTipTextSetter(AddresablesDataManager.i.GetString(1002));
+    }
+    public void ToolTipRareUpgrade()
+    {
+        UIViewGame.i.ToolTipTextSetter(AddresablesDataManager.i.GetString(1003));
+    }
+    public void ToolTipUniqueUpgrade()
+    {
+        UIViewGame.i.ToolTipTextSetter(AddresablesDataManager.i.GetString(1004));
+    }
+    public void ToolTipLegendaryUpgrade()
+    {
+        UIViewGame.i.ToolTipTextSetter(AddresablesDataManager.i.GetString(1005));
+    }
+    public void ToolTipGoldGamble()
+    {
+        int i = 0;
+        if (EnemySpawner.i.currentWave ==0)
+        {
+            i = 1;
+        }
+        else
+        {
+            i = EnemySpawner.i.currentWave;
+        }
+        UIViewGame.i.ToolTipTextSetter(AddresablesDataManager.i.GetString(1006)+"\n"+ 
+            "(금화 "+ (i * 10).ToString()+"를(을) 소모하여 " + (-(i*15)-10).ToString()+ "~+"+ ((i * 35) + 10).ToString() + "의 금화를 얻습니다)");
+    }
+    public void ToolTipTokenGambleUpgrade()
+    {
+        UIViewGame.i.ToolTipTextSetter(AddresablesDataManager.i.GetString(1007));
+    }
+
+    public void PointerExit()
+    {
+        UIViewGame.i.ToolTipTextOff();
+    }
 }

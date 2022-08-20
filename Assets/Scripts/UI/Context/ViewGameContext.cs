@@ -8,12 +8,14 @@ namespace UI.View.InGame
     public class ViewGameContext : Context
     {
         private readonly Property<string> TextProperty = new Property<string>();
+        private readonly Property<string> ToolTipTextProperty = new Property<string>();
 
         public ViewGameContext()
         {
 
         }
         public string Text { get { return this.TextProperty.Value; } set { this.TextProperty.Value = value; } }
+        public string ToolTipText { get { return this.ToolTipTextProperty.Value; } set { this.ToolTipTextProperty.Value = value; } }
         //메뉴
         public System.Action OnClickMenu = () => { };
         //컨트롤러 패널 업그레이드 건물 버튼

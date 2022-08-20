@@ -10,6 +10,8 @@ public class UIViewGame : MonoSingleton<UIViewGame>
     [SerializeField] private ContextHolder _contextHolder;
     private ViewGameContext _context;
     [SerializeField] private GameObject warningToolbar;
+    [SerializeField] private GameObject ToolTipbar;
+    [SerializeField] private GameObject ChattingPanel;
     public override void Init()
     {
         if (_contextHolder == null) _contextHolder = GetComponent<ContextHolder>();
@@ -116,4 +118,14 @@ public class UIViewGame : MonoSingleton<UIViewGame>
     {
         warningToolbar.SetActive(false);
     }
+    public void ToolTipTextSetter(string msg)
+    {
+        ToolTipbar.SetActive(true);
+        _context.SetValue("ToolTipText", msg);
+    }
+    public void ToolTipTextOff()
+    {
+        ToolTipbar.SetActive(false);
+    }
+
 }
