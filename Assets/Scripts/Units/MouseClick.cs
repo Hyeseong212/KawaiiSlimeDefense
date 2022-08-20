@@ -113,6 +113,7 @@ public class MouseClick : MonoSingleton<MouseClick>
                 {
 					rtsUnitController.DeselectAll();
 					UnitControllerPanel.i.UnitDeselected();
+					UnitControllerPanel.i.BuildingDeselected();
 					if (GameManager.i.playerNumber+ "UpgradeBuilding" == PlayerNumber.Player1 + hit.collider.name)//플레이어1 업글빌딩일때
                     {
 						BottomPanelController.i.SetRenderBuildingActive(hit.collider.tag);
@@ -120,7 +121,8 @@ public class MouseClick : MonoSingleton<MouseClick>
 					}
 					else if (GameManager.i.playerNumber + "GambleBuilding" == PlayerNumber.Player1 + hit.collider.name)//플레이어1 업글빌딩일때
 					{
-						Debug.Log(GameManager.i.playerNumber + "GambleBuilding");
+						BottomPanelController.i.SetRenderBuildingActive(hit.collider.tag);
+						UnitControllerPanel.i.TokenBuildingClicked();
 					}
 					else if (GameManager.i.playerNumber + "UpgradeBuilding" == PlayerNumber.Player2 + hit.collider.name)//플레이어1 업글빌딩일때
 					{

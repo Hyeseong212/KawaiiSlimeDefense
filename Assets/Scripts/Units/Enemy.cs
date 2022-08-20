@@ -122,11 +122,11 @@ public class Enemy : MonoBehaviour
     }
     void ToEnemyController()
     {
-        for (int i = 0; i < EnemySpawner.i.enemyInThisWaveList.Count; i++)
+        for (int i = 0; i < EnemySpawner.i.P1enemyInThisWaveList.Count; i++)
         {
-            if (thisEnemydata.index == EnemySpawner.i.enemyInThisWaveList[i].index)
+            if (thisEnemydata.index == EnemySpawner.i.P1enemyInThisWaveList[i].index)
             {
-                EnemySpawner.i.enemyInThisWaveList[i] = thisEnemydata;
+                EnemySpawner.i.P1enemyInThisWaveList[i] = thisEnemydata;
             }
         }
     }
@@ -141,11 +141,14 @@ public class Enemy : MonoBehaviour
     }
     private void Die()
     {
-        for (int i = 0; i < EnemySpawner.i.enemyInThisWaveList.Count; i++)
+        GameManager.i.currentGold += EnemySpawner.i.currentWave;//돈주고 해당돈만큼 UI에 표시
+        GameManager.i.Gold.text = GameManager.i.currentGold.ToString();
+        for (int i = 0; i < EnemySpawner.i.P1enemyInThisWaveList.Count; i++)
         {
-            if (thisEnemydata.index == EnemySpawner.i.enemyInThisWaveList[i].index && thisEnemydata.wave == EnemySpawner.i.enemyInThisWaveList[i].wave)
+            if (thisEnemydata.index == EnemySpawner.i.P1enemyInThisWaveList[i].index && thisEnemydata.wave == EnemySpawner.i.P1enemyInThisWaveList[i].wave)
             {
-                EnemySpawner.i.enemyInThisWaveList.Remove(EnemySpawner.i.enemyInThisWaveList[i]);
+                EnemySpawner.i.P1enemyInThisWaveList.Remove(EnemySpawner.i.P1enemyInThisWaveList[i]);
+                GameManager.i.P1currentMonster.text = GameManager.i.PlayerID + " 남은 몬스터 수 : " + EnemySpawner.i.P1enemyInThisWaveList.Count.ToString();
             }
         }
         Destroy(gameObject);

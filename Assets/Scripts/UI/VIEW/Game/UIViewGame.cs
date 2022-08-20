@@ -9,7 +9,7 @@ public class UIViewGame : MonoSingleton<UIViewGame>
 {
     [SerializeField] private ContextHolder _contextHolder;
     private ViewGameContext _context;
-
+    [SerializeField] private GameObject warningToolbar;
     public override void Init()
     {
         if (_contextHolder == null) _contextHolder = GetComponent<ContextHolder>();
@@ -19,11 +19,13 @@ public class UIViewGame : MonoSingleton<UIViewGame>
     }
     void Start()
     {
+        //메뉴
         _context.OnClickMenu = () =>
         {
             PopupManager.i.ShowPopup(_type.E_POPUP.POPUP_MENU);
 
         }; 
+        //업그레이드건물 버튼
         _context.OnClickCommon = () =>
         {
             UpgradeManager.i.CommonLevelUp();
@@ -41,6 +43,16 @@ public class UIViewGame : MonoSingleton<UIViewGame>
         {
             UpgradeManager.i.LegendaryLevelUp();
         };
+        //도박소 건물 버튼
+        _context.OnClickGambleGold = () =>
+        {
+            GambleManager.i.GoldGamble();
+        };
+        _context.OnClickGambleToken = () =>
+        {
+            GambleManager.i.TokenGamble();
+        };
+        //유닛 컨트롤
         _context.OnClickMove = () =>
         {
             MoveBtn();
@@ -92,5 +104,16 @@ public class UIViewGame : MonoSingleton<UIViewGame>
             RTSUnitController.i.selectedUnitList[i].shooter.status = SlimeStatus.Stop;
             RTSUnitController.i.selectedUnitList[i].Stop();
         }
+    }
+    public void WarningTextSetter(string msg)
+    {
+        CancelInvoke("SetOff");
+        warningToolbar.SetActive(true);
+        _context.SetValue("Text", msg);
+        Invoke("SetOff", 5f);
+    }
+    void SetOff()
+    {
+        warningToolbar.SetActive(false);
     }
 }

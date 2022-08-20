@@ -55,7 +55,10 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     int MaxCount;
     public int TestMaxCount;
     public List<EnemyData> enemyDataBaseList; //모든적의 정보
-    public List<EnemyData> enemyInThisWaveList; //모든적의 정보
+    public List<EnemyData> P1enemyInThisWaveList; //P1 현재 남은적의 정보
+    public List<EnemyData> P2enemyInThisWaveList; //P2 현재 남은적의 정보
+    public List<EnemyData> P3enemyInThisWaveList; //P3 현재 남은적의 정보
+    public List<EnemyData> P4enemyInThisWaveList; //P4 현재 남은적의 정보
     //웨이브 정보
     public int currentWave = 0;
 
@@ -101,17 +104,19 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
                     enemydata.index = monsterCount;
                     enemydata.enemyObject = enemyObject;
                     enemy.Setup(enemydata);
-                    enemyInThisWaveList.Add(enemydata);
+                    P1enemyInThisWaveList.Add(enemydata);
                 }
             }
+            GameManager.i.P1currentMonster.text = GameManager.i.PlayerID + " 남은 몬스터 수 : " + P1enemyInThisWaveList.Count.ToString();
             monsterCount++;
             yield return new WaitForSeconds(spawnTime);
         }
     }
     public void NextWave()//현재 웨이브 정보로 에너미 프리팹 바꿔치기
     {
+        currentWave++;
         //enemyPrefab 적오브젝트를 현재 웨이브정보 받아서  바꿔치기
-        for(int i = 0; i < enemyDataBaseList.Count; i++)
+        for (int i = 0; i < enemyDataBaseList.Count; i++)
         {
             if(enemyDataBaseList[i].wave == currentWave)
             {
@@ -128,6 +133,5 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
         }
         monsterCount = 0;
         CoroutineTrggier();
-        currentWave++;
     }
 }
