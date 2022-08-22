@@ -14,7 +14,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
 {
     [SerializeField] UpgradeData upgradeData;
     public const int commonUpgradeSpendGold = 10;
-    public const float commonUpgradeAttackpts = 3;
+    public const float commonUpgradeAttackpts = 10;
     public const float commonUpgradeAttackspeed = 0.05f;
     /// <summary>
     /// 일반타입 업그레이드 상수
@@ -40,7 +40,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     
     public void CommonLevelUp()
     {
-        if (upgradeData.commonUpgradeCount < 5)
+        if (upgradeData.commonUpgradeCount < 500)
         {
             if (GameManager.i.currentGold >= commonUpgradeSpendGold)
             {

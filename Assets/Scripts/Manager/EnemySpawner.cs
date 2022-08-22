@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 [Serializable]
@@ -94,6 +95,7 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
         {
             GameObject enemyObject = Instantiate(enemyPrefab, P1wayPoints[0].transform.position, Quaternion.identity); // 적 오브젝트 생성
             Enemy enemy = enemyObject.GetComponent<Enemy>(); // 방금 생성된 적의 Enmey 컴포넌트
+            HPGenerator(enemyObject);
             enemyObject.transform.parent = enemiesParent.transform;
             EnemyData enemydata = new EnemyData();
             for (int i = 0; i < enemyDataBaseList.Count; i++) //에너미 리스트에서 이름같은 에너미정보 가져와서 해당 에너미 정보에 에너미 정보 셋업
@@ -133,5 +135,42 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
         }
         monsterCount = 0;
         CoroutineTrggier();
+    }
+    [SerializeField] GameObject m_goPrefab = null;
+    [SerializeField] GameObject m_parents = null;
+    public List<GameObject> m_hpBarList = new List<GameObject>();
+
+    Camera m_cam;
+    private void Start()
+    {
+        m_cam = Camera.main;
+
+    }
+    private void Update()
+    {
+        for (int i = 0; i < P1enemyInThisWaveList.Count; i++)
+        {
+            m_hpBarList[i].transform.position = m_cam.WorldToScreenPoint(P1enemyInThisWaveList[i].enemyObject.transform.position + new Vector3(0, 1.15f, 1.15f));
+        }
+    }
+    public void HPGenerator(GameObject _go)
+    {
+        //m_objectList.Add(_go.transform);
+        GameObject t_hpbar = Instantiate(m_goPrefab, this.transform.position, Quaternion.identity, transform);
+        t_hpbar.transform.SetParent(m_parents.transform);
+        _go.GetComponent<Enemy>().HPbarSetup(t_hpbar);
+        m_hpBarList.Add(t_hpbar);
+    }
+    public void HPbarDecrease(Enemy enemy)
+    {
+        if (enemy.gameObject != null)
+        {
+            enemy.HpBar.GetComponentsInChildren<Image>()[1].fillAmount = (enemy.thisEnemydata.hp / enemy.TotalHP);
+        }
+    }
+    public void HPbarDestroy(GameObject _go)
+    {
+        m_hpBarList.Remove(_go);
+        Destroy(_go);
     }
 }

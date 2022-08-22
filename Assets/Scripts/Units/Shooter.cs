@@ -31,40 +31,47 @@ public class Shooter : MonoBehaviour
     {
         if (targetedEnemy.enemyObject != null)
         {
-            if (status != SlimeStatus.Hold) //스탑버튼 눌렀을때
+            if (!targetedEnemy.enemyObject.GetComponent<Enemy>().isDead)
             {
-                //distanceBetweenEnemy = Vector3.Distance(transform.position, enemies[0].enemyObject.transform.position);
-                distanceBetweenEnemy = Vector3.Distance(transform.position, targetedEnemy.enemyObject.transform.position);
-                if (distanceBetweenEnemy > radius && status != SlimeStatus.ForcedMove)// 사정거리 밖에 있을때 status가 강제이동이 아닐때
+                if (status != SlimeStatus.Hold) //스탑버튼 눌렀을때
                 {
-                    //unitController.MoveTo(enemies[0].enemyObject.transform.position);
-                    unitController.MoveTo(targetedEnemy.enemyObject.transform.position);
+                    //distanceBetweenEnemy = Vector3.Distance(transform.position, enemies[0].enemyObject.transform.position);
+                    distanceBetweenEnemy = Vector3.Distance(transform.position, targetedEnemy.enemyObject.transform.position);
+                    if (distanceBetweenEnemy > radius && status != SlimeStatus.ForcedMove)// 사정거리 밖에 있을때 status가 강제이동이 아닐때
+                    {
+                        //unitController.MoveTo(enemies[0].enemyObject.transform.position);
+                        unitController.MoveTo(targetedEnemy.enemyObject.transform.position);
+                    }
+                    else if (distanceBetweenEnemy <= radius && status != SlimeStatus.ForcedMove)// 사정거리 안에 있을때 status가 강제이동이 아닐때
+                    {
+                        unitController.Stop();
+                        animator.SetInteger("MoveInt", 2);
+                        //this.transform.LookAt(enemies[0].enemyObject.transform);
+                        unitController.transform.LookAt(targetedEnemy.enemyObject.transform);
+                    }
                 }
-                else if (distanceBetweenEnemy <= radius && status != SlimeStatus.ForcedMove)// 사정거리 안에 있을때 status가 강제이동이 아닐때
+                if (status == SlimeStatus.Hold) //홀드버튼 눌렀을때
                 {
-                    unitController.Stop();
-                    animator.SetInteger("MoveInt", 2);
-                    //this.transform.LookAt(enemies[0].enemyObject.transform);
-                    unitController.transform.LookAt(targetedEnemy.enemyObject.transform);
+                    //distanceBetweenEnemy = Vector3.Distance(transform.position, enemies[enemies.Count-1].enemyObject.transform.position);
+                    distanceBetweenEnemy = Vector3.Distance(transform.position, targetedEnemy.enemyObject.transform.position);
+                    if (distanceBetweenEnemy <= radius && status != SlimeStatus.ForcedMove)// 사정거리 안에 있을때 status가 강제이동이 아닐때
+                    {
+                        unitController.Stop();
+                        animator.SetInteger("MoveInt", 2);
+                        unitController.transform.LookAt(targetedEnemy.enemyObject.transform);
+                    }
+                    else if (distanceBetweenEnemy > radius && status != SlimeStatus.ForcedMove) // 사정거리 밖에 있을때 status가 강제이동이 아닐때
+                    {
+                        animator.SetInteger("MoveInt", 0);
+                    }
                 }
             }
-            if (status == SlimeStatus.Hold) //홀드버튼 눌렀을때
+            else if (status != SlimeStatus.ForcedMove && status != SlimeStatus.ForcedAttack)
             {
-                //distanceBetweenEnemy = Vector3.Distance(transform.position, enemies[enemies.Count-1].enemyObject.transform.position);
-                distanceBetweenEnemy = Vector3.Distance(transform.position, targetedEnemy.enemyObject.transform.position);
-                if (distanceBetweenEnemy <= radius && status != SlimeStatus.ForcedMove)// 사정거리 안에 있을때 status가 강제이동이 아닐때
-                {
-                    unitController.Stop();
-                    animator.SetInteger("MoveInt", 2);
-                    unitController.transform.LookAt(targetedEnemy.enemyObject.transform);
-                }
-                else if (distanceBetweenEnemy > radius && status != SlimeStatus.ForcedMove) // 사정거리 밖에 있을때 status가 강제이동이 아닐때
-                {
-                    animator.SetInteger("MoveInt", 0);
-                }
+                animator.SetInteger("MoveInt", 0);
             }
         }
-        else if(status != SlimeStatus.ForcedMove && status != SlimeStatus.ForcedAttack)
+        else if (status != SlimeStatus.ForcedMove && status != SlimeStatus.ForcedAttack)
         {
             animator.SetInteger("MoveInt", 0);
         }
@@ -77,9 +84,12 @@ public class Shooter : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            if (status != SlimeStatus.ForcedAttack)
+            if (!other.gameObject.GetComponent<Enemy>().isDead)
             {
-                targetedEnemy = other.gameObject.GetComponent<Enemy>().thisEnemydata;
+                if (status != SlimeStatus.ForcedAttack)
+                {
+                    targetedEnemy = other.gameObject.GetComponent<Enemy>().thisEnemydata;
+                }
             }
         }
     }
@@ -106,6 +116,5 @@ public class Shooter : MonoBehaviour
                 }
             }
         }
-        
     }
 }

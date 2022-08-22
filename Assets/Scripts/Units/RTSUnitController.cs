@@ -71,14 +71,15 @@ public class RTSUnitController : MonoSingleton<RTSUnitController>
 		for ( int i = 0; i < selectedUnitList.Count; ++ i )
 		{
 			selectedUnitList[i].MoveTo(end);
-            if (selectedUnitList[i].GetComponentInChildren<Shooter>().status == SlimeStatus.ForcedAttack)
-            {
-                selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedAttack;
-            }
-            else
-            {
-                selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedMove;
-            }
+			selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedMove;
+			//if (selectedUnitList[i].GetComponentInChildren<Shooter>().status == SlimeStatus.ForcedAttack)
+   //         {
+   //             selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedAttack;
+   //         }
+   //         else
+   //         {
+   //             selectedUnitList[i].GetComponentInChildren<Shooter>().status = SlimeStatus.ForcedMove;
+   //         }
         }
 		StopCoroutine("ClickAnimation");
 		StartCoroutine("ClickAnimation");

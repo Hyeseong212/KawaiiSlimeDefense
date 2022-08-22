@@ -295,6 +295,7 @@ MonoBehaviour:
   vfx: {fileID: 6886081587381949440}
   wayPoints: []
   skinnedMeshRenderer: {fileID: 3101748538028100031}
+  isDead: 0
   thisEnemydata:
     wave: 0
     index: 0
@@ -304,6 +305,9 @@ MonoBehaviour:
     hp: 0
     enemyObject: {fileID: 0}
     pos: {x: 0, y: 0, z: 0}
+  TotalHP: 0
+  HpBar: {fileID: 0}
+  rewardGold: {fileID: 9193254123394937452, guid: cbb11efae609b434d8f6e04b54d4698b, type: 3}
 --- !u!195 &1153443356654791628
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -405,7 +409,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3101748538017028249}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -18.326818, y: -23.66971, z: 14.895831}
 --- !u!1 &3101748538016531641
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,7 +441,7 @@ Transform:
   - {fileID: 3101748538017028247}
   m_Father: {fileID: 3101748538017028245}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -16.432219, y: -111.71409, z: 26.100271}
 --- !u!1 &3101748538016531643
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +472,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3101748538017028253}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -19.727957, y: -28.104532, z: 22.550968}
 --- !u!1 &3101748538016531645
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +504,7 @@ Transform:
   - {fileID: 3101748538017028251}
   m_Father: {fileID: 3101748538017028245}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 73.0563, y: 37.39409, z: 12.357219}
 --- !u!1 &3101748538016531647
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +536,7 @@ Transform:
   - {fileID: 3101748538017028245}
   m_Father: {fileID: 3101748538017028235}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -127.490746}
 --- !u!1001 &6887250404944555902
 PrefabInstance:
   m_ObjectHideFlags: 0
