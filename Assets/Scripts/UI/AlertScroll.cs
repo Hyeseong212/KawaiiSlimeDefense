@@ -35,7 +35,20 @@ public class AlertScroll : MonoSingleton<AlertScroll>
         {
             textRecord.Insert(0, "(일반타입) 노랑 슬라임을 얻었습니다.");
         }
+        else
+        {
+            return;
+        }
         GameObject text = Instantiate(textObject, textObjectParent.GetComponent<RectTransform>().anchoredPosition, Quaternion.identity) as GameObject;
+        text.GetComponent<RectTransform>().SetParent(textObjectParent.transform);
+        text.GetComponent<Text>().text = textRecord[0];
+        StartCoroutine(TextFade(text.GetComponent<Text>()));
+        Destroy(text, 10f);
+    }
+    public void CraftSlimeMsg(string msg)
+    {
+        textRecord.Insert(0, msg);
+        GameObject text = Instantiate(textObject);
         text.GetComponent<RectTransform>().SetParent(textObjectParent.transform);
         text.GetComponent<Text>().text = textRecord[0];
         StartCoroutine(TextFade(text.GetComponent<Text>()));

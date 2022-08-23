@@ -29,6 +29,8 @@ public class UnitController : MonoBehaviour
     GraphicRaycaster m_gr;
     PointerEventData m_ped;
     Canvas m_canvas;
+
+    int m_index;
     //public Button idleBut, walkBut, jumpBut, attackBut, damageBut0, damageBut1, damageBut2;
     private void Awake()
 	{
@@ -38,7 +40,6 @@ public class UnitController : MonoBehaviour
     private void Start()
     {
         slimeVector = GetComponent<Transform>();
-        faceMaterial = mainSlime.GetComponent<Renderer>().materials[1];
         shooter = GetComponentInChildren<Shooter>();
         for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
         {
@@ -124,7 +125,6 @@ public class UnitController : MonoBehaviour
         StopCoroutine("StopCheck");
         navMeshAgent.isStopped = false;
         animator.SetInteger("MoveInt",1);
-        SetFace(faces.WalkFace);
         navMeshAgent.SetDestination(end);
         distance  = Vector3.Distance(slimeVector.position ,end);
         remainTime = distance/ navMeshAgent.speed;
@@ -152,10 +152,7 @@ public class UnitController : MonoBehaviour
             UnitControllerPanel.i.UnitStatusInPanel();
         }
     }
-    void SetFace(Texture tex)
-    {
-        faceMaterial.SetTexture("_MainTex", tex);
-    }
+
     public void Stop()
     {
         animator.SetInteger("MoveInt", 0);
@@ -165,6 +162,17 @@ public class UnitController : MonoBehaviour
     {
         shooter.animator.SetFloat("attackspeed",slimedata.attackspeed);
         this.slimedata = slimedata;
+    }
+
+    public void DestroyThisSlime(GameObject thisObject)
+    {
+        for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++) 
+        {
+            if (thisObject == CraftManager.i.currentSceneSlimeData[i].Slime) 
+            {
+                CraftManager.i.currentSceneSlimeData.RemoveAt(i);
+            }
+        }
     }
 }
 
