@@ -9,8 +9,7 @@ public class UnitSpawner : MonoSingleton<UnitSpawner>
 	private GameObject slimesParent;
 	[SerializeField]
 	private	int			maxUnitCount;
-	[SerializeField]
-	private EnemySpawner enemySpawner;
+
 
 	private	Vector2	player1minSize = new Vector2(-42, 78);
 	private	Vector2 player1maxSize = new Vector2(-38, 82);

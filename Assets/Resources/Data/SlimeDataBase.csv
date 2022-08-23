@@ -6,8 +6,8 @@ Index,Type,Name,AttackType,Attackpts,Attackspeed
 4,Common,CommonSlime_Yellow,electro,25,1
 5,Rare,RareSlime_Soldier_Green,wind,50,1
 6,Rare,RareSlime_Soldier_Red,fire,300,0.5
-7,Rare,RareSlime_Viking_Green,electro,150,1
-8,Rare,RareSlime_Viking_Red,earth,50,2
+7,Rare,RareSlime_Viking_Yellow,electro,150,1
+8,Rare,RareSlime_Viking_Grey,earth,50,2
 9,Unique,UniqueSlime_Neko,water,500,1
 10,Unique,UniqueSlime_Queen,earth,250,2
 11,Unique,UniqueSlime_Sprout,fire,500,0.5

@@ -15,8 +15,15 @@ public class CraftManager : MonoSingleton<CraftManager>
         currentSceneSlimes = GameObject.FindGameObjectsWithTag("Slime");
         currentSceneSlimeData = SlimeDataController.i.SlimeDataObjectFinder(currentSceneSlimes);
     }
-    public void SlimeCraft()
+    public void RareSlime_Soldier_GreenSlimeCraft()
     {
+        SlimeCheck();
+        for(int i = 0; i < currentSceneSlimeData.Count; i++)
+        {
+            if(currentSceneSlimeData[i].Name == "CommonSlime_Green(Clone)")
+            {
 
+            }
+        }
     }
 }
