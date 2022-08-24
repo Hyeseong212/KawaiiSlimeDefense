@@ -1496,7 +1496,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\uB178\uB791\uB808\uC5B4"
 --- !u!1 &804243445804057262
 GameObject:
   m_ObjectHideFlags: 0
@@ -6973,7 +6973,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\uD68C\uC0C9\uB808\uC5B4"
 --- !u!1 &4666566315306570049
 GameObject:
   m_ObjectHideFlags: 0
@@ -9929,11 +9929,11 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 100, y: 40}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 2
-  m_ConstraintCount: 3
+  m_Constraint: 1
+  m_ConstraintCount: 5
 --- !u!1 &6321976008464348363
 GameObject:
   m_ObjectHideFlags: 0
@@ -12657,7 +12657,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "\uBE68\uAC15\uB808\uC5B4"
 --- !u!1 &8054090931988227375
 GameObject:
   m_ObjectHideFlags: 0

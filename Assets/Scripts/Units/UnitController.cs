@@ -10,7 +10,6 @@ public class UnitController : MonoBehaviour
 	[SerializeField]
 	private	GameObject		unitMarker;
 	private	NavMeshAgent	navMeshAgent;
-    public Face faces;
     Transform slimeVector;
     [SerializeField] Animator animator;
     public GameObject mainSlime;
@@ -104,59 +103,70 @@ public class UnitController : MonoBehaviour
             }
         }
     }
-    void StopToWall()
-    {
-
-    }
     
     public void SelectUnit()
 	{
-		unitMarker.SetActive(true);
+        if (this.gameObject != null)
+        {
+            unitMarker.SetActive(true);
+        }
 	}
 
 	public void DeselectUnit()
 	{
-		unitMarker.SetActive(false);
+        if (this.gameObject != null)
+        {
+            unitMarker.SetActive(false);
+        }
 	}
 
 	public void MoveTo(Vector3 end)
 	{
-        UnitControllerPanel.i.UnitStatusInPanel();
-        StopCoroutine("StopCheck");
-        navMeshAgent.isStopped = false;
-        animator.SetInteger("MoveInt",1);
-        navMeshAgent.SetDestination(end);
-        distance  = Vector3.Distance(slimeVector.position ,end);
-        remainTime = distance/ navMeshAgent.speed;
-        StartCoroutine("StopCheck");
+        if (this.gameObject != null)
+        {
+            UnitControllerPanel.i.UnitStatusInPanel();
+            StopCoroutine("StopCheck");
+            navMeshAgent.isStopped = false;
+            animator.SetInteger("MoveInt", 1);
+            navMeshAgent.SetDestination(end);
+            distance = Vector3.Distance(slimeVector.position, end);
+            remainTime = distance / navMeshAgent.speed;
+            StartCoroutine("StopCheck");
+        }
     }
     IEnumerator StopCheck()
     {
-        yield return new WaitForSeconds(remainTime);
-        isWaitForCommand = false;
-        animator.SetInteger("MoveInt", 0);
-        navMeshAgent.isStopped = true;
-        if (shooter.status == SlimeStatus.Hold) 
+        if (this.gameObject != null)
         {
-            shooter.status = SlimeStatus.Hold;
-            UnitControllerPanel.i.UnitStatusInPanel();
-        }
-        else if(shooter.status == SlimeStatus.ForcedAttack)
-        {
-            shooter.status = SlimeStatus.ForcedAttack;
-            UnitControllerPanel.i.UnitStatusInPanel();
-        }
-        else
-        {
-            shooter.status = SlimeStatus.Stop;
-            UnitControllerPanel.i.UnitStatusInPanel();
+            yield return new WaitForSeconds(remainTime);
+            isWaitForCommand = false;
+            animator.SetInteger("MoveInt", 0);
+            navMeshAgent.isStopped = true;
+            if (shooter.status == SlimeStatus.Hold)
+            {
+                shooter.status = SlimeStatus.Hold;
+                UnitControllerPanel.i.UnitStatusInPanel();
+            }
+            else if (shooter.status == SlimeStatus.ForcedAttack)
+            {
+                shooter.status = SlimeStatus.ForcedAttack;
+                UnitControllerPanel.i.UnitStatusInPanel();
+            }
+            else
+            {
+                shooter.status = SlimeStatus.Stop;
+                UnitControllerPanel.i.UnitStatusInPanel();
+            }
         }
     }
 
     public void Stop()
     {
-        animator.SetInteger("MoveInt", 0);
-        navMeshAgent.isStopped = true;
+        if (this.gameObject != null)
+        {
+            animator.SetInteger("MoveInt", 0);
+            navMeshAgent.isStopped = true;
+        }
     }
     public void SetupData(SlimeData slimedata)
     {
@@ -164,13 +174,17 @@ public class UnitController : MonoBehaviour
         this.slimedata = slimedata;
     }
 
-    public void DestroyThisSlime(GameObject thisObject)
+
+    private void OnDestroy()
     {
-        for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++) 
+        if (CraftManager.i.currentSceneSlimeData != null)
         {
-            if (thisObject == CraftManager.i.currentSceneSlimeData[i].Slime) 
+            for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
             {
-                CraftManager.i.currentSceneSlimeData.RemoveAt(i);
+                if (this.gameObject == CraftManager.i.currentSceneSlimeData[i].Slime)
+                {
+                    CraftManager.i.currentSceneSlimeData.RemoveAt(i);
+                }
             }
         }
     }

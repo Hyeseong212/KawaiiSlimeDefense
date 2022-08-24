@@ -22,7 +22,7 @@ public class UnitSpawner : MonoSingleton<UnitSpawner>
 		for ( int i = 0; i < maxUnitCount; ++ i )
 		{
 			Vector3 position = new Vector3(Random.Range(player1minSize.x, player1maxSize.x), 1, Random.Range(player1minSize.y, player1maxSize.y));
-			int randomUnit = Random.Range(0, 2);
+			int randomUnit = Random.Range(0, unitPrefab.Length);
 
 			GameObject slimes = Instantiate(unitPrefab[randomUnit], position, Quaternion.identity);
 			slimes.transform.parent = slimesParent.transform;

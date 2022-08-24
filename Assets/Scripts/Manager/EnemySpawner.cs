@@ -150,7 +150,10 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     {
         for (int i = 0; i < P1enemyInThisWaveList.Count; i++)
         {
-            m_hpBarList[i].transform.position = m_cam.WorldToScreenPoint(P1enemyInThisWaveList[i].enemyObject.transform.position + new Vector3(0, 1.15f, 1.15f));
+            if (m_hpBarList[i] != null)
+            {
+                m_hpBarList[i].transform.position = m_cam.WorldToScreenPoint(P1enemyInThisWaveList[i].enemyObject.transform.position + new Vector3(0, 1.15f, 1.15f));
+            }
         }
     }
     public void HPGenerator(GameObject _go)

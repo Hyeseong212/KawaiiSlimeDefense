@@ -19,19 +19,19 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     /// <summary>
     /// 일반타입 업그레이드 상수
     /// </summary>
-    public const int rareUpgradeSpendGold = 20;
-    public const float rareUpgradeAttackpts = 20;
+    public const int rareUpgradeSpendGold = 40;
+    public const float rareUpgradeAttackpts = 40;
     public const float rareUpgradeAttackspeed = 0.1f;
     /// <summary>
     /// 레어타입 업그레이드 상수
     /// </summary>
-    public const int uniqueUpgradeSpendGold = 60;
+    public const int uniqueUpgradeSpendGold = 100;
     public const float uniqueUpgradeAttackpts = 100;
     public const float uniqueUpgradeAttackspeed = 0.3f;
     /// <summary>
     /// 유니크타입 업그레이드 상수
     /// </summary>
-    public const int legendaryUpgradeSpendGold = 100;
+    public const int legendaryUpgradeSpendGold = 250;
     public const float legnedaryUpgradeAttackpts = 250;
     public const float legnedaryUpgradeAttackspeed = 0.5f;
     /// <summary>
@@ -40,7 +40,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     
     public void CommonLevelUp()
     {
-        if (upgradeData.commonUpgradeCount < 500)
+        if (upgradeData.commonUpgradeCount < 5)
         {
             if (GameManager.i.currentGold >= commonUpgradeSpendGold)
             {
@@ -127,6 +127,10 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                            CraftManager.i.currentSceneSlimeData[i].attackspeed + rareUpgradeAttackspeed
                            );
                 }///현재씬 슬라임 업그레이드
+                for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+                {
+                    CraftManager.i.currentSceneSlimeData[i].Slime.GetComponent<UnitController>().SetupData(CraftManager.i.currentSceneSlimeData[i]);
+                }
                 upgradeData.rareUpgradeCount++;
             }
             else
@@ -174,7 +178,10 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                            CraftManager.i.currentSceneSlimeData[i].attackspeed + uniqueUpgradeAttackspeed
                            );
                 }///현재씬 슬라임 업그레이드
-
+                for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+                {
+                    CraftManager.i.currentSceneSlimeData[i].Slime.GetComponent<UnitController>().SetupData(CraftManager.i.currentSceneSlimeData[i]);
+                }
                 upgradeData.uniqueUpgradeCount++;
             }
             else
@@ -222,6 +229,10 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
                            CraftManager.i.currentSceneSlimeData[i].attackspeed + legnedaryUpgradeAttackspeed
                            );
                 }///현재씬 슬라임 업그레이드
+                for (int i = 0; i < CraftManager.i.currentSceneSlimeData.Count; i++)
+                {
+                    CraftManager.i.currentSceneSlimeData[i].Slime.GetComponent<UnitController>().SetupData(CraftManager.i.currentSceneSlimeData[i]);
+                }
                 upgradeData.legendaryUpgradeCount++; 
             }
             else
