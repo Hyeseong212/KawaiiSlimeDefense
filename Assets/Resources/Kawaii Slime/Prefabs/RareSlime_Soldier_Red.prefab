@@ -272,8 +272,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c96ff54dcb33544b356015d527e037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1032096471364102, guid: a2c07a27148de964a9cbfdcffd9249f8, type: 3}
-  shootPrefab: {fileID: 1347307786625236, guid: 6cd27a50300cda2478e9c46d461af89e, type: 3}
+  bulletPrefab: {fileID: 1079946990457772, guid: 99bb33b8e07ff1e4da047868339ca80d, type: 3}
+  shootPrefab: {fileID: 1258350160538612, guid: 368dc3948e8c73e44b7cd3a5f3e7b89f, type: 3}
   animator: {fileID: 7371272925727630728}
   tr: {fileID: 0}
   enemies: []
@@ -715,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198308026754324882, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198308026754324882, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198655544054478998, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.9964248
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 198655544054478998, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r

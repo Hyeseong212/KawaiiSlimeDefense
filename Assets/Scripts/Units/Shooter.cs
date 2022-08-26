@@ -99,7 +99,7 @@ public class Shooter : MonoBehaviour
         {
             if (enemies.Count != 0 || targetedEnemy.pos != Vector3.zero)
             {
-                if (targetedEnemy.enemyObject != null)
+                if (targetedEnemy.enemyObject != null && !targetedEnemy.enemyObject.GetComponent<Enemy>().isDead)
                 {
                     if (status != SlimeStatus.Hold)
                     {

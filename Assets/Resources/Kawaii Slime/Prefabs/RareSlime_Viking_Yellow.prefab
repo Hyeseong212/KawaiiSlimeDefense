@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c96ff54dcb33544b356015d527e037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1032096471364102, guid: a2c07a27148de964a9cbfdcffd9249f8, type: 3}
-  shootPrefab: {fileID: 1347307786625236, guid: 6cd27a50300cda2478e9c46d461af89e, type: 3}
+  bulletPrefab: {fileID: 1395565506770744, guid: ec3794cbed4285445b44fa6c1a42d764, type: 3}
+  shootPrefab: {fileID: 1260406355032221041, guid: 726f4a4011d06c646858a7176d4462a4, type: 3}
   animator: {fileID: 8348851277053790300}
   tr: {fileID: 0}
   enemies: []
