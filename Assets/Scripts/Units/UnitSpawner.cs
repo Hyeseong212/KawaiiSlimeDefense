@@ -8,7 +8,7 @@ public class UnitSpawner : MonoSingleton<UnitSpawner>
 	[SerializeField]
 	private GameObject slimesParent;
 	[SerializeField]
-	private	int			maxUnitCount;
+	public	int			maxUnitCount;
 
 
 	private	Vector2	player1minSize = new Vector2(-42, 78);
@@ -24,7 +24,7 @@ public class UnitSpawner : MonoSingleton<UnitSpawner>
 			Vector3 position = new Vector3(Random.Range(player1minSize.x, player1maxSize.x), 1, Random.Range(player1minSize.y, player1maxSize.y));
 			int randomUnit = Random.Range(0, 5);
 
-			GameObject slimes = Instantiate(unitPrefab[6], position, Quaternion.identity);
+			GameObject slimes = Instantiate(unitPrefab[randomUnit], position, Quaternion.identity);
 			slimes.transform.parent = slimesParent.transform;
 			AlertScroll.i.SlimeGeneSetter(slimes);
 			UnitController unit	= slimes.GetComponent<UnitController>();

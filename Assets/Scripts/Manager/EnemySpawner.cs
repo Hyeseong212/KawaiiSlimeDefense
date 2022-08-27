@@ -54,6 +54,7 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
 
     int monsterCount=0;
     int MaxCount;
+    float difficulty;
     public int TestMaxCount;
     public List<EnemyData> enemyDataBaseList; //모든적의 정보
     public List<EnemyData> P1enemyInThisWaveList; //P1 현재 남은적의 정보
@@ -66,6 +67,22 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
     // 적의 생성과 삭제는 EnemySpawner에서 하기 때문에 Set은 필요없다
     private void Awake()
     {
+        if (GameManager.i.gameDifficulty == GameDifficulty.Easy)
+        {
+            difficulty = 1;
+        }
+        else if (GameManager.i.gameDifficulty == GameDifficulty.Normal)
+        {
+            difficulty = 1.5f;
+        }
+        else if (GameManager.i.gameDifficulty == GameDifficulty.Hard)
+        {
+            difficulty = 2f;
+        }
+        else if (GameManager.i.gameDifficulty == GameDifficulty.Hell)
+        {
+            difficulty = 4f;
+        }
         //적리스트 메모리 할당
         EnemyData enemyData = new EnemyData();
         enemyDataBaseList = new List<EnemyData>();
@@ -78,7 +95,7 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             enemyData.type = (string)data[i]["Type"];
             enemyData.name = (string)data[i]["Name"];
             enemyData.speed = Convert.ToSingle(data[i]["Speed"]);
-            enemyData.hp = Convert.ToSingle(data[i]["HP"]);
+            enemyData.hp = Convert.ToSingle(data[i]["HP"])*difficulty;
             GameObject enemy = Resources.Load<GameObject>("NewPrefabs/Enemies/" + enemyData.name);
             enemyData.enemyObject = enemy;
             enemyData.pos = Vector3.zero;

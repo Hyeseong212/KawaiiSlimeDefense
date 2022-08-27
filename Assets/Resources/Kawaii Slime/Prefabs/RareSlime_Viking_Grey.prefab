@@ -425,14 +425,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7057011705090625234}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.65, z: 0.5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6312573360258431772}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &7318043695587061322
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -444,7 +444,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 15
+  m_Radius: 4
   m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!114 &1682441636882164702
 MonoBehaviour:
@@ -458,8 +458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c96ff54dcb33544b356015d527e037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1032096471364102, guid: a2c07a27148de964a9cbfdcffd9249f8, type: 3}
-  shootPrefab: {fileID: 1347307786625236, guid: 6cd27a50300cda2478e9c46d461af89e, type: 3}
+  bulletPrefab: {fileID: 1343504842343394, guid: bfedd7edb91805e43be887b20a6ab91d, type: 3}
+  shootPrefab: {fileID: 1902990887318610, guid: bb00dd494b4d4c7448f1df148e0aab8d, type: 3}
   animator: {fileID: 7395195807752291563}
   tr: {fileID: 0}
   enemies: []
@@ -530,7 +530,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8437696016901413969}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -538,7 +538,7 @@ Transform:
   - {fileID: 9011977493725603791}
   m_Father: {fileID: 6312573360258431772}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!95 &7395195807752291563
 Animator:
   serializedVersion: 4

@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     SlimeData slimedata;
     [SerializeField] float bulletSpeed;
     [SerializeField] GameObject HitVfx;
+    [SerializeField] GameObject HitVfxFroRareGreySlime;
     private List<GameObject> enemyList;
     private float cushion;
 
@@ -18,7 +19,7 @@ public class Bullet : MonoBehaviour
         enemyList.Add(enemy);
         this.enemy = enemy;
         this.slimedata = slimedata;
-        maxChainCount = 0;
+        maxChainCount = 1;
         cushion = 1;
         StartCoroutine("ChaseEnemy");
     }
@@ -37,11 +38,11 @@ public class Bullet : MonoBehaviour
                     {
                         enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts * cushion);
                         enemy.GetComponent<Enemy>().Hit();
-                        if (maxChainCount <= 2)
+                        if (maxChainCount <= 3)
                         {
-                            NextMoveTo();
+                            NextMoveTo(4);
                         }
-                        else if(maxChainCount == 3)
+                        else if(maxChainCount == 4)
                         {
                             Destroy(this.gameObject);
                         }
@@ -52,7 +53,39 @@ public class Bullet : MonoBehaviour
                         GameObject BoomVfx = Instantiate(HitVfx, transform.position,Quaternion.Euler(270,0,0));
                         BoomVfx.GetComponent<Fireball>().Damage = slimedata.attackpts;
                         Destroy(this.gameObject);
-                    }
+                    }//레어 빨강슬라임
+                    else if(gameObject.name == "Piercer(Clone)")
+                    {
+                        //3명을 뚫고감
+                        enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
+                        enemy.GetComponent<Enemy>().Hit();
+                        if (maxChainCount <= 2)
+                        {
+                            NextMoveTo(2);
+                        }
+                        else if (maxChainCount == 3)
+                        {
+                            Destroy(this.gameObject);
+                        }
+                    }//레어 초록슬라임
+                    else if (gameObject.name == "RareSlimePunch(Clone)")
+                    {
+                        int random = Random.Range(0, 2);
+                        if(random == 0)//일반 공격
+                        {
+                            enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
+                            enemy.GetComponent<Enemy>().Hit();
+                            Instantiate(HitVfx, transform.position, Quaternion.Euler(270, 0, 0));
+                        }
+                        else//특수공격
+                        {
+                            GameObject BoomVfx = Instantiate(HitVfxFroRareGreySlime, transform.position, Quaternion.Euler(0, 0, 0));
+                            BoomVfx.GetComponent<GroundPunching>().Damage = slimedata.attackpts;
+                            Destroy(this.gameObject);
+
+                        }
+                        Destroy(this.gameObject);
+                    }//레어 회색슬라임
                     else
                     {
                         enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
@@ -69,11 +102,11 @@ public class Bullet : MonoBehaviour
             yield return null;
         }
     }
-    private void NextMoveTo()
+    private void NextMoveTo(int maxcount)
     {
         maxChainCount++;
         cushion = cushion * 0.5f;
-        if (enemyList.Count <= 3)
+        if (enemyList.Count <= maxcount)
         {
             enemy = enemyList[enemyList.Count-1];
         }

@@ -525,8 +525,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c96ff54dcb33544b356015d527e037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1032096471364102, guid: a2c07a27148de964a9cbfdcffd9249f8, type: 3}
-  shootPrefab: {fileID: 1347307786625236, guid: 6cd27a50300cda2478e9c46d461af89e, type: 3}
+  bulletPrefab: {fileID: 1764308443362498, guid: 75572b6f9f0505a469728323170ee988, type: 3}
+  shootPrefab: {fileID: 1437680763721510, guid: 19a7605cbcd455340b6dfb8687d1e50b, type: 3}
   animator: {fileID: 6509641137215170063}
   tr: {fileID: 0}
   enemies: []

@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum PlayerNumber { Player1, Player2, Player3, Player4 }
+public enum GameDifficulty { Easy, Normal, Hard, Hell}
 public class GameManager : MonoSingleton<GameManager>
 {
     bool isfirst;
     public PlayerNumber playerNumber;
+    public GameDifficulty gameDifficulty;
     public string PlayerID;
     [Header("웨이브")]
     public float testFirstWaveTime = 0;
@@ -86,6 +88,9 @@ public class GameManager : MonoSingleton<GameManager>
                 }
                 else //웨이브시작
                 {
+                    UnitSpawner.i.maxUnitCount = 2;
+                    UnitSpawner.i.SpawnUnitsPlayer1();
+                    CraftManager.i.SlimeCheck();
                     uiWaveTime = testSecondWaveTime;
                     waveTime = testSecondWaveTime;
                     EnemySpawner.i.NextWave();
