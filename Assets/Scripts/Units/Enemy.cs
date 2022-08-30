@@ -84,7 +84,10 @@ public class Enemy : MonoBehaviour
             OnMouseEnter();
         }
     }
-
+    private void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -93,7 +96,6 @@ public class Enemy : MonoBehaviour
         outlineSeleted = new Material(Shader.Find("Draw/OutlineShaderSelected"));
         outlineClicked = new Material(Shader.Find("Draw/OutlineShaderClicked"));
         renderers = skinnedMeshRenderer.GetComponent<Renderer>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
         wayPointCount = EnemySpawner.i.P1wayPoints.Length;
         wayPoints = new Transform[EnemySpawner.i.P1wayPoints.Length];
         wayPoints = EnemySpawner.i.P1wayPoints; //웨이포인트 저장
@@ -147,6 +149,7 @@ public class Enemy : MonoBehaviour
     public void Setup(EnemyData enemydata)
     {
         thisEnemydata = enemydata;
+        SpeedChange(thisEnemydata.speed);
         TotalHP = thisEnemydata.hp;
     }
     void ToEnemyController()
@@ -217,5 +220,22 @@ public class Enemy : MonoBehaviour
     public void HPbarSetup(GameObject Hpbar)
     {
         HpBar = Hpbar;
+    }
+    public void SpeedChange(float _speed)
+    {
+        if (navMeshAgent != null)
+        {
+            if (navMeshAgent.speed != 0)
+            {
+                navMeshAgent.speed = _speed;
+            }
+        }
+    }
+    public void Stunned(float _speed)
+    {
+        if (navMeshAgent != null)
+        {
+            navMeshAgent.speed = _speed;
+        }
     }
 }

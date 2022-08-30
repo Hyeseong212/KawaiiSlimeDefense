@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class ParticleCollisionInstance : MonoBehaviour
 {
     public GameObject[] EffectsOnCollision;
-    public float DestroyTimeDelay = 5;
+    public float DestroyTimeDelay = 1;
     public bool UseWorldSpacePosition;
     public float Offset = 0;
     public Vector3 rotationOffset = new Vector3(0,0,0);

@@ -104,12 +104,20 @@ public class Shooter : MonoBehaviour
                     if (status != SlimeStatus.Hold)
                     {
                         GameObject bullet = Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+                        if (gameObject.GetComponent<SkillCoolTime>() != null)//스킬쿨타임 컴포넌트가 있을경우만 넣어주셈
+                        {
+                            bullet.GetComponent<Bullet>()._skillCoolTime = gameObject.GetComponent<SkillCoolTime>();//스킬쿨돌리기위한 셋업
+                        }
                         Instantiate(shootPrefab, this.transform.position, this.transform.rotation);
                         bullet.GetComponent<Bullet>().Setup(targetedEnemy.enemyObject, unitController.slimedata);
                     }
                     else if (status == SlimeStatus.Hold)
                     {
                         GameObject bullet = Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+                        if (gameObject.GetComponent<SkillCoolTime>() != null)//스킬쿨타임 컴포넌트가 있을경우만 넣어주셈
+                        {
+                            bullet.GetComponent<Bullet>()._skillCoolTime = gameObject.GetComponent<SkillCoolTime>();//스킬쿨돌리기위한 셋업
+                        }
                         GameObject flash = Instantiate(shootPrefab, this.transform.position, this.transform.rotation);
                         bullet.GetComponent<Bullet>().Setup(targetedEnemy.enemyObject, unitController.slimedata);
                     }

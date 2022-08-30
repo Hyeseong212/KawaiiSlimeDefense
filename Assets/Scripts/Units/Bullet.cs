@@ -10,6 +10,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] float bulletSpeed;
     [SerializeField] GameObject HitVfx;
     [SerializeField] GameObject HitVfxFroRareGreySlime;
+    [SerializeField] GameObject HitVfxFroUniqueNekoSlime;
+    [SerializeField] GameObject HitVfxFroUniqueQueenSlime;
+    [SerializeField] GameObject HitVfxFroUniqueSproutSlime;
+
+    public SkillCoolTime _skillCoolTime;
+
     private List<GameObject> enemyList;
     private float cushion;
 
@@ -86,6 +92,71 @@ public class Bullet : MonoBehaviour
                         }
                         Destroy(this.gameObject);
                     }//레어 회색슬라임
+                    else if(gameObject.name == "UniqueNekoBullet(Clone)")
+                    {
+                        int random = Random.Range(0, 101);
+                        if(random <= 20 && !_skillCoolTime.isCoolTime) 
+                        {
+                            GameObject PoisonStage = Instantiate(HitVfxFroUniqueNekoSlime, transform.position, Quaternion.Euler(0, 0, 0));
+                            PoisonStage.GetComponent<SlowStage>().Damage = slimedata.attackpts;
+                            PoisonStage.GetComponent<SlowStage>().CoroutineTrigger();
+                            _skillCoolTime.SkillCoolTimeCoroutineTrigger();
+                            enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
+                            enemy.GetComponent<Enemy>().Hit();
+                            Instantiate(HitVfx, transform.position, Quaternion.identity);
+                            Destroy(this.gameObject);
+                        }
+                        else
+                        {
+                            enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
+                            enemy.GetComponent<Enemy>().Hit();
+                            Instantiate(HitVfx, transform.position, Quaternion.identity);
+                            Destroy(this.gameObject);
+                        }
+
+                    }//유니크 네코
+                    else if(gameObject.name == "UniqueQueenBullet(Clone)")
+                    {
+                        int random = Random.Range(0, 101);
+                        if (random <= 20 && !_skillCoolTime.isCoolTime)
+                        {
+                            GameObject CuteSmash = Instantiate(HitVfxFroUniqueQueenSlime, transform.position, Quaternion.Euler(0, 0, 0));
+                            _skillCoolTime.SkillCoolTimeCoroutineTrigger();
+                            enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
+                            enemy.GetComponent<Enemy>().Hit();
+                            Instantiate(HitVfx, transform.position, Quaternion.identity);
+                            Destroy(this.gameObject);
+                        }
+                        else
+                        {
+                            enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
+                            enemy.GetComponent<Enemy>().Hit();
+                            Instantiate(HitVfx, transform.position, Quaternion.identity);
+                            Destroy(this.gameObject);
+                        }
+                    }//유니크 퀸
+                    else if (gameObject.name == "UniqueSproutBullet(Clone)")
+                    {
+                        int random = Random.Range(0, 101);
+                        if (random <= 30 && !_skillCoolTime.isCoolTime)
+                        {
+                            GameObject MeteorShower = Instantiate(HitVfxFroUniqueSproutSlime, transform.position+ new Vector3(0,3,0), Quaternion.Euler(0, 0, 0));
+                            MeteorShower.GetComponent<MeteorShower>().Damage = slimedata.attackpts;
+                            MeteorShower.GetComponent<MeteorShower>().CoroutineTrigger();
+                            enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
+                            enemy.GetComponent<Enemy>().Hit();
+                            _skillCoolTime.SkillCoolTimeCoroutineTrigger();
+                            Instantiate(HitVfx, transform.position, Quaternion.identity);
+                            Destroy(this.gameObject);
+                        }
+                        else
+                        {
+                            enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
+                            enemy.GetComponent<Enemy>().Hit();
+                            Instantiate(HitVfx, transform.position, Quaternion.identity);
+                            Destroy(this.gameObject);
+                        }
+                    }//유니크 새싹
                     else
                     {
                         enemy.GetComponent<Enemy>().thisEnemydata.hp = enemy.GetComponent<Enemy>().thisEnemydata.hp - (slimedata.attackpts);
@@ -102,6 +173,7 @@ public class Bullet : MonoBehaviour
             yield return null;
         }
     }
+
     private void NextMoveTo(int maxcount)
     {
         maxChainCount++;

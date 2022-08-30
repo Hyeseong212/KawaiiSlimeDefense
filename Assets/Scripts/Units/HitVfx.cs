@@ -6,7 +6,7 @@ public class HitVfx : MonoBehaviour
 {
     void Start()
     {
-        Invoke("DestroyThis", 0.5f);
+        Invoke("DestroyThis", 1f);
     }
     private void DestroyThis()
     {

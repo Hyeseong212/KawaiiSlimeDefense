@@ -77,11 +77,11 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
         }
         else if (GameManager.i.gameDifficulty == GameDifficulty.Hard)
         {
-            difficulty = 2f;
+            difficulty = 3f;
         }
         else if (GameManager.i.gameDifficulty == GameDifficulty.Hell)
         {
-            difficulty = 4f;
+            difficulty = 6f;
         }
         //적리스트 메모리 할당
         EnemyData enemyData = new EnemyData();
