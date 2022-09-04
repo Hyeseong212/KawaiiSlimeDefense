@@ -19,8 +19,8 @@ Wave,Index,Type,Name,Speed,HP
 18,17,normal,Turnipa_Sour,5,60000
 19,18,normal,Turnipa_Sweet,5,70000
 20,19,boss,Devil_Tree_Nightmare,9,800000
-21,20,normal,Turnipa_Bitter,5,100000
-22,21,normal,Beez_Strawbery,5,120000
-23,22,normal,Beez_Honey,5,140000
-24,23,normal,Beez_Darkness,5,160000
-25,24,boss,Flower Dryad,9,1800000
+21,20,normal,Turnipa_Bitter,5,150000
+22,21,normal,Beez_Strawbery,5,200000
+23,22,normal,Beez_Honey,5,250000
+24,23,normal,Beez_Darkness,5,300000
+25,24,boss,Flower Dryad,9,4000000

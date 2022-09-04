@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 82820276732194086}
   - component: {fileID: 2291189433673620871}
   - component: {fileID: 6466505803167169752}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Meteor shower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

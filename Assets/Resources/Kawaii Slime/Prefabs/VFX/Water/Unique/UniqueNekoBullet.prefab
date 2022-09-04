@@ -9673,7 +9673,7 @@ GameObject:
   - component: {fileID: 198769173318898536}
   - component: {fileID: 199578215912376750}
   - component: {fileID: 3423293001971197457}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: UniqueNekoBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14560,8 +14560,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  FrontPos: {x: 0, y: 0, z: 0}
   bulletSpeed: 25
   HitVfx: {fileID: 1612276239566916, guid: 560bfd93e6b4d7f46bea4bc2af4917de, type: 3}
   HitVfxFroRareGreySlime: {fileID: 0}
   HitVfxFroUniqueNekoSlime: {fileID: 1598533638775410, guid: 4c6498d89ab42954bafef3c97716f68e, type: 3}
-  skillCoolTime: 5
+  HitVfxFroUniqueQueenSlime: {fileID: 0}
+  HitVfxFroUniqueSproutSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime2: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime2: {fileID: 0}
+  _skillCoolTime: {fileID: 0}

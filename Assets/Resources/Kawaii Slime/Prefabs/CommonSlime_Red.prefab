@@ -353,7 +353,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMarker: {fileID: 2444259791511444702}
-  faces: {fileID: 11400000, guid: 8b8a7554fceb39841840f45a2d8da540, type: 2}
   animator: {fileID: 7395658232739677457}
   mainSlime: {fileID: 2669671996729381096}
   slimedata:
@@ -364,6 +363,8 @@ MonoBehaviour:
     attackType: 
     attackpts: 0
     attackspeed: 0
+  shooter: {fileID: 0}
+  isWaitForCommand: 0
 --- !u!195 &5859793756697268803
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -597,6 +598,10 @@ PrefabInstance:
     - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: m_Name
       value: Marker 5 Loop
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: m_IsActive

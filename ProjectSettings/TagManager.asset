@@ -9,6 +9,7 @@ TagManager:
   - POPUP
   - Enemy
   - Building
+  - Edge
   layers:
   - Default
   - TransparentFX

@@ -4849,7 +4849,7 @@ GameObject:
   - component: {fileID: 198174953248088352}
   - component: {fileID: 199541557569965598}
   - component: {fileID: -5752337728534732364}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: UniqueSproutBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9755,12 +9755,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  FrontPos: {x: 0, y: 0, z: 0}
   bulletSpeed: 30
   HitVfx: {fileID: 1220213892471706, guid: 2abf3802ebff3124aa30613762353137, type: 3}
   HitVfxFroRareGreySlime: {fileID: 0}
   HitVfxFroUniqueNekoSlime: {fileID: 0}
   HitVfxFroUniqueQueenSlime: {fileID: 0}
   HitVfxFroUniqueSproutSlime: {fileID: 1090634406790140, guid: 683afb17140fffe4292bf74693712227, type: 3}
+  HitVfxFroLegendaryKingSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime2: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime2: {fileID: 0}
   _skillCoolTime: {fileID: 0}
 --- !u!1 &1620116646029536
 GameObject:

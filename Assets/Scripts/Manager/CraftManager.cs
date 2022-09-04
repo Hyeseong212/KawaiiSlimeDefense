@@ -92,10 +92,10 @@ public class CraftManager : MonoSingleton<CraftManager>
         int redCount = 0;
 
         bool redOk = false;
-        bool greyOk = false;
+        bool blueOk = false;
         GameObject redSlime = null;
         GameObject redSlime2 = null;
-        GameObject greySlime = null;
+        GameObject blueSlime = null;
         for (int i = 0; i < currentSceneSlimeData.Count; i++)
         {
             if (currentSceneSlimeData[i].Slime.name == "CommonSlime_Red(Clone)")
@@ -116,20 +116,20 @@ public class CraftManager : MonoSingleton<CraftManager>
         }
         for (int i = 0; i < currentSceneSlimeData.Count; i++)
         {
-            if (currentSceneSlimeData[i].Slime.name == "CommonSlime_Grey(Clone)")
+            if (currentSceneSlimeData[i].Slime.name == "CommonSlime_Blue(Clone)")
             {
-                greySlime = currentSceneSlimeData[i].Slime;
-                greyOk = true;
+                blueSlime = currentSceneSlimeData[i].Slime;
+                blueOk = true;
                 break;
             }
         }
-        if (redOk && greyOk)
+        if (redOk && blueOk)
         {
-            if (redSlime != null && redSlime2 != null && greySlime != null)
+            if (redSlime != null && redSlime2 != null && blueSlime != null)
             {
                 Destroy(redSlime);
                 Destroy(redSlime2);
-                Destroy(greySlime);
+                Destroy(blueSlime);
                 Vector3 position = new Vector3(Random.Range(player1minSize.x, player1maxSize.x), 1, Random.Range(player1minSize.y, player1maxSize.y));
                 GameObject slime = Instantiate(SlimeDataController.i.slimeDataBaseList[6].Slime, position, Quaternion.identity);
                 slime.transform.parent = slimeParent.transform;
@@ -145,12 +145,12 @@ public class CraftManager : MonoSingleton<CraftManager>
         {
             AlertScroll.i.CraftSlimeMsg("빨강슬라임이 한개 모자릅니다");
         }
-        if (!greyOk)
+        if (!blueOk)
         {
-            AlertScroll.i.CraftSlimeMsg("회색슬라임이 한개 모자릅니다");
+            AlertScroll.i.CraftSlimeMsg("파랑슬라임이 한개 모자릅니다");
         }
         SlimeCheck();
-    }//RareSlime_Soldier_Green 크래프팅 빨강 + 빨강 + 회색
+    }//RareSlime_Soldier_Green 크래프팅 빨강 + 빨강 + 파랑
     public void RareSlime_Viking_YellowSlimeCraft()
     {
         SlimeCheck();
@@ -182,7 +182,7 @@ public class CraftManager : MonoSingleton<CraftManager>
         }
         for (int i = 0; i < currentSceneSlimeData.Count; i++)
         {
-            if (currentSceneSlimeData[i].Slime.name == "CommonSlime_Green(Clone)")//다른 포문으로 돌려보자 break걸기위함
+            if (currentSceneSlimeData[i].Slime.name == "CommonSlime_Blue(Clone)")//다른 포문으로 돌려보자 break걸기위함
             {
                 blueSlime = currentSceneSlimeData[i].Slime;
                 blueOk = true;
@@ -213,7 +213,7 @@ public class CraftManager : MonoSingleton<CraftManager>
         }
         if (!blueOk)
         {
-            AlertScroll.i.CraftSlimeMsg("초록슬라임이 한개 모자릅니다");
+            AlertScroll.i.CraftSlimeMsg("파랑슬라임이 한개 모자릅니다");
         }
         SlimeCheck();
     }//RareSlime_Viking_Yellow 크래프팅 노랑 + 노랑 + 파랑
@@ -597,7 +597,7 @@ public class CraftManager : MonoSingleton<CraftManager>
                 Destroy(QueenUniqueSlime2);
                 Destroy(SproutUniqueSlime);
                 Vector3 position = new Vector3(Random.Range(player1minSize.x, player1maxSize.x), 1, Random.Range(player1minSize.y, player1maxSize.y));
-                GameObject slime = Instantiate(SlimeDataController.i.slimeDataBaseList[12].Slime, position, Quaternion.identity);
+                GameObject slime = Instantiate(SlimeDataController.i.slimeDataBaseList[13].Slime, position, Quaternion.identity);
                 slime.transform.parent = slimeParent.transform;
                 Debug.Log(slime);
                 AlertScroll.i.SlimeGeneSetter(slime);

@@ -584,6 +584,10 @@ PrefabInstance:
       value: Marker 5 Loop
       objectReference: {fileID: 0}
     - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}

@@ -19,6 +19,10 @@ public class BottomPanelController : MonoSingleton<BottomPanelController>
         }
         for (int i = 0; i < RTSUnitController.i.selectedUnitList.Count; i++)
         {
+            if(i == 12)
+            {
+                break;
+            }
             disabledSlimeImagesBg[i].SetActive(true);
             for (int j = 0; j < slimeImg.Length; j++)
             {

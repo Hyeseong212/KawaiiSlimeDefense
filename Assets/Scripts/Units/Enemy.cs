@@ -27,6 +27,12 @@ public class Enemy : MonoBehaviour
 
     public EnemyData thisEnemydata;
     public float TotalHP;
+    public float currentSpeed;
+
+    public bool isStunned;
+    public float stunTime;
+    public float slotTime;
+    public bool isSlowed;
 
     public GameObject HpBar;
 
@@ -99,6 +105,7 @@ public class Enemy : MonoBehaviour
         wayPointCount = EnemySpawner.i.P1wayPoints.Length;
         wayPoints = new Transform[EnemySpawner.i.P1wayPoints.Length];
         wayPoints = EnemySpawner.i.P1wayPoints; //웨이포인트 저장
+        currentSpeed = navMeshAgent.speed;
         StartCoroutine("Moveto");
     }
     private void Update()
@@ -223,6 +230,7 @@ public class Enemy : MonoBehaviour
     }
     public void SpeedChange(float _speed)
     {
+        currentSpeed = _speed;
         if (navMeshAgent != null)
         {
             if (navMeshAgent.speed != 0)

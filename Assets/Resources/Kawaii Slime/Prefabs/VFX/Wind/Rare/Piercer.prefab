@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 199396539617275340}
   - component: {fileID: -8934598074474859544}
   - component: {fileID: 5479993091809040967}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Piercer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4898,8 +4898,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  FrontPos: {x: 0, y: 0, z: 0}
   bulletSpeed: 50
   HitVfx: {fileID: 1105495686751570, guid: d01e6d03fb47c3b49bfd92474f0942fc, type: 3}
+  HitVfxFroRareGreySlime: {fileID: 0}
+  HitVfxFroUniqueNekoSlime: {fileID: 0}
+  HitVfxFroUniqueQueenSlime: {fileID: 0}
+  HitVfxFroUniqueSproutSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime2: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime2: {fileID: 0}
+  _skillCoolTime: {fileID: 0}
 --- !u!135 &5479993091809040967
 SphereCollider:
   m_ObjectHideFlags: 0

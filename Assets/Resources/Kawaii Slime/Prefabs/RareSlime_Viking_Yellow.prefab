@@ -584,6 +584,10 @@ PrefabInstance:
       value: Marker 5 Loop
       objectReference: {fileID: 0}
     - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -664,6 +668,14 @@ PrefabInstance:
       value: 0.9964248
       objectReference: {fileID: 0}
     - target: {fileID: 198655544054478998, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198679400558804164, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198679400558804164, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 1
       objectReference: {fileID: 0}

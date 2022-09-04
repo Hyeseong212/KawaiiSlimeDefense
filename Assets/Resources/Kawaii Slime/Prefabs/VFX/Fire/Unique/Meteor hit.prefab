@@ -29312,7 +29312,7 @@ GameObject:
   - component: {fileID: 4912967495656520}
   - component: {fileID: 198103461194717624}
   - component: {fileID: 199106617544808292}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Meteor hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

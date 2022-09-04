@@ -323,6 +323,7 @@ MonoBehaviour:
   vfx: {fileID: 6224801465023501363}
   wayPoints: []
   skinnedMeshRenderer: {fileID: 5884437469326101356}
+  isDead: 0
   thisEnemydata:
     wave: 0
     index: 0
@@ -333,6 +334,7 @@ MonoBehaviour:
     enemyObject: {fileID: 0}
     pos: {x: 0, y: 0, z: 0}
   TotalHP: 0
+  currentSpeed: 0
   HpBar: {fileID: 0}
   rewardGold: {fileID: 9193254123394937452, guid: cbb11efae609b434d8f6e04b54d4698b, type: 3}
 --- !u!54 &3955792893658785032

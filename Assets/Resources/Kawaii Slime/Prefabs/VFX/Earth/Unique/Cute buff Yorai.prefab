@@ -4904,7 +4904,7 @@ GameObject:
   - component: {fileID: 199154593539114108}
   - component: {fileID: 5637808559046388661}
   - component: {fileID: 8238970865429785843}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cute buff Yorai
   m_TagString: Untagged
   m_Icon: {fileID: 0}

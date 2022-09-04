@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 2515421638900451741}
   - component: {fileID: 1250105686102112163}
   - component: {fileID: 7049312467761528593}
+  - component: {fileID: 55386297931826552}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Untagged
@@ -456,8 +457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c96ff54dcb33544b356015d527e037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1079946990457772, guid: 99bb33b8e07ff1e4da047868339ca80d, type: 3}
-  shootPrefab: {fileID: 1258350160538612, guid: 368dc3948e8c73e44b7cd3a5f3e7b89f, type: 3}
+  bulletPrefab: {fileID: 1481587283673810, guid: 803944317bded4e4f98ec3aa58315383, type: 3}
+  shootPrefab: {fileID: 1795330392712688, guid: 6859b3e89f1d6974bad6a8e24320dac3, type: 3}
   animator: {fileID: 5695837990752705800}
   tr: {fileID: 0}
   enemies: []
@@ -471,6 +472,22 @@ MonoBehaviour:
     hp: 0
     enemyObject: {fileID: 0}
     pos: {x: 0, y: 0, z: 0}
+--- !u!114 &55386297931826552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276413796492153302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a804e5ba7ea19b441971ca8b000d2d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillCoolTime: 8
+  isCoolTime: 0
+  _skillCoolTime2: 2
+  isCoolTime2: 0
 --- !u!1 &8409913829827614460
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +667,10 @@ PrefabInstance:
       value: Marker 5 Loop
       objectReference: {fileID: 0}
     - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898189779652114, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -715,7 +736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198308026754324882, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198308026754324882, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
@@ -727,9 +748,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 198655544054478998, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 198655544054478998, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198679400558804164, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.9999781
+      objectReference: {fileID: 0}
+    - target: {fileID: 198679400558804164, guid: 6bb9186d52c308c408c5427efd7a6b9a, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 1
       objectReference: {fileID: 0}

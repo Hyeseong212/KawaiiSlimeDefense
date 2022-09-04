@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 198126360825063032}
   - component: {fileID: 199410370780375328}
   - component: {fileID: 1203975682107217188}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Flash 22
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9806,9 +9806,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  FrontPos: {x: 0, y: 0, z: 0}
   bulletSpeed: 100
   HitVfx: {fileID: 1296333435415890, guid: f422a4654421d144695df98e18937647, type: 3}
   HitVfxFroRareGreySlime: {fileID: 0}
   HitVfxFroUniqueNekoSlime: {fileID: 0}
   HitVfxFroUniqueQueenSlime: {fileID: 1434030948986856, guid: 3eab6861cbd2ad14b8c28c8d98236d00, type: 3}
+  HitVfxFroUniqueSproutSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime2: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime2: {fileID: 0}
   _skillCoolTime: {fileID: 0}

@@ -19,20 +19,20 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
     /// <summary>
     /// 일반타입 업그레이드 상수
     /// </summary>
-    public const int rareUpgradeSpendGold = 40;
+    public const int rareUpgradeSpendGold = 100;
     public const float rareUpgradeAttackpts = 40;
     public const float rareUpgradeAttackspeed = 0.1f;
     /// <summary>
     /// 레어타입 업그레이드 상수
     /// </summary>
-    public const int uniqueUpgradeSpendGold = 100;
+    public const int uniqueUpgradeSpendGold = 250;
     public const float uniqueUpgradeAttackpts = 100;
     public const float uniqueUpgradeAttackspeed = 0.3f;
     /// <summary>
     /// 유니크타입 업그레이드 상수
     /// </summary>
-    public const int legendaryUpgradeSpendGold = 250;
-    public const float legnedaryUpgradeAttackpts = 250;
+    public const int legendaryUpgradeSpendGold = 1000;
+    public const float legnedaryUpgradeAttackpts = 500;
     public const float legnedaryUpgradeAttackspeed = 0.5f;
     /// <summary>
     /// 전설타입 업그레이드 상수
@@ -197,7 +197,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
         {
             if (GameManager.i.currentGold >= legendaryUpgradeSpendGold) 
             {
-                GameManager.i.currentGold -= uniqueUpgradeSpendGold;
+                GameManager.i.currentGold -= legendaryUpgradeSpendGold;
                 GameManager.i.Gold.text = GameManager.i.currentGold.ToString();
                 for (int i = 0; i < SlimeDataController.i.slimeDataBaseList.Count; i++)
                 {

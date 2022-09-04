@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 199602846296022876}
   - component: {fileID: 108857234956802684}
   - component: {fileID: 7857880942647141661}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4961,8 +4961,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 0}
+  FrontPos: {x: 0, y: 0, z: 0}
   bulletSpeed: 30
   HitVfx: {fileID: 1714524745656972, guid: 441448a67762ea54698b2f215cace990, type: 3}
+  HitVfxFroRareGreySlime: {fileID: 0}
+  HitVfxFroUniqueNekoSlime: {fileID: 0}
+  HitVfxFroUniqueQueenSlime: {fileID: 0}
+  HitVfxFroUniqueSproutSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime: {fileID: 0}
+  HitVfxFroLegendaryKingSlime2: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime: {fileID: 0}
+  HitVfxFroLegendaryRabbitSlime2: {fileID: 0}
+  _skillCoolTime: {fileID: 0}
 --- !u!1 &1666296132266488
 GameObject:
   m_ObjectHideFlags: 0

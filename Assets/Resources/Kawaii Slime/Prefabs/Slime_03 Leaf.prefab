@@ -304,9 +304,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitMarker: {fileID: 8264533057595937002}
-  faces: {fileID: 0}
   animator: {fileID: 0}
   mainSlime: {fileID: 1133049861285851969}
+  slimedata:
+    Index: 0
+    Name: 
+    Type: 
+    Slime: {fileID: 0}
+    attackType: 
+    attackpts: 0
+    attackspeed: 0
+  shooter: {fileID: 0}
+  isWaitForCommand: 0
 --- !u!95 &2786467022669974066
 Animator:
   serializedVersion: 4

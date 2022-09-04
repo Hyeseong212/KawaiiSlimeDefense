@@ -25054,7 +25054,7 @@ GameObject:
   - component: {fileID: 8513489384303043878}
   - component: {fileID: 4415108075044408713}
   - component: {fileID: 8766505189601913490}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Hit 25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
