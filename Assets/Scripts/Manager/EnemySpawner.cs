@@ -131,6 +131,7 @@ public class EnemySpawner : MonoSingleton<EnemySpawner>
             yield return new WaitForSeconds(spawnTime);
         }
     }
+
     public void NextWave()//현재 웨이브 정보로 에너미 프리팹 바꿔치기
     {
         currentWave++;

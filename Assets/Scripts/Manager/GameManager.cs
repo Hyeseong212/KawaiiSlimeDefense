@@ -30,6 +30,8 @@ public class GameManager : MonoSingleton<GameManager>
 
     public Text Gold;
     public Text Token;
+
+    public int DifficultwithMonster;
     private void Awake()
     {
         playerNumber = PlayerNumber.Player1;
@@ -58,6 +60,22 @@ public class GameManager : MonoSingleton<GameManager>
         StartCoroutine("WaveTimeLeft");
         Gold.text = currentGold.ToString();
         Token.text = currentToken.ToString();
+        if(gameDifficulty == GameDifficulty.Easy)
+        {
+            DifficultwithMonster = 80;
+        }
+        else if(gameDifficulty == GameDifficulty.Normal)
+        {
+            DifficultwithMonster = 65;
+        }
+        else if(gameDifficulty == GameDifficulty.Hard)
+        {
+            DifficultwithMonster = 55;
+        }
+        else if (gameDifficulty == GameDifficulty.Hell)
+        {
+            DifficultwithMonster = 35;
+        }
     }
     private void Update()//UI상으로 남은시간 보여주는것
     {
@@ -105,6 +123,13 @@ public class GameManager : MonoSingleton<GameManager>
                 GameClear();
                 yield break;
             }
+        }
+    }
+    private void GameDefeat()
+    {
+        if(EnemySpawner.i.P1enemyInThisWaveList.Count >= DifficultwithMonster)
+        {
+            Debug.Log("게임패배");
         }
     }
     private void GameClear()
