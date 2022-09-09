@@ -20,7 +20,8 @@ MonoBehaviour:
   - m_GUID: fca4758d9504a4843804ec724b90fee0
     m_Address: StringTable
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - Table
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e456c8afc8b697d409fd0f92f6d1b640, type: 2}
   m_SchemaSet:

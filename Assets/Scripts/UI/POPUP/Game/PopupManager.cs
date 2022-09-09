@@ -5,11 +5,13 @@ using UnityEngine.UI;
 using _type;
 using UnityEngine.InputSystem;
 
+#if UNITY_EDITOR
 using UnityEditor;
 [CustomEditor(typeof(PopupManager))]
 [CanEditMultipleObjects]
 public class PopupManagerEditor : Editor
 {
+
     PopupManager _this;
     string[] layers;
     void OnEnable()
@@ -33,6 +35,8 @@ public class PopupManagerEditor : Editor
         GUI.enabled = true;
     }
 }
+
+#endif
 public class PopupManager : MonoSingleton<PopupManager>
 {
 
@@ -316,14 +320,14 @@ public class PopupManager : MonoSingleton<PopupManager>
     public void BackPopup(E_POPUP type)
     {
         GlobalOptions.i.options.isPopup = false;
-        Debug.Log("타입 " + type);
+        //Debug.Log("타입 " + type);
         if (stackPopup.Count == 0) return;
 
         PopupItem item = GetPopupItem(type);
         RemovePopup(type);
         if (item != null)
         {
-            Debug.Log("팝업삭제 " + type);
+            //Debug.Log("팝업삭제 " + type);
             GameObject.DestroyImmediate(item.objPopup);
         }
         // if (stackPopup.Count == 0) ActiveListManager.SetActiveList(true);
