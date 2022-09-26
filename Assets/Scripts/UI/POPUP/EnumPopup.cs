@@ -10,8 +10,9 @@ namespace _type
 		POPUP_BUTTON_OKCANCEL,
 
 		//MainMenu
-		POPUP_LOADING
+		POPUP_LOADING,
 
 		//Lobby
+		POPUP_CREATE_ROOM
 	}
 }

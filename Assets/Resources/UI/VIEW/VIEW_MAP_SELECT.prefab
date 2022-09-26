@@ -225,6 +225,7 @@ MonoBehaviour:
   - {fileID: 3013730519146032952}
   rightBtn: {fileID: 3013730520665813720}
   leftBtn: {fileID: 3013730519147650948}
+  statusTxt: {fileID: 0}
 --- !u!1 &3013730519146032952
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,8 +910,9 @@ GameObject:
   - component: {fileID: 3013730520053020546}
   - component: {fileID: 3013730520053020547}
   - component: {fileID: 3013730520053020544}
+  - component: {fileID: 4577689004280442120}
   m_Layer: 0
-  m_Name: EnemyDeBuff
+  m_Name: RoomJoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1019,6 +1021,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4577689004280442120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013730520053020558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7aab7f21b3fc04b9d4949573c4830c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdditionalArguments: []
+  Path: OnClickJoinRoom
+  Target: {fileID: 3013730520053020544}
 --- !u!1 &3013730520340985805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,8 +1048,9 @@ GameObject:
   - component: {fileID: 3013730520340985793}
   - component: {fileID: 3013730520340985806}
   - component: {fileID: 3013730520340985807}
+  - component: {fileID: 7631959105903908596}
   m_Layer: 0
-  m_Name: SlimeBuff
+  m_Name: RoomCreate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1141,6 +1159,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7631959105903908596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013730520340985805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c7aab7f21b3fc04b9d4949573c4830c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AdditionalArguments: []
+  Path: OnClickCreateRoom
+  Target: {fileID: 3013730520340985807}
 --- !u!1 &3013730520398911125
 GameObject:
   m_ObjectHideFlags: 0

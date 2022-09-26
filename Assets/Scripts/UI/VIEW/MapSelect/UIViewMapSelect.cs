@@ -17,6 +17,7 @@ public class UIViewMapSelect : MonoSingleton<UIViewMapSelect>
 
     [SerializeField] GameObject rightBtn;
     [SerializeField] GameObject leftBtn;
+    [SerializeField] Text statusTxt;
     float vectorx = 0;
     int i = 0;
     public override void Init()
@@ -29,6 +30,7 @@ public class UIViewMapSelect : MonoSingleton<UIViewMapSelect>
 
     void Start()
     {
+        NetWorkManager.i.StatusTxt = statusTxt;
         if (i == 0)
         {
             leftBtn.SetActive(false);
@@ -63,11 +65,11 @@ public class UIViewMapSelect : MonoSingleton<UIViewMapSelect>
         };
         _context.onClickCreateRoom = () =>
         {
-
+            PopupManager.i.ShowPopup(_type.E_POPUP.POPUP_CREATE_ROOM);
         };
         _context.onClickJoinRoom = () =>
         {
-
+            GSceneManager.i.MoveSceneAsync(GSceneManager.SCENE_TYPE.Lobby);
         };
     }
 

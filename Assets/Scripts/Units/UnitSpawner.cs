@@ -15,7 +15,7 @@ public class UnitSpawner : MonoSingleton<UnitSpawner>
 	private	Vector2 player1maxSize = new Vector2(-38, 82);
 
 	public int Index = 0;
-    public List<UnitController> SpawnUnitsPlayer1()
+    public List<UnitController> SpawnUnitsPlayer1()//슬라임 스폰
 	{
 		List<UnitController> unitList = new List<UnitController>(maxUnitCount);
 

@@ -201,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 248015472}
   - component: {fileID: 248015473}
+  - component: {fileID: 248015474}
   m_Layer: 0
   m_Name: POPUP
   m_TagString: Untagged
@@ -241,6 +242,19 @@ MonoBehaviour:
   layer: 0
   order: 0
   selectType: 0
+--- !u!114 &248015474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248015471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bed6de36084b6f84694609a55bba4ccf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  POPUP: 1
 --- !u!1 &447728126
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +430,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &737752131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 737752133}
+  - component: {fileID: 737752132}
+  m_Layer: 0
+  m_Name: GlobalOptions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &737752132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737752131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddade6689049834409e0ce2245743ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  options:
+    mapMoveSpeed: 0
+    width: 0
+    height: 0
+    cameraYvalue: 0
+    isPopup: 0
+--- !u!4 &737752133
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737752131}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &942478388 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2589722049246254005, guid: 2a1b858d8bbd15a4da1fffa65d99bfd6, type: 3}
@@ -471,7 +535,7 @@ GameObject:
   - component: {fileID: 1444810812}
   - component: {fileID: 1444810811}
   m_Layer: 5
-  m_Name: UI
+  m_Name: UI(Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

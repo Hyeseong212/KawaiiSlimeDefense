@@ -12,8 +12,9 @@ public class GSceneManager : MonoSingleton<GSceneManager>
         Login,
         MainMenu,
         MapSelect,
+        Lobby,
         Game,
-
+        
         Max,
     }
     public SCENE_TYPE scene_type = SCENE_TYPE.Login;
