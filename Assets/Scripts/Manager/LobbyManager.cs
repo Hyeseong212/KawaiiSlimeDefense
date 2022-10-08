@@ -7,6 +7,6 @@ public class LobbyManager : MonoBehaviour
 {
     public void PlayGameBtn()
     {
-        SceneManager.LoadScene("MapSelect");
+        SceneManager.LoadScene("Lobby");
     }
 }

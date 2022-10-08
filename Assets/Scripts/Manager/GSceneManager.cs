@@ -11,7 +11,6 @@ public class GSceneManager : MonoSingleton<GSceneManager>
     {
         Login,
         MainMenu,
-        MapSelect,
         Lobby,
         Game,
         

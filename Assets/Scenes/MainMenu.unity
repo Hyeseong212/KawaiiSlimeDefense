@@ -460,11 +460,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   options:
+    Player: 0
     mapMoveSpeed: 0
     width: 0
     height: 0
     cameraYvalue: 0
     isPopup: 0
+    Difficulty: 0
 --- !u!4 &737752133
 Transform:
   m_ObjectHideFlags: 0

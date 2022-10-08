@@ -12,11 +12,16 @@ namespace UI.View.Menu
 
         }
 
-        public System.Action onClickTouch = () => { };
- 
-        public void OnClickTouch()
+        public System.Action onClickLogin = () => { };
+        public System.Action onClickCreateNewKey = () => { };
+
+        public void OnClickLogin()
         {
-            onClickTouch();
+            onClickLogin();
+        }
+        public void OnClickCreateNewKey()
+        {
+            onClickCreateNewKey();
         }
     }
 }

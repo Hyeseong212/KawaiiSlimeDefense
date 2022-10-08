@@ -11,6 +11,7 @@ namespace _type
 
 		//MainMenu
 		POPUP_LOADING,
+		POPUP_CREATENEWKEY,
 
 		//Lobby
 		POPUP_CREATE_ROOM

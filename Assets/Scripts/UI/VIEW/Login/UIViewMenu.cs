@@ -1,7 +1,6 @@
 using UnityEngine;
 using System;
 using System.Collections;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 using Slash.Unity.DataBind.Core.Presentation;
@@ -11,8 +10,10 @@ public class UIViewMenu : MonoSingleton<UIViewMenu>
 {
     [SerializeField] private ContextHolder _contextHolder;
     [SerializeField] private Text statusTxt;
+    [SerializeField] private InputField UserID;
+    [SerializeField] private InputField UserKey;
     private ViewMenuContext _context;
-    WaitForSeconds fakeLoadingTime = new WaitForSeconds(3f);
+    WaitForSeconds fakeLoadingTime = new WaitForSeconds(1f);
     public override void Init()
     {
         if (_contextHolder == null) _contextHolder = GetComponent<ContextHolder>();
@@ -23,11 +24,16 @@ public class UIViewMenu : MonoSingleton<UIViewMenu>
     void Start()
     {
         NetWorkManager.i.StatusTxt = statusTxt;
+        NetWorkManager.i.Connect();
         StartCoroutine("LoadingPopup");
-        _context.onClickTouch = () =>
+        _context.onClickCreateNewKey = () =>
         {
-            NetWorkManager.i.Connect();
-            GSceneManager.i.MoveSceneAsync(GSceneManager.SCENE_TYPE.MainMenu);
+            PopupManager.i.ShowPopup(_type.E_POPUP.POPUP_CREATENEWKEY);
+        };
+        _context.onClickLogin = () =>
+        {
+            UserDataController.i.UserDataInit(UserID.text ,UserKey.text);
+            //GSceneManager.i.MoveSceneAsync(GSceneManager.SCENE_TYPE.MainMenu);
         };
     }
     IEnumerator LoadingPopup()

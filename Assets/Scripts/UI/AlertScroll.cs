@@ -15,35 +15,38 @@ public class AlertScroll : MonoSingleton<AlertScroll>
     }
     public void SlimeGeneSetter(GameObject slimename)//나중에 자료구조 queue로 바꿔라
     {
-        if (slimename.name == "CommonSlime_Blue(Clone)")
+        if (textRecord != null)
         {
-            textRecord.Insert(0, "(일반타입) 파랑 슬라임을 얻었습니다.");
+            if (slimename.name == "CommonSlime_Blue(Clone)")
+            {
+                textRecord.Insert(0, "(일반타입) 파랑 슬라임을 얻었습니다.");
+            }
+            else if (slimename.name == "CommonSlime_Red(Clone)")
+            {
+                textRecord.Insert(0, "(일반타입) 빨강 슬라임을 얻었습니다.");
+            }
+            else if (slimename.name == "CommonSlime_Grey(Clone)")
+            {
+                textRecord.Insert(0, "(일반타입) 회색 슬라임을 얻었습니다.");
+            }
+            else if (slimename.name == "CommonSlime_Green(Clone)")
+            {
+                textRecord.Insert(0, "(일반타입) 초록 슬라임을 얻었습니다.");
+            }
+            else if (slimename.name == "CommonSlime_Yellow(Clone)")
+            {
+                textRecord.Insert(0, "(일반타입) 노랑 슬라임을 얻었습니다.");
+            }
+            else
+            {
+                return;
+            }
+            GameObject text = Instantiate(textObject, textObjectParent.GetComponent<RectTransform>().anchoredPosition, Quaternion.identity) as GameObject;
+            text.GetComponent<RectTransform>().SetParent(textObjectParent.transform);
+            text.GetComponent<Text>().text = textRecord[0];
+            StartCoroutine(TextFade(text.GetComponent<Text>()));
+            Destroy(text, 10f);
         }
-        else if (slimename.name == "CommonSlime_Red(Clone)")
-        {
-            textRecord.Insert(0, "(일반타입) 빨강 슬라임을 얻었습니다.");
-        }
-        else if (slimename.name == "CommonSlime_Grey(Clone)")
-        {
-            textRecord.Insert(0, "(일반타입) 회색 슬라임을 얻었습니다.");
-        }
-        else if (slimename.name == "CommonSlime_Green(Clone)")
-        {
-            textRecord.Insert(0, "(일반타입) 초록 슬라임을 얻었습니다.");
-        }
-        else if (slimename.name == "CommonSlime_Yellow(Clone)")
-        {
-            textRecord.Insert(0, "(일반타입) 노랑 슬라임을 얻었습니다.");
-        }
-        else
-        {
-            return;
-        }
-        GameObject text = Instantiate(textObject, textObjectParent.GetComponent<RectTransform>().anchoredPosition, Quaternion.identity) as GameObject;
-        text.GetComponent<RectTransform>().SetParent(textObjectParent.transform);
-        text.GetComponent<Text>().text = textRecord[0];
-        StartCoroutine(TextFade(text.GetComponent<Text>()));
-        Destroy(text, 10f);
     }
     public void CraftSlimeMsg(string msg)
     {

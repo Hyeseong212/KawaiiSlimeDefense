@@ -32,12 +32,15 @@ public class PopupMenu : MonoBehaviour
 
         _menuContext.onClickExit = () =>
         {
+
             PopupMessageOkCancel.ShowButtonOKCancel_ID(1000, (type) =>
             {
                 if (type == 0)
                 {
 #if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
+#else
+                    Application.Quit();
 #endif
                 }
             });
