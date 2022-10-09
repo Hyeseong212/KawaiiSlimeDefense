@@ -29,6 +29,10 @@ public class PopupCreateRoom : MonoSingleton<PopupCreateRoom>
         {
             CreateRoom();
         };
+        _context.onClickExit = () =>
+        {
+            PopupManager.i.BackPopup();
+        };
     }
 
     public void SetPasswordEnable()

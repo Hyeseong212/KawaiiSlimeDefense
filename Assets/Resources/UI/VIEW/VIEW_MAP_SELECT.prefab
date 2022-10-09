@@ -226,6 +226,9 @@ MonoBehaviour:
   rightBtn: {fileID: 3013730520665813720}
   leftBtn: {fileID: 3013730519147650948}
   statusTxt: {fileID: 0}
+  MapSelectPanel: {fileID: 3013730519121983321}
+  LobbyPanel: {fileID: 11926427885359604, guid: e243c4bc898a3fb4e879ec91fe04fdd0, type: 3}
+  RoomPanel: {fileID: 5859193673738489009, guid: f9add0bb21bb6324e81e246e569aa555, type: 3}
 --- !u!1 &3013730519146032952
 GameObject:
   m_ObjectHideFlags: 0

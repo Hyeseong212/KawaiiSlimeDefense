@@ -13,6 +13,10 @@ public class UIViewMainMenu : MonoSingleton<UIViewMainMenu>
     [SerializeField] private Text statusTxt;
     private ViewMainMenuContext _context;
     WaitForSeconds fakeLoadingTime = new WaitForSeconds(3f);
+
+    [SerializeField] private Text levelTxt;
+    [SerializeField] private Text goldTxt;
+    [SerializeField] private Slider Exp;
     public override void Init()
     {
         if (_contextHolder == null) _contextHolder = GetComponent<ContextHolder>();
@@ -22,9 +26,19 @@ public class UIViewMainMenu : MonoSingleton<UIViewMainMenu>
     }
     void Start()
     {
+        levelTxt.text = "Lv." + UserDataController.i.userData1.Level;
+        goldTxt.text = UserDataController.i.userData1.Money;
+        for(int i = 0; i< UserDataController.i.expTotalDataList.Count; i++)
+        {
+            if(UserDataController.i.expTotalDataList[i].Level == UserDataController.i.userData1.Level)
+            {
+                Exp.value = float.Parse(UserDataController.i.userData1.EXP) / float.Parse(UserDataController.i.expTotalDataList[i].Exp);
+            }
+        }
         NetWorkManager.i.StatusTxt = statusTxt;
         _context.onClickTouch = () =>
         {
+
         };
     }
 }

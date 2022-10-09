@@ -69,6 +69,10 @@ public class NetWorkManager : MonoBehaviourPunCallbacks
     /// 네트워크매니저 싱글톤화
     /// </summary>
     public Text StatusTxt;
+    private void Start()
+    {
+        Connect();
+    }
     private void Update()
     {
         if (StatusTxt != null)
@@ -77,14 +81,4 @@ public class NetWorkManager : MonoBehaviourPunCallbacks
         }
     }
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
-    public override void OnJoinedLobby()
-    {
-
-    }
-    public override void OnConnectedToMaster() => PhotonNetwork.JoinOrCreateRoom("Room", new RoomOptions { MaxPlayers = 6 }, null);
-
-    public override void OnJoinedRoom() 
-    { 
-    }
-
 }

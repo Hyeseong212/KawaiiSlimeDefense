@@ -21,5 +21,9 @@ public class UIViewLobby : MonoSingleton<UIViewLobby>
     private void Start()
     {
         NetWorkManager.i.StatusTxt = statusTxt;
+        _context.onClickRoomCreate = () =>
+        {
+            PopupManager.i.ShowPopup(_type.E_POPUP.POPUP_CREATE_ROOM);
+        };
     }
 }

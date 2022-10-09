@@ -18,6 +18,10 @@ public class UIViewMapSelect : MonoSingleton<UIViewMapSelect>
     [SerializeField] GameObject rightBtn;
     [SerializeField] GameObject leftBtn;
     [SerializeField] Text statusTxt;
+    [Header("ÆÐ³Îµé")]
+    [SerializeField] GameObject MapSelectPanel;
+    [SerializeField] GameObject LobbyPanel;
+    [SerializeField] GameObject RoomPanel;
     float vectorx = 0;
     int i = 0;
     public override void Init()
@@ -69,7 +73,8 @@ public class UIViewMapSelect : MonoSingleton<UIViewMapSelect>
         };
         _context.onClickJoinRoom = () =>
         {
-            GSceneManager.i.MoveSceneAsync(GSceneManager.SCENE_TYPE.Lobby);
+            MapSelectPanel.SetActive(false);
+            LobbyPanel.SetActive(true);
         };
     }
 

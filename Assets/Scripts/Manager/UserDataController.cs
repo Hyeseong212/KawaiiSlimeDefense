@@ -10,23 +10,41 @@ public struct UserData
 {
     public string Name;
     public string Money;
+    public string EXP;
     public string Level;
+}
+[Serializable]
+public struct ExpTotalData
+{
+    public string Level;
+    public string Exp;
 }
 
 public class UserDataController : MonoSingleton<UserDataController>
 {
-    void Start()
+    public UserData userData1;
+    public List<ExpTotalData> expTotalDataList;
+    private void Start()
     {
-        UserData userData = new UserData();
-        userData.Name = "123";
-        userData.Money = "150";
-        userData.Level = "99";
+		List<Dictionary<string, object>> data = CSVReader.Read("UserExpData");
+        ExpTotalData expdata = new ExpTotalData();
+        for (var i = 0; i < data.Count; i++)
+        {
+            expdata.Level = data[i]["Level"].ToString();
+            expdata.Exp = data[i]["Exp"].ToString();
+            expTotalDataList.Add(expdata);
+        }
+        ///
+        /// 테스트 용 코드
+        ///
+        UserDataInit("netrogold", "Sjh011009!");
     }
     public void CreateNewKey(string _id ,string _key)
     {
         UserData userData = new UserData();
         userData.Name = _id;
         userData.Money = "0";
+        userData.EXP = "0";
         userData.Level = "1";
         string json = JsonUtility.ToJson(userData);
         string EncryptData = EncryptClass.Encrypt(json, _key);
@@ -38,6 +56,8 @@ public class UserDataController : MonoSingleton<UserDataController>
         string UserData = File.ReadAllText(Application.dataPath + "/UserData" + "/" + _id + "Data.json");
 
         string DecryptData = EncryptClass.Decrypt(UserData, _key);
-        Debug.Log(DecryptData);
+        userData1 = JsonUtility.FromJson<UserData>(DecryptData);
+
+        //GSceneManager.i.MoveSceneAsync(GSceneManager.SCENE_TYPE.MainMenu);
     }
 }

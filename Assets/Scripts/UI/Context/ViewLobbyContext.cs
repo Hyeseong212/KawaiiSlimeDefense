@@ -12,11 +12,11 @@ namespace UI.View.Lobby
 
         }
 
-        public System.Action onClickTouch = () => { };
+        public System.Action onClickRoomCreate = () => { };
  
-        public void OnClickTouch()
+        public void OnClickRoomCreate()
         {
-            onClickTouch();
+            onClickRoomCreate();
         }
     }
 }

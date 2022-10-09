@@ -8,15 +8,13 @@ using UnityEngine.UI;
 
 public class LobbyNetwork : MonoBehaviourPunCallbacks
 {
-    [Header("DisconnectPanel")]
-    public InputField NickNameInput;
 
     [Header("LobbyPanel")]
     public GameObject LobbyPanel;
     public InputField RoomInput;
     public Text WelcomeText;
     public Text LobbyInfoText;
-    public Button[] CellBtn;
+    //public Button[] CellBtn;
     public Button PreviousBtn;
     public Button NextBtn;
 
@@ -32,57 +30,58 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     public PhotonView PV;
 
     List<RoomInfo> myList = new List<RoomInfo>();
-    int currentPage = 1, maxPage, multiple;
+    //int currentPage = 1, maxPage, multiple;
 
 
-    #region 방리스트 갱신
-    // ◀버튼 -2 , ▶버튼 -1 , 셀 숫자
-    public void MyListClick(int num)
-    {
-        if (num == -2) --currentPage;
-        else if (num == -1) ++currentPage;
-        else PhotonNetwork.JoinRoom(myList[multiple + num].Name);
-        MyListRenewal();
-    }
+    //#region 방리스트 갱신
+    //// ◀버튼 -2 , ▶버튼 -1 , 셀 숫자
+    //public void MyListClick(int num)
+    //{
+    //    if (num == -2) --currentPage;
+    //    else if (num == -1) ++currentPage;
+    //    else PhotonNetwork.JoinRoom(myList[multiple + num].Name);
+    //    //MyListRenewal();
+    //}
 
-    void MyListRenewal()
-    {
-        // 최대페이지
-        maxPage = (myList.Count % CellBtn.Length == 0) ? myList.Count / CellBtn.Length : myList.Count / CellBtn.Length + 1;
+    //void MyListRenewal()
+    //{
+    //    // 최대페이지
+    //    maxPage = (myList.Count % CellBtn.Length == 0) ? myList.Count / CellBtn.Length : myList.Count / CellBtn.Length + 1;
 
-        // 이전, 다음버튼
-        PreviousBtn.interactable = (currentPage <= 1) ? false : true;
-        NextBtn.interactable = (currentPage >= maxPage) ? false : true;
+    //    // 이전, 다음버튼
+    //    PreviousBtn.interactable = (currentPage <= 1) ? false : true;
+    //    NextBtn.interactable = (currentPage >= maxPage) ? false : true;
 
-        // 페이지에 맞는 리스트 대입
-        multiple = (currentPage - 1) * CellBtn.Length;
-        for (int i = 0; i < CellBtn.Length; i++)
-        {
-            CellBtn[i].interactable = (multiple + i < myList.Count) ? true : false;
-            CellBtn[i].transform.GetChild(0).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].Name : "";
-            CellBtn[i].transform.GetChild(1).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].PlayerCount + "/" + myList[multiple + i].MaxPlayers : "";
-        }
-    }
+    //    // 페이지에 맞는 리스트 대입
+    //    multiple = (currentPage - 1) * CellBtn.Length;
+    //    for (int i = 0; i < CellBtn.Length; i++)
+    //    {
+    //        CellBtn[i].interactable = (multiple + i < myList.Count) ? true : false;
+    //        CellBtn[i].transform.GetChild(0).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].Name : "";
+    //        CellBtn[i].transform.GetChild(1).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].PlayerCount + "/" + myList[multiple + i].MaxPlayers : "";
+    //    }
+    //}
 
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    {
-        int roomCount = roomList.Count;
-        for (int i = 0; i < roomCount; i++)
-        {
-            if (!roomList[i].RemovedFromList)
-            {
-                if (!myList.Contains(roomList[i])) myList.Add(roomList[i]);
-                else myList[myList.IndexOf(roomList[i])] = roomList[i];
-            }
-            else if (myList.IndexOf(roomList[i]) != -1) myList.RemoveAt(myList.IndexOf(roomList[i]));
-        }
-        MyListRenewal();
-    }
+    //public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    //{
+    //    int roomCount = roomList.Count;
+    //    for (int i = 0; i < roomCount; i++)
+    //    {
+    //        if (!roomList[i].RemovedFromList)
+    //        {
+    //            if (!myList.Contains(roomList[i])) myList.Add(roomList[i]);
+    //            else myList[myList.IndexOf(roomList[i])] = roomList[i];
+    //        }
+    //        else if (myList.IndexOf(roomList[i]) != -1) myList.RemoveAt(myList.IndexOf(roomList[i]));
+    //    }
+    //    //MyListRenewal();
+    //}
+    //#endregion
+
+    #region 리스트 갱신
+
     #endregion
-
-
     #region 서버연결
-    void Awake() => Screen.SetResolution(960, 540, false);
 
     void Update()
     {
@@ -98,8 +97,8 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     {
         LobbyPanel.SetActive(true);
         RoomPanel.SetActive(false);
-        PhotonNetwork.LocalPlayer.NickName = NickNameInput.text;
-        WelcomeText.text = PhotonNetwork.LocalPlayer.NickName + "님 환영합니다";
+        PhotonNetwork.LocalPlayer.NickName = UserDataController.i.userData1.Name;
+        WelcomeText.text = PhotonNetwork.LocalPlayer.NickName ;
         myList.Clear();
     }
 
@@ -177,6 +176,65 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
             for (int i = 1; i < ChatText.Length; i++) ChatText[i - 1].text = ChatText[i].text;
             ChatText[ChatText.Length - 1].text = msg;
         }
+    }
+    #endregion
+    protected static LobbyNetwork m_Instance = null;
+    #region 인스터스화(테스트용)
+    public static LobbyNetwork i
+    {
+        get
+        {
+            // Instance requiered for the first time, we look for it
+            if (m_Instance == null)
+            {
+                m_Instance = GameObject.FindObjectOfType(typeof(LobbyNetwork)) as LobbyNetwork;
+
+                // Object not found, we create a temporary one
+                if (m_Instance == null)
+                {
+                    //Debug.LogWarning("No instance of " + typeof(T).ToString() + ", a temporary one is created.");
+                    //m_Instance = new GameObject("Temp Instance of " + typeof(T).ToString(), typeof(T)).GetComponent<T>();
+
+                    Debug.LogWarning(typeof(LobbyNetwork).ToString() + ", a temporary one is created.");
+                    m_Instance = new GameObject(typeof(LobbyNetwork).ToString(), typeof(LobbyNetwork)).GetComponent<LobbyNetwork>();
+
+                    // Problem during the creation, this should not happen
+                    if (m_Instance == null)
+                    {
+                        Debug.LogError("Problem during the creation of " + typeof(LobbyNetwork).ToString());
+                    }
+                }
+                m_Instance.Init();
+            }
+            return m_Instance;
+        }
+    }
+    private void Awake()
+    {
+        OnAwake();
+        if (m_Instance == null)
+        {
+            m_Instance = this as LobbyNetwork;
+            m_Instance.Init();
+        }
+    }
+    protected virtual void OnAwake() { }
+    public virtual void Init() { }
+    private void OnApplicationQuit()
+    {
+        if (m_Instance != this) return;
+        m_Instance = null;
+    }
+    public virtual void OnPause()
+    {
+
+    }
+    public static bool IsInstance()
+    {
+        if (m_Instance == null)
+            return false;
+
+        return true;
     }
     #endregion
 }
