@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using Photon.Realtime;
+using Photon.Pun;
 
 [Serializable]
 public struct UserData
@@ -23,6 +25,7 @@ public struct ExpTotalData
 public class UserDataController : MonoSingleton<UserDataController>
 {
     public UserData userData1;
+    public string userDatastr;
     public List<ExpTotalData> expTotalDataList;
     private void Start()
     {
@@ -56,8 +59,15 @@ public class UserDataController : MonoSingleton<UserDataController>
         string UserData = File.ReadAllText(Application.dataPath + "/UserData" + "/" + _id + "Data.json");
 
         string DecryptData = EncryptClass.Decrypt(UserData, _key);
+        userDatastr = DecryptData;
         userData1 = JsonUtility.FromJson<UserData>(DecryptData);
-
+        SendToNetWorkManager();
         //GSceneManager.i.MoveSceneAsync(GSceneManager.SCENE_TYPE.MainMenu);
+    }
+
+
+    public void SendToNetWorkManager()
+    {
+        LobbyNetwork.i.PlayerListBinding(userDatastr);
     }
 }

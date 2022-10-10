@@ -13,10 +13,15 @@ namespace UI.View.Lobby
         }
 
         public System.Action onClickRoomCreate = () => { };
+        public System.Action onClickTestBtn = () => { };
  
         public void OnClickRoomCreate()
         {
             onClickRoomCreate();
+        }
+        public void OnClickTestBtn()
+        {
+            onClickTestBtn();
         }
     }
 }

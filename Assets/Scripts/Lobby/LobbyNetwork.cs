@@ -4,9 +4,9 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using Newtonsoft.Json;
 
-
-public class LobbyNetwork : MonoBehaviourPunCallbacks
+public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
 {
 
     [Header("LobbyPanel")]
@@ -30,6 +30,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
     public PhotonView PV;
 
     List<RoomInfo> myList = new List<RoomInfo>();
+
     //int currentPage = 1, maxPage, multiple;
 
 
@@ -178,8 +179,29 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks
         }
     }
     #endregion
-    protected static LobbyNetwork m_Instance = null;
+
+    #region (테스트)
+    public string json;
+    public  List<string> userDatas = new List<string>();
+    public void PlayerListBinding(string _userData)
+    {
+        userDatas.Add(_userData);
+        json = JsonUtility.ToJson(userDatas);
+        Debug.Log(json);
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting) stream.SendNext(json);
+        else json = (string)stream.ReceiveNext();
+    }
+    public void PlayerListJsonToList()
+    {
+        userDatas = JsonUtility.FromJson<List<string>>(json);
+    }
+
+    #endregion
     #region 인스터스화(테스트용)
+    protected static LobbyNetwork m_Instance = null;
     public static LobbyNetwork i
     {
         get
