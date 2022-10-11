@@ -28,6 +28,7 @@ public class PopupCreateRoom : MonoSingleton<PopupCreateRoom>
         _context.onClickCreateRoom = () =>
         {
             CreateRoom();
+            PopupManager.i.BackPopup();
         };
         _context.onClickExit = () =>
         {
@@ -40,6 +41,5 @@ public class PopupCreateRoom : MonoSingleton<PopupCreateRoom>
         isChecked = !isChecked;
         enablePassword.SetActive(isChecked);
     }
-    private void CreateRoom() => PhotonNetwork.CreateRoom(RoomInput.text == "" ? "Room" + Random.Range(0, 100) : RoomInput.text, new RoomOptions { MaxPlayers = 4 });
-
+    public void CreateRoom() => PhotonNetwork.CreateRoom(RoomInput.text == "" ? "Room" + UnityEngine.Random.Range(0, 100) : RoomInput.text, new RoomOptions { MaxPlayers = 4 });
 }

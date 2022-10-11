@@ -68,6 +68,6 @@ public class UserDataController : MonoSingleton<UserDataController>
 
     public void SendToNetWorkManager()
     {
-        LobbyNetwork.i.PlayerListBinding(userDatastr);
+        LobbyNetwork.i.PlayerListBinding(userData1);
     }
 }

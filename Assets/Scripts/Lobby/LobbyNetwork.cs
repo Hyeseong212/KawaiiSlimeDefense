@@ -4,8 +4,21 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
-using Newtonsoft.Json;
+using System;
+using UnityEngine.EventSystems;
 
+
+[Serializable]
+public class PlayerListSerialzing<T>
+{
+    [SerializeField]
+    List<T> playerList;
+    public List<T> ToList() { return playerList; }
+    public PlayerListSerialzing(List<T> _playerList)
+    {
+        this.playerList = _playerList;
+    }
+}
 public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
 {
 
@@ -14,7 +27,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
     public InputField RoomInput;
     public Text WelcomeText;
     public Text LobbyInfoText;
-    //public Button[] CellBtn;
+    public Button[] CellBtn;
     public Button PreviousBtn;
     public Button NextBtn;
 
@@ -31,19 +44,20 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
 
     List<RoomInfo> myList = new List<RoomInfo>();
 
-    //int currentPage = 1, maxPage, multiple;
+    int currentPage = 1, maxPage, multiple;
 
-
-    //#region 방리스트 갱신
-    //// ◀버튼 -2 , ▶버튼 -1 , 셀 숫자
-    //public void MyListClick(int num)
-    //{
-    //    if (num == -2) --currentPage;
-    //    else if (num == -1) ++currentPage;
-    //    else PhotonNetwork.JoinRoom(myList[multiple + num].Name);
-    //    //MyListRenewal();
-    //}
-
+    [Header("테스트용")]
+    [SerializeField] GameObject RoomButton;
+    [SerializeField] GameObject RoomListPanel;
+    #region 방리스트 갱신
+    // ◀버튼 -2 , ▶버튼 -1 , 셀 숫자
+    public void MyListClick(int num)
+    {
+        if (num == -2) --currentPage;
+        else if (num == -1) ++currentPage;
+        else PhotonNetwork.JoinRoom(myList[multiple + num].Name);
+        //MyListRenewal();
+    }
     //void MyListRenewal()
     //{
     //    // 최대페이지
@@ -62,22 +76,41 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
     //        CellBtn[i].transform.GetChild(1).GetComponent<Text>().text = (multiple + i < myList.Count) ? myList[multiple + i].PlayerCount + "/" + myList[multiple + i].MaxPlayers : "";
     //    }
     //}
+    List<GameObject> curRoomList = new List<GameObject>();
+    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    {
+        //-로비에 접속 시
+        //-새로운 룸이 만들어질 경우
+        //- 룸이 삭제되는 경우
+        //-룸의 IsOpen 값이 변화할 경우(아예 RoomInfo 내 데이터가 바뀌는 경우 전체일 수도 있습니다)
+        int roomCount = roomList.Count;//룸전체를 파괴하고 룸갯수만큼 생성
+        for(int i = 0; i< curRoomList.Count; i++)
+        {
+            Destroy(curRoomList[i].gameObject);
+        }
+        for(int i=0; i < roomCount; i++)
+        {
+            GameObject roomBtn = Instantiate(RoomButton, transform.position, Quaternion.identity);
+            curRoomList.Add(roomBtn);
+            roomBtn.transform.SetParent(RoomListPanel.transform);
+            roomBtn.GetComponent<Button>().onClick.AddListener(() => MyListClick(0));
+            if (!myList.Contains(roomList[i])) myList.Add(roomList[i]);
+            else myList[myList.IndexOf(roomList[i])] = roomList[i];
 
-    //public override void OnRoomListUpdate(List<RoomInfo> roomList)
-    //{
-    //    int roomCount = roomList.Count;
-    //    for (int i = 0; i < roomCount; i++)
-    //    {
-    //        if (!roomList[i].RemovedFromList)
-    //        {
-    //            if (!myList.Contains(roomList[i])) myList.Add(roomList[i]);
-    //            else myList[myList.IndexOf(roomList[i])] = roomList[i];
-    //        }
-    //        else if (myList.IndexOf(roomList[i]) != -1) myList.RemoveAt(myList.IndexOf(roomList[i]));
-    //    }
-    //    //MyListRenewal();
-    //}
-    //#endregion
+        }
+        //int roomCount = roomList.Count;
+        //for (int i = 0; i < roomCount; i++)
+        //{
+        //    if (!roomList[i].RemovedFromList)
+        //    {
+        //        if (!myList.Contains(roomList[i])) myList.Add(roomList[i]);
+        //        else myList[myList.IndexOf(roomList[i])] = roomList[i];
+        //    }
+        //    else if (myList.IndexOf(roomList[i]) != -1) myList.RemoveAt(myList.IndexOf(roomList[i]));
+        //}
+        //MyListRenewal();
+    }
+    #endregion
 
     #region 리스트 갱신
 
@@ -86,8 +119,11 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
 
     void Update()
     {
-        StatusText.text = PhotonNetwork.NetworkClientState.ToString();
-        LobbyInfoText.text = (PhotonNetwork.CountOfPlayers - PhotonNetwork.CountOfPlayersInRooms) + "로비 / " + PhotonNetwork.CountOfPlayers + "접속";
+        if (StatusText != null && LobbyInfoText != null)
+        {
+            StatusText.text = PhotonNetwork.NetworkClientState.ToString();
+            LobbyInfoText.text = (PhotonNetwork.CountOfPlayers - PhotonNetwork.CountOfPlayersInRooms) + "로비 / " + PhotonNetwork.CountOfPlayers + "접속";
+        }
     }
 
     public void Connect() => PhotonNetwork.ConnectUsingSettings();
@@ -114,7 +150,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
 
 
     #region 방
-    public void CreateRoom() => PhotonNetwork.CreateRoom(RoomInput.text == "" ? "Room" + Random.Range(0, 100) : RoomInput.text, new RoomOptions { MaxPlayers = 4 });
+    public void CreateRoom() => PhotonNetwork.CreateRoom(RoomInput.text == "" ? "Room" + UnityEngine.Random.Range(0, 100) : RoomInput.text, new RoomOptions { MaxPlayers = 4 });
 
     public void JoinRandomRoom() => PhotonNetwork.JoinRandomRoom();
 
@@ -146,48 +182,58 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
 
     void RoomRenewal()
     {
-        ListText.text = "";
-        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-            ListText.text += PhotonNetwork.PlayerList[i].NickName + ((i + 1 == PhotonNetwork.PlayerList.Length) ? "" : ", ");
-        RoomInfoText.text = PhotonNetwork.CurrentRoom.Name + " / " + PhotonNetwork.CurrentRoom.PlayerCount + "명 / " + PhotonNetwork.CurrentRoom.MaxPlayers + "최대";
+        //ListText.text = "";
+        //for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
+        //    ListText.text += PhotonNetwork.PlayerList[i].NickName + ((i + 1 == PhotonNetwork.PlayerList.Length) ? "" : ", ");
+        //RoomInfoText.text = PhotonNetwork.CurrentRoom.Name + " / " + PhotonNetwork.CurrentRoom.PlayerCount + "명 / " + PhotonNetwork.CurrentRoom.MaxPlayers + "최대";
     }
     #endregion
 
 
     #region 채팅
-    public void Send()
+    public void Send(string _chattxt)
     {
-        PV.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.NickName + " : " + ChatInput.text);
+        PV.RPC("ChatRPC", RpcTarget.All, UserDataController.i.userData1.Name + " : " + ChatInput.text);
         ChatInput.text = "";
     }
-
+    [SerializeField] GameObject Chat;
+    [SerializeField] GameObject ChatParent;
     [PunRPC] // RPC는 플레이어가 속해있는 방 모든 인원에게 전달한다
     void ChatRPC(string msg)
     {
-        bool isInput = false;
-        for (int i = 0; i < ChatText.Length; i++)
-            if (ChatText[i].text == "")
-            {
-                isInput = true;
-                ChatText[i].text = msg;
-                break;
-            }
-        if (!isInput) // 꽉차면 한칸씩 위로 올림
-        {
-            for (int i = 1; i < ChatText.Length; i++) ChatText[i - 1].text = ChatText[i].text;
-            ChatText[ChatText.Length - 1].text = msg;
-        }
+        //bool isInput = false;
+        GameObject chat = Instantiate(Chat, transform.position, Quaternion.identity);
+        chat.transform.SetParent(ChatParent.transform);
+        chat.GetComponent<Text>().text = msg; 
+        //for (int i = 0; i < ChatText.Length; i++)
+        //    if (ChatText[i].text == "")
+        //    {
+        //        isInput = true;
+        //        ChatText[i].text = msg;
+        //        break;
+        //    }
+        //if (!isInput) // 꽉차면 한칸씩 위로 올림
+        //{
+        //    for (int i = 1; i < ChatText.Length; i++) ChatText[i - 1].text = ChatText[i].text;
+        //    ChatText[ChatText.Length - 1].text = msg;
+        //}
     }
     #endregion
 
     #region (테스트)
     public string json;
-    public  List<string> userDatas = new List<string>();
-    public void PlayerListBinding(string _userData)
+    [SerializeField] public List<UserData> userDatas = new List<UserData>();
+    public void PlayerListBinding(UserData _userData)
     {
         userDatas.Add(_userData);
-        json = JsonUtility.ToJson(userDatas);
-        Debug.Log(json);
+        if (!string.IsNullOrEmpty(json))
+        {
+            json = JsonUtility.ToJson(new PlayerListSerialzing<UserData>(userDatas)) + json;
+        }
+        else
+        {
+            json = JsonUtility.ToJson(new PlayerListSerialzing<UserData>(userDatas));
+        }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -196,7 +242,7 @@ public class LobbyNetwork : MonoBehaviourPunCallbacks,IPunObservable
     }
     public void PlayerListJsonToList()
     {
-        userDatas = JsonUtility.FromJson<List<string>>(json);
+        userDatas = JsonUtility.FromJson<List<UserData>>(json);
     }
 
     #endregion

@@ -11,6 +11,7 @@ public class UIViewRoom : MonoSingleton<UIViewRoom>
     private ViewRoomContext _context;
     [SerializeField] Text statusTxt;
     [SerializeField] Dropdown InGameDifficulty;
+    [SerializeField] InputField chatTxt;
 
     private void Awake()
     {
@@ -21,7 +22,21 @@ public class UIViewRoom : MonoSingleton<UIViewRoom>
     }
     private void Start()
     {
+
         NetWorkManager.i.StatusTxt = statusTxt;
+        _context.onClickBackToLobby = () =>
+        {
+            LobbyNetwork.i.OnJoinedLobby();
+        };
+        _context.onClickSendTxt = () =>
+        {
+            LobbyNetwork.i.Send(chatTxt.text);
+            chatTxt.text = "";
+        };
+        _context.onClickGameStart = () =>
+        {
+            GSceneManager.i.MoveSceneAsync(GSceneManager.SCENE_TYPE.Game);
+        };
     }
     public void OnDifficultyChange()
     {

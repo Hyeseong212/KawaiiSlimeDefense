@@ -11,6 +11,20 @@ namespace UI.View.Lobby
         {
 
         }
-
+        public System.Action onClickBackToLobby = () => { };
+        public System.Action onClickSendTxt = () => { };
+        public System.Action onClickGameStart = () => { };
+        public void OnClickSendTxt()
+        {
+            onClickSendTxt();
+        }
+        public void OnClickBackToLobby()
+        {
+            onClickBackToLobby();
+        }
+        public void OnClickGameStart()
+        {
+            onClickGameStart();
+        }
     }
 }
